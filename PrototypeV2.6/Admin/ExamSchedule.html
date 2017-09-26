@@ -292,13 +292,10 @@
                 <div class="col-xs-4">
                     <div class="input-group hitec-w-100percent">
                         <select class="form-control" id="khoahoc" name="KhoaHoc">
-                            <option selected="selected" value="">--- Chọn Niên Khóa ---</option>
-                            <option value="">2014-2015</option>
-                            <option value="">2015-2016</option>
-                            <option value="">2016-2017</option>
-                            <option value="">2017-2018</option>
-                            <option value="">2018-2019</option>
-                            <option value="">2019-2020</option>                          
+                            <option selected="selected" value="">--- Chọn Khóa ---</option>
+                            <option value="">K19</option>
+                            <option value="">K20</option>
+                            <option value="">K21</option>                                                  
                         </select>
                     </div>
                 </div>
@@ -327,7 +324,7 @@
     </div>
     <div id="searchResult" style="margin-top:5px;">
         <div class="container-fluid text-right">
-            <a>[Import Data]</a>
+            <a href="javascript:void(0)"  title="Import excel" data-toggle="modal" data-target="#dialogEdit">[Import Data]</a>
         </div>
         <div class="container-fluid text-center">
             <img src="../Img/Lichthi.jpg" />
@@ -335,7 +332,65 @@
     </div>
     
 </div>
-
+<div class="row">
+    <div class="col-xs-12">
+        <div id="dialogEdit" class="modal fade" tabindex="-1" style="padding-top: 0px; padding-bottom: 0px; padding-left: 17px;" aria-hidden="false">
+            <div class="modal-dialog" style="width:400px !important;height:600px !important">
+                <div class="modal-content">
+                    <form id="frmEditEmployee" name="frmCreateEmployee" class="form-horizontal" role="form" ng-submit="UpdateEmployee()">
+                        <div class="modal-header bg-primary" style="padding:0px;text-align:center">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h5><strong class="modal-title">Thêm Lịch Thi</strong></h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" style="margin:10px">
+                                <div class="col-xs-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label class="coltrol-lable">Khóa:</label>
+                                        <select class="form-control">
+											<option>K19</option>
+                                            <option>K20</option>
+                                            <option>K21</option>
+                                            <option>K22</option>
+										</select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="coltrol-lable">Học Kì:</label>
+                                        <select class="form-control">
+                                            <option>HK I</option>
+                                            <option>HK II</option>
+                                            <option>HK III</option>
+                                            <option>HK IV</option>
+                                            <option>HK V</option>
+                                            <option>HK VI</option>
+                                            <option>HK VII</option>
+                                            <option>HK VIII</option>
+                                        </select>
+                                    </div>
+									<div class="form-group">
+                                        <label class="coltrol-lable">Thi Lần:</label>
+                                        <select class="form-control">
+                                            <option>Lần 1</option>
+                                            <option>Lần 2</option>                                         
+                                        </select>
+                                    </div>
+									<div class="form-group">
+                                        <label class="coltrol-lable">File Input:</label>
+                                        <input type="file" id="exampleInputFile">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer" style="padding:0px">
+                            <button class="btn btn-sm btn-success">Thêm</button>
+                            <button class="btn btn-sm btn-danger" data-dismiss="modal">Thôi</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                     </div>
                     <div class="row">

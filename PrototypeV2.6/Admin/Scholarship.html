@@ -293,44 +293,34 @@
                 <div class="row">
                     <div class="col-xs-4">
                         <div class="input-group hitec-w-100percent">
-                            <select class="form-control" id="khoahoc" name="KhoaHoc">
-                                <option selected="selected" value="">--- Điểm TB Học Tập Ít Nhất ---</option>
-                                <option value="">6.5</option>
-                                <option value="">7.0</option>
-                                <option value="">7.5</option>
-                                <option value="">8.0</option>
-                                <option value="">8.5</option>                            
-                            </select>
+                            <input type="text" class="form-control">
                         </div>
                     </div>
                     <div class="col-xs-4">
                         <div class="input-group hitec-w-100percent">
-                            <select class="form-control" id="khoahoc" name="KhoaHoc">
-                                <option selected="selected" value="">--- Điểm TB Rèn Luyện Ít Nhất ---</option>
-                                <option value="">6.5</option>
-                                <option value="">7.0</option>
-                                <option value="">7.5</option>
-                                <option value="">8.0</option>
-                                <option value="">8.5</option>
-                            </select>
+                            <input type="text" class="form-control">
                         </div>
                     </div>
-                    <div class="col-xs-4">
-                        <div class="input-group hitec-w-100percent">
-                            <select class="form-control" id="khoahoc" name="KhoaHoc">
-                                <option selected="selected" value="">--- Thi lại lần 2 ---</option>
-                                <option value="">Chấp nhận</option>
-                                <option value="">Không chấp nhận</option>
-                            </select>
+                    <div class="col-xs-2"> 
+                        <div  class="input-group hitec-w-100percent form-control" id="AA">
+                            <input type="checkbox" > Thi lại lần 2
                         </div>
                     </div>
+					<div class="col-xs-2"> 
+                        <div  class="input-group hitec-w-100percent">
+                            <div class="input-group-btn">
+                                <button class="btn btn-sm btn-default form-control" type="button"><span class="fa fa-search"></span></button>
+                            </div>
+						</div>
+                    </div>	
+					
                 </div>
             </form>
         </div>
         <div id="searchResult" style="margin-top:5px;">
             <div class="container-fluid text-right">
-                <a>[Import Data]</a>
-            </div>
+                <a>[Export Data]</a>
+			</div>
             <div class="container-fluid">
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
@@ -479,9 +469,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="container-fluid text-right">
-                <ul class="pagination"><li><a href="javascript:;" onclick="studentSearch(1)">1</a></li><li class="active"><a>2</a></li><li><a href="javascript:;" onclick="studentSearch(3)">3</a></li><li><a href="javascript:;" onclick="studentSearch(4)">4</a></li><li><a href="javascript:;" onclick="studentSearch(5)">5</a></li><li><a href="javascript:;" onclick="studentSearch(6)">6</a></li><li><a href="javascript:;" onclick="studentSearch(7)">7</a></li><li><a href="javascript:;" onclick="studentSearch(8)">8</a></li><li><a href="javascript:;" onclick="studentSearch(9)">9</a></li><li><a href="javascript:;" onclick="studentSearch(10)">10</a></li><li class="disabled"><a>…</a></li><li><a href="javascript:;" onclick="studentSearch(3)">»</a></li><li><a href="javascript:;" onclick="studentSearch(1363)">»»</a></li></ul>
-            </div>
+            
         </div>
     </div>
 </div>

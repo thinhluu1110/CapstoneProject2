@@ -290,7 +290,7 @@
         <div class="container-fluid">
             <form id="formSearch" role="form" onsubmit="return false;">
                 <div class="row">
-                    <div class="col-xs-3">
+                    <div class="col-xs-5">
                         <div class="input-group hitec-w-100percent">
                             <select class="form-control" id="khoahoc" name="KhoaHoc">
                                 <option selected="selected" value="">--- Chọn Khóa Học ---</option>
@@ -302,22 +302,8 @@
                             </select>
                         </div>
                     </div>
-					 <div class="col-xs-3">
-                        <div class="input-group hitec-w-100percent">
-                            <select class="form-control" id="khoahoc" name="KhoaHoc">
-                                <option selected="selected" value="">--- Chọn Lớp ---</option>
-                                <option value="">K19T01</option>
-                                <option value="">K19T02</option>
-                                <option value="">K19T03</option>
-                                <option value="">K20T01</option>
-                                <option value="">K20T02</option>
-                                <option value="">K20T03</option>
-                                <option value="">K21T01</option>
-                                <option value="">K21T02</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-xs-6">
+					 
+                    <div class="col-xs-7">
                         <div class="input-group add-on hitec-w-100percent">
                             <input class="form-control" id="searchvalue" name="SearchValue" placeholder="Tìm kiếm theo tên/max sinh viên" type="text" value="">
                             <div class="input-group-btn">
@@ -330,7 +316,7 @@
         </div>
         <div id="searchResult" style="margin-top:5px;">
             <div class="container-fluid text-right">
-                <a>[Import Data]</a>
+                <a href="javascript:void(0)"  title="Import excel" data-toggle="modal" data-target="#dialogEdit">[Import Data]</a>
             </div>
             <div class="container-fluid">
                 <table class="table table-bordered table-striped table-hover">
@@ -462,8 +448,37 @@
                     </tbody>
                 </table>
             </div>
-            <div class="container-fluid text-right">
-                <ul class="pagination"><li><a href="javascript:;" onclick="studentSearch(1)">1</a></li><li class="active"><a>2</a></li><li><a href="javascript:;" onclick="studentSearch(3)">3</a></li><li><a href="javascript:;" onclick="studentSearch(4)">4</a></li><li><a href="javascript:;" onclick="studentSearch(5)">5</a></li><li><a href="javascript:;" onclick="studentSearch(6)">6</a></li><li><a href="javascript:;" onclick="studentSearch(7)">7</a></li><li><a href="javascript:;" onclick="studentSearch(8)">8</a></li><li><a href="javascript:;" onclick="studentSearch(9)">9</a></li><li><a href="javascript:;" onclick="studentSearch(10)">10</a></li><li class="disabled"><a>…</a></li><li><a href="javascript:;" onclick="studentSearch(3)">»</a></li><li><a href="javascript:;" onclick="studentSearch(1363)">»»</a></li></ul>
+           
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div id="dialogEdit" class="modal fade" tabindex="-1" style="padding-top: 0px; padding-bottom: 0px; padding-left: 17px;" aria-hidden="false">
+            <div class="modal-dialog" style="width:400px !important;height:600px !important">
+                <div class="modal-content">
+                    <form id="frmEditEmployee" name="frmCreateEmployee" class="form-horizontal" role="form" ng-submit="UpdateEmployee()">
+                        <div class="modal-header bg-primary" style="padding:0px;text-align:center">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h5><strong class="modal-title">Thêm Thời Khóa Biểu</strong></h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" style="margin:10px">
+                                <div class="col-xs-12 col-md-12 col-lg-12">
+									
+									<div class="form-group">
+                                        <label class="coltrol-lable">File Input:</label>
+                                        <input type="file" id="exampleInputFile">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer" style="padding:0px">
+                            <button class="btn btn-sm btn-success">Thêm</button>
+                            <button class="btn btn-sm btn-danger" data-dismiss="modal">Thôi</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
