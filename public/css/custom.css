@@ -1,0 +1,839 @@
+body {
+    font-family: Arial,Tahoma;
+    font-size: 12px;
+    margin: 0;
+    padding: 0px;
+    color: #000c65;
+    background-color: #E9E9E9;
+}
+
+a {
+    color: #0a246a;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: #FF0000;
+    }
+
+    a:visited {
+        color: #0a246a;
+    }
+
+img {
+    border: 0px;
+}
+
+fieldset {
+    padding: 5px;
+    border: 1px #ccc solid;
+    margin: 5px 5px 2px 5px;
+    width: 99%;
+}
+
+    fieldset legend {
+        background-color: #FFFFFF;
+        font-weight: bold;
+        line-height: 23px;
+        margin: 0 0 0 10px;
+    }
+
+    fieldset .spanTitle {
+        width: 150px;
+        text-align: right;
+        font-weight: bold;
+    }
+
+textarea {
+    border: solid 1px #b9c4da;
+    font-family: Arial,Tahoma;
+    font-size: 12px;
+    color: #0a246a;
+}
+
+select {
+    border: solid 1px #ccc;
+    font-family: Arial,Tahoma;
+    font-size: 12px;
+    color: #0a246a;
+}
+
+input {
+    font-family: Arial,Tahoma;
+    font-size: 12px;
+    border: 1px solid #ccc;
+}
+
+.button {
+    border: 1px solid #ccc;
+    background: #526777;
+    color: #FFFFFF;
+    height: 23px;
+}
+
+.clear {
+    clear: both;
+    overflow: hidden;
+    height: 0
+}
+
+label.error {
+    color: #ff0000;
+}
+/********** LAYOUT *****************/
+#container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    width: 980px;
+    height: 100px;
+    margin: 0 auto;
+    background: url(header_bg.jpg) no-repeat top left;
+}
+
+#navBar {
+    width: 980px;
+    height: 32px;
+    margin: 0 auto;
+    background: #1854A8;
+}
+
+.menucontainer {
+    width: 700px;
+    display: block;
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+#menubar {
+    margin: 0px auto;
+    padding: 0px;
+}
+
+    #menubar li {
+        float: left;
+        list-style: none;
+        font: 11px Tahoma;
+    }
+
+        #menubar li a {
+            display: block;
+            background: url(menu_line.gif) right no-repeat;
+            line-height: 31px;
+            padding: 0 10px 0 10px;
+            font-family: Arial;
+            font-size: 11px;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+            #menubar li a:hover {
+                color: #FFCC00;
+            }
+
+        #menubar li ul {
+            margin: 0;
+            padding: 0;
+            margin-left: -2px;
+            position: absolute;
+            visibility: hidden;
+            z-index: 9999;
+            border: 1px solid #1854A8;
+        }
+
+            #menubar li ul li {
+                float: none;
+                display: inline
+            }
+
+                #menubar li ul li a {
+                    width: 200px;
+                    background: #F5F5F5;
+                    color: #000;
+                    line-height: 25px;
+                    font-weight: normal;
+                    border-top: 1px solid #1854A8;
+                }
+
+                    #menubar li ul li a:hover {
+                        background: #D5E0EF;
+                        color: #000;
+                        font-weight: bold;
+                    }
+
+#semesterBar, #semesterBar a {
+    width: 200px;
+    float: right;
+    font: bold 11px Arial;
+    color: #FFFFFF;
+    line-height: 32px;
+}
+
+#content {
+    width: 978px;
+    margin: 0 auto;
+    padding-top: 10px;
+    display: table;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background: url(page_bg.jpg) repeat-y;
+}
+
+#contentMain {
+    width: 700px;
+    display: block;
+    float: left;
+    margin-left: 5px;
+    padding-bottom: 15px;
+}
+
+#contentNav {
+    width: 260px;
+    display: block;
+    float: right;
+    padding-bottom: 15px;
+}
+
+#footer {
+    padding-top: 10px;
+    margin: 0 auto;
+    width: 980px;
+    height: 60px;
+    color: #FFFFFF;
+    background: #1855A8;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+}
+
+#ajax-loader {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 999;
+}
+/********** NAV BOX ************/
+.box_nav {
+    width: 250px;
+    margin: 0 auto;
+    margin-top: 5px;
+    display: table;
+    padding: 0;
+    border: 1px solid #0076CE;
+}
+
+.box_nav_top {
+    width: 100%;
+    height: 25px;
+    display: block;
+    float: left;
+    background: #0076CE;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+.box_nav_mid {
+    width: 100%;
+    display: block;
+    float: left;
+    font-family: Arial;
+    font-size: 12px;
+    color: #004B89;
+    line-height: 16px;
+    padding-top: 5px;
+}
+
+.ad {
+    width: 250px;
+    margin: 0 auto;
+}
+
+    .ad img {
+        width: 250px;
+    }
+/********** LOGON **************/
+.logon {
+    width: 250px;
+    margin: 0 auto;
+    display: table;
+    padding: 0;
+    border: 1px solid #0076CE;
+}
+
+.logon_top {
+    width: 100%;
+    height: 25px;
+    display: block;
+    float: left;
+    background: #0076CE;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+.logon_mid {
+    width: 100%;
+    display: block;
+    float: left;
+    font-family: Arial;
+    font-size: 12px;
+    color: #004B89;
+    line-height: 23px;
+    padding-top: 5px;
+}
+
+.logon_bottom {
+    width: 100%;
+    height: 1px;
+    display: none;
+    float: left;
+}
+
+.logon_info {
+    display: block;
+    float: left;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.logon_caption {
+    width: 30%;
+    text-align: right;
+    display: block;
+    float: left;
+    padding-right: 2px;
+}
+
+.logon_value {
+    text-align: left;
+    width: 65%;
+    float: left;
+    display: block;
+}
+
+.logon_input {
+    border: 1px solid #ccc;
+    width: 150px;
+}
+
+.logon_button {
+    width: 90px;
+    height: 23px;
+    background: url(logon_button.jpg) no-repeat top left;
+    border: 0;
+}
+
+.logon_link {
+    width: 90%;
+    margin: 0 auto;
+    padding-left: 10px;
+    line-height: 21px;
+}
+
+/****************** Announcement ****************/
+.announ, .announHeader, announTitle, .announTitleSmall, .announBrief, .announFull {
+    width: 100%;
+    float: left;
+    display: block;
+}
+
+.announ {
+    font-family: Arial;
+    font-size: 9px;
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+}
+
+.announHeader {
+    font-family: Arial,Tahoma;
+    font-weight: bold;
+    height: 20px;
+    font-size: 12px;
+    color: #FFFFFF;
+    background-color: #385495;
+    padding-top: 1px;
+}
+
+.announTitle {
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+    color: #041C46;
+    padding: 5px;
+}
+
+    .announTitle small {
+        color: gray;
+        font-size: 10px;
+    }
+
+.announSmallTitle {
+    font-family: Arial;
+    font-size: 10px;
+    color: Gray;
+    padding: 3px;
+}
+
+.announBrief {
+    width: 98%;
+    font-family: Arial;
+    font-size: 12px;
+    text-align: justify;
+    color: #333333;
+    padding: 5px;
+    padding-bottom: 10px;
+}
+
+.announFull {
+    width: 98%;
+    font-family: Arial;
+    font-size: 12px;
+    text-align: justify;
+    color: #000000;
+    padding: 5px;
+}
+
+.announFooter {
+    font-size: 11px;
+    text-align: right;
+    float: left;
+    padding: 3px;
+}
+
+.announBlank {
+    width: 100%;
+    height: 10px;
+    float: left;
+}
+
+.announNext {
+    width: 95%;
+    float: left;
+    font-family: Arial;
+    font-size: 8pt;
+    color: #004f8b;
+}
+
+    .announNext small {
+        color: #333333;
+    }
+
+.announNextHeader {
+    width: 700px;
+    float: left;
+    font-family: Arial;
+    font-size: 9pt;
+    font-weight: bold;
+    color: #d07100;
+}
+
+/********************************************************/
+.dataFullRegion {
+    float: left;
+    position: relative;
+    width: 1000px;
+    text-align: left;
+    padding: 1px;
+}
+
+.dataOuter1 {
+    width: 100%;
+    border: 1px solid #6d84b4;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color: #FFFFFF;
+    margin: 0px auto;
+}
+
+.dataOuter2 {
+    width: 100%;
+    border: 1px solid #bbd3f2;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: #f7f7f7;
+}
+
+.dataOuter3 {
+    width: 100%;
+    border: 0px solid #6d84b4;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color: #FFFFFF;
+}
+
+.dataTitle {
+    width: 100%;
+    color: #8a0000;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 0px;
+    background-color: #d8dfea;
+    height: 20px;
+}
+
+.dataTitle1 {
+    width: 100%;
+    background-color: #D8DFEA;
+    font-weight: bold;
+    padding: 0px;
+    text-align: center;
+    height: 20px;
+}
+
+.dataTitle2 {
+    width: 98%;
+    background: #FFFFFF;
+    color: #646464;
+    font-weight: bolder;
+    font-family: Arial;
+    font-size: 16px;
+    line-height: 23px;
+    margin: 0 0 7px 5px;
+    padding: 0 0 0 5px;
+    border-bottom: 2px solid #cccccc;
+}
+
+.dataTitle3 {
+    background-color: #d8dfea;
+    padding: 5px;
+    font-weight: bold;
+    vertical-align: middle;
+    color: #883B08;
+}
+
+.dataHeader {
+    background-color: #d8dfea;
+    padding: 5px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.dataHeader1 {
+}
+
+.dataHeader2 {
+}
+
+.data0 {
+    background-color: #FFFFFF;
+    margin: 2px;
+    padding: 2px;
+    vertical-align: top;
+    border:1px solid blue
+}
+
+.data1 {
+    background-color: #eceff5;
+    padding: 2px;
+    vertical-align: top;
+}
+
+.data2 {
+    background-color: #d8dfea;
+    padding: 2px;
+    vertical-align: top;
+}
+
+.data3 {
+    background-color: #f4f4f4;
+    padding: 2px;
+    vertical-align: top;
+}
+
+.data4 {
+    background-color: #f7f7f7;
+    padding: 2px;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.data5 {
+    background-color: #f7f7f7;
+    padding: 2px;
+    vertical-align: middle;
+    text-align: left;
+    font-weight: bold;
+}
+
+.data6 {
+    background-color: #FFFFFF;
+    padding: 1px;
+    vertical-align: middle;
+    text-align: left;
+    color: #d07100;
+}
+
+.data7 {
+    padding: 4px;
+    vertical-align: top;
+    text-align: right;
+    background-color: #ECEFF5;
+}
+
+.data8 {
+    padding: 4px;
+    vertical-align: top;
+    font-weight: bold;
+    background-color: #ECEFF5;
+}
+
+.spanCaption {
+    display: inline-block;
+    text-align: right;
+    width: 25%;
+    padding: 2px;
+}
+
+.spanValue {
+    display: inline-block;
+    text-align: left;
+    width: 70%;
+    font-weight: bold;
+    padding: 2px;
+}
+
+.linkBar {
+    width: 99%;
+    text-align: right;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+    .linkBar a {
+        font-weight: bold;
+    }
+
+.dataFooter {
+    border-top: 2px solid #bbd3f2;
+}
+
+.cems-align-center {
+    text-align: center;
+}
+
+.cems-align-left {
+    text-align: left;
+}
+
+.cems-align-right {
+    text-align: right;
+}
+
+.cems-font-bold {
+    font-weight: bold;
+}
+
+.cems-font-italic {
+    font-style: italic;
+}
+
+.cems-font-normal {
+    font-weight: normal;
+}
+
+.cems-font-underline {
+    text-decoration: underline;
+}
+
+.cems-fieldset-bordertop {
+    border: 0;
+    border-top: 1px solid #646464;
+}
+/*###################################################
+   Style cho Tooltip
+#####################################################*/
+#dhtmltooltip {
+    padding-right: 4px;
+    border: #0076CE 1px solid;
+    padding-left: 4px;
+    font-size: 11px;
+    z-index: 100;
+    filter: alpha(opacity=90);
+    -moz-opacity: .90;
+    -khtml-opacity: .90;
+    opacity: .90;
+    left: -300px;
+    visibility: hidden;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    font-family: Arial;
+    position: absolute;
+    background-color: #D7EAF7;
+    width: 300px;
+}
+
+#dhtmlpointer {
+    display: none;
+    z-index: 101;
+    left: -300px;
+    visibility: hidden;
+    position: absolute;
+}
+/*#######################################################
+   Style sử dụng để tạo trang Tab
+########################################################*/
+div.TabView {
+    border: 0px;
+    margin: 2px;
+}
+
+    div.TabView div.Tabs {
+        height: 25px; /* chiều cao của tab menu */
+        line-height: 23px;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+        div.TabView div.Tabs a {
+            float: left;
+            background-color: #E8F3FB; /*màu nền của tab khi không được kích hoạt*/
+            display: block;
+            text-align: center;
+            height: 23px;
+            padding-top: 2px;
+            padding-bottom: 0px;
+            padding-left: 10px;
+            padding-right: 10px;
+            vertical-align: bottom;
+            text-decoration: none;
+            font-family: Arial;
+            font-weight: normal;
+            color: #646464;
+            border: 1px #0076CE solid;
+            margin-right: 2px;
+        }
+
+            div.TabView div.Tabs a:hover {
+                color: #FF0000;
+                background-color: #ededed; /*màu nền của tab khi hover*/
+                font-weight: bold;
+            }
+
+            div.TabView div.Tabs a.Active {
+                color: #FFFFFF;
+                background-color: #0974C4; /*màu nền của tab khi được kích hoạt*/
+                font-weight: bold;
+            }
+    /* Style cho phần text nội dung của mỗi tab */
+    div.TabView div.Pages {
+        clear: both;
+        overflow: hidden; /* giá trị là auto nếu muốn hiện scroll bar  hidden*/
+        border: 1px #0076CE solid;
+        padding: 0px;
+    }
+
+        div.TabView div.Pages div.Page {
+            padding: 0px;
+            overflow: hidden; /* giá trị là auto nếu muốn hiện scroll bar */
+            overflow-y: auto; /* Hiển thị thanh cuộn dọc nếu dữ liệu nhiều */
+        }
+
+/************* TABLE FORMAT ***********************/
+table {
+    width: 100%;
+    color: #000c65;
+}
+
+td {
+    vertical-align: top;
+}
+
+.tableData1 {
+    width: 100%;
+    border: 0px;
+    padding: 1px;
+    background-color: #FFFFFF;
+}
+
+.tableData2 {
+    width: 100%;
+    padding: 1px;
+    background-color: #FFFFFF;
+}
+
+.rowHeader {
+    color: #FFFFFF;
+    background-color: #2E8FD7;
+    font-weight: bold;
+    vertical-align: middle;
+    padding: 3px;
+}
+
+.rowTitle {
+    background-color: #A2CDED;
+    color: #1854A8;
+    font-weight: bold;
+    padding: 3px;
+}
+
+.rowTitle1 {
+    color: #000;
+    font-weight: bold;
+    padding: 3px;
+}
+
+.cell1 {
+    background-color: #E8F3FB;
+    padding: 3px;
+    color: #000c65;
+}
+
+.cell2 {
+    background-color: #D1E6F6;
+    padding: 3px;
+    color: #000c65;
+}
+
+.cell3 {
+    background-color: #EEEDEE;
+    padding: 3px;
+    color: #767676;
+}
+
+.cellCaption {
+    text-align: right;
+    line-height: 23px;
+    width: 25%;
+}
+
+.cellValue {
+    text-align: left;
+    line-height: 23px;
+    font-weight: bold;
+    border-bottom: 1px #646464 dotted;
+}
+
+.cellMarkValue {
+    text-align: center;
+    font-weight: bold;
+    border: 1px #ccc solid;
+}
+
+thead > tr > td {
+    border:3px solid white;
+    border-top:none;
+}
+#AA{
+	border:0px solid;
+}
