@@ -8,7 +8,7 @@
 </div>
 <ul class="nav nav-list" style="top: 0px;">
     <li class="hover">
-        <a href="Index.html">
+        <a href="<?php echo base_url('Giaovu/home') ?>">
             <i class="menu-icon fa fa-home"></i>
             <span class="menu-text">Trang chủ</span>
         </a>
@@ -25,14 +25,14 @@
         <b class="arrow"></b>
         <ul class="submenu can-scroll">
             <li class="hover">
-                <a href="Schedule">
+                <a href="<?php echo base_url('Giaovu/tkb') ?>">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Thời Khóa Biểu
                 </a>
                 <b class="arrow"></b>
             </li>
             <li class="hover">
-                <a href="ExamSchedule.html">
+                <a href="<?php echo base_url('Giaovu/lichthi') ?>">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Lịch Thi Học Kì
                 </a>
