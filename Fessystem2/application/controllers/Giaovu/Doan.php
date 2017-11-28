@@ -82,10 +82,10 @@ Class Doan extends MY_Controller
         $sheet->setCellValue('C'.$rowcount, 'Ten');
         $sheet->setCellValue('D'.$rowcount, 'nganh');
         $sheet->setCellValue('E'.$rowcount, 'khoa');
-      
+
         foreach ($data_user_pass as $MSSV => $value) {
 
-          for ($i=0; $i <count($value) ; $i++) { 
+          for ($i=0; $i <count($value) ; $i++) {
             if ($value['status'] == 0) {
               $rowcount++;
           $sheet->setCellValue('A'.$rowcount, $value['MSSV']);
@@ -97,16 +97,16 @@ Class Doan extends MY_Controller
           break;
         }
         }
-        
-          
-        
-       
-        
+
+
+
+
+
         $objWriter = new PHPExcel_Writer_Excel2007($objExcel);
         $filename = 'abc.xlsx';
         $objWriter->save($filename);
         header('Content-Disposition: attachment; filename="' . $filename . '"');
-        header('Content-Type: application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet'); 
+        header('Content-Type: application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet');
         header('Content-Length: '.filesize($filename));
         header('Content-Transfer-Encoding: binary');
         header('Cache-Control: must-revalidate');
