@@ -82,22 +82,32 @@ Class Doan extends MY_Controller
         $sheet->setCellValue('C'.$rowcount, 'Ten');
         $sheet->setCellValue('D'.$rowcount, 'nganh');
         $sheet->setCellValue('E'.$rowcount, 'khoa');
-        for ($i=0; $i <count($data_user_pass) ; $i++) { 
-          while ($row['a'] = mysqli_fetch_array($data_user_pass[$i])){
-          $rowcount++;
-          $sheet->setCellValue('A'.$rowcount, $row['a']['MSSV']);
-          // $sheet->setCellValue('B'.$rowcount, $row['Ho']);
-          // $sheet->setCellValue('C'.$rowcount, $row['Ten']);
-          // $sheet->setCellValue('E'.$rowcount, $row['khoa']);
+      
+        foreach ($data_user_pass as $MSSV => $value) {
+
+          for ($i=0; $i <count($value) ; $i++) { 
+            if ($value['status'] == 0) {
+              $rowcount++;
+          $sheet->setCellValue('A'.$rowcount, $value['MSSV']);
+          $sheet->setCellValue('B'.$rowcount, $value['Ho']);
+          $sheet->setCellValue('C'.$rowcount, $value['Ten']);
+          $sheet->setCellValue('D'.$rowcount, $value['nganh']);
+          $sheet->setCellValue('E'.$rowcount, $value['khoa']);
+            }
+          break;
         }
         }
         
-        $objWriter = new PHPExcel_Writer_Excel2007($objWriter);
-        $filename = 'export.xlsx';
-        $objWriter->save('filename');
+          
+        
+       
+        
+        $objWriter = new PHPExcel_Writer_Excel2007($objExcel);
+        $filename = 'abc.xlsx';
+        $objWriter->save($filename);
         header('Content-Disposition: attachment; filename="' . $filename . '"');
-        header('Content-Type: application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet');
-        header('Content-Lenght: ' . filesize($filename));
+        header('Content-Type: application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet'); 
+        header('Content-Length: '.filesize($filename));
         header('Content-Transfer-Encoding: binary');
         header('Cache-Control: must-revalidate');
         header('Pragma: no-cache');

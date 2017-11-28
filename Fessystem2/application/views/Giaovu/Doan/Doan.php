@@ -31,7 +31,7 @@
                     </form>
                 </div>
                   <div class="container-fluid text-right">
-                    <a href="<?php echo base_url('Giaovu/Doan/index?exp=exp&khoahoc=').$this->input->get('khoahoc').'&nganhhoc='.$this->input->get('nganhhoc')?>"><u>Xuất Danh Sách Ra Excel</u></a>
+                    <a href="<?php if($this->input->get('khoahoc')){echo base_url('Giaovu/Doan/index?exp=exp&khoahoc=').$this->input->get('khoahoc').'&nganhhoc='.$this->input->get('nganhhoc');}?> "><u>Xuất Danh Sách Ra Excel</u></a>
                     </div>
                 <div id="searchResult" style="margin-top:5px;">
                     <div class="container-fluid">
