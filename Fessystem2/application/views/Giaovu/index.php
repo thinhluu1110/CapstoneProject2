@@ -309,16 +309,23 @@
 												data:{'MSSV':mssv, 'MaHS':maHS, 'tinhtrang':tinhtrang, 'LiDo': lido, 'ngay_batdau':ngaybatdau, 'ngay_ketthuc':ngayketthuc},
 												dataType: 'json',
 												success: function(data){
+													if (data.msg != '') 
+													{
+														$('#msgbdlonkt').prop('hidden',false);
+														$('#msg-success-capnhattt').prop('hidden',true);
+														$('#msg-fail-capnhattt').prop('hidden',true);
+													}
 
-
-													if (data.check == false) {
+													else {if (data.check == false) {
+														$('#msgbdlonkt').prop('hidden',true);
 														$('#msg-fail-capnhattt').prop('hidden',false);
 														$('#msg-fail-capnhattt h5').html("Thiết Lập Thất Bại");
 														$('#msg-success-capnhattt').prop('hidden',true);
 													}
 													if (data.check == true) {
+														$('#msgbdlonkt').prop('hidden',true);
 														$('#msg-success-capnhattt').prop('hidden',false);
-														$('#msg-success-capnhattt h5').html("Thiết Lập Tành Công");
+														$('#msg-success-capnhattt h5').html("Thiết Lập Thành Công");
 														$('#msg-fail-capnhattt').prop('hidden',true);
 														// if(data.tinhtrang == 1){
 														// 	window.location = "<?php echo base_url('Giaovu/Tamngung/index') ?>";
@@ -335,6 +342,7 @@
 														// }
 														setTimeout(function(){window.location = "<?php echo base_url('Giaovu/Sinhvien/index') ?>"},2500);
 													}
+												}
 													// $('#form-Add').trigger("reset");
 													// $('#msg-success').prop('hidden',false);
 
@@ -1216,7 +1224,21 @@
 											$('#msg-fail').prop('hidden',false);
 											$('#msg-fail h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success').prop('hidden',true);
-									}else{
+
+									}
+									else if(isNaN(namkt))
+									{
+										$('#msg-fail').prop('hidden',false);
+											$('#msg-fail h5').html('Năm Bắt Đầu Phải Nhập Số');
+											$('#msg-success').prop('hidden',true);
+									}
+									else if(nambd.length >4)
+									{
+										$('#msg-fail').prop('hidden',false);
+											$('#msg-fail h5').html('Năm Học Không Được Lớn Hơn 4 Số');
+											$('#msg-success').prop('hidden',true);
+									}
+									else{
 										//alert('word');
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Khoahoc/Add') ?>",

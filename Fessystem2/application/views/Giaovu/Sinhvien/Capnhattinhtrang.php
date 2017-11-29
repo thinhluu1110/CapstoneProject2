@@ -100,6 +100,11 @@
                             <input id="ngayketthuc" name="ngayketthuc" type="date" class="form-control" />
                         </div>
                     </div>
+                    <div class="row" >
+                        <div id="msgbdlonkt" hidden class="col-xs-12 col-xs-offset-3" style="color:red;" form-control-static hitec-border-bottom-dotted">
+                            Ngày Bắt Đầu Không Được Lớn Hơn Ngày Kết Thúc
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-xs-3 form-control-static text-right" style="line-height:30px">
                         </div>

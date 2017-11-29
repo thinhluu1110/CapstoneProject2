@@ -92,11 +92,17 @@ class Sinhvien extends MY_Controller
   function capnhattinhTrang()
   {
     $id = $this->input->post('MSSV');
+    $ngaybd = strtotime($this->input->post('ngay_batdau'));
+    $ngaykt = strtotime($this->input->post('ngay_ketthuc'));
     $error = array
           (
               'msg' => '',
               'check' => true
           );
+    if ($ngaybd >= $ngaykt ) {
+      $error['msg'] = 'Ngày bắt đầu không được nhỏ hơn ngày kết thúc';
+    }
+    else{
     $data = array(
     'Tinhtrang' => $this->input->post('tinhtrang'),
     'MaHS' => $this->input->post('MaHS'),
@@ -110,6 +116,7 @@ class Sinhvien extends MY_Controller
     else{
       $error['check'] = false;
     }
+  }
     echo json_encode($error);
     
   }
