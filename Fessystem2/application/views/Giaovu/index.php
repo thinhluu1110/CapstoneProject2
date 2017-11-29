@@ -914,11 +914,11 @@
 														$('#msg-success h5').html("Thêm Thành Công");
 														$('#msg-fail').prop('hidden',true);
 													}
-													// if (data.load == false) {
-													// 	$('#msg-fail').prop('hidden',false);
-													// 	$('#msg-fail h5').html("Dữ Liệu Đã Tồn Tại");
-													// 	$('#msg-success').prop('hidden',true);
-													// }
+													if (data.load == false) {
+														$('#msg-fail').prop('hidden',false);
+														$('#msg-fail h5').html("Không được bỏ trống dữ liệu trong Excel");
+														$('#msg-success').prop('hidden',true);
+													}
 												}
 												// $('#msg-success-delete-khoa').prop('hidden',false);
 												// 		$('#msg-success-delete-khoa h5').html("Xóa Thành Công");

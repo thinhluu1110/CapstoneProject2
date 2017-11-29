@@ -37,7 +37,7 @@ Class Diemrenluyen extends MY_Controller
     {
       $error  = array(
         'khongchonfile' => '',
-        'load' => false
+        'load' => false,
       );
         
         $this->load->library('PHPExcel');
@@ -50,9 +50,19 @@ Class Diemrenluyen extends MY_Controller
           $objExcel = $objReader->load($file);
           $worksheet = $objExcel->getSheet(0);
           $objReader->setLoadSheetsOnly($worksheet);
-          $sheetData = $objExcel->getActiveSheet()->toArray('null',true,true,true);
+          $sheetData = $objExcel->getActiveSheet()->toArray(null,true,true,true);
           $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
-          for ($row = 4; $row <= $highestRow; $row ++)
+          $check_xeploai = false;
+
+          for ($row=4; $row <= $highestRow ; $row++) {
+            $break_xeploai = $sheetData[$row]['G'];
+          if (empty($break_xeploai)) {
+             $check_xeploai = true;
+              break;
+           } 
+          }
+          if ($check_xeploai == false) {
+            for ($row = 4; $row <= $highestRow; $row ++)
           {
             $break = $sheetData[$row]['A'];
             if (!empty($break)) {
@@ -92,6 +102,10 @@ Class Diemrenluyen extends MY_Controller
                 }
               }
             }
+          }
+        }
+          else{
+            $error['load'] = false;
           }
         }
         else{

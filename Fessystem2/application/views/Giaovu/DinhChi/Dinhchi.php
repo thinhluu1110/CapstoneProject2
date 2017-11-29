@@ -25,6 +25,10 @@
         </form>
 		</div>
         <div id="searchResult" style="margin-top:5px;">
+            <div class="container-fluid text-right">
+                <a href="<?php if($svStatus != null){echo base_url('Giaovu/Dinhchi/index?exp=exp');}?> "><u>Xuất Danh Sách Ra Excel</u>
+                </a>
+            </div>
             <div class="container-fluid">
                 <table class="table table-bordered table-striped table-hover">
                     <thead>

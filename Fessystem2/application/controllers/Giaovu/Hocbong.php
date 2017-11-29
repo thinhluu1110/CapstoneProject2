@@ -83,6 +83,43 @@ Class Hocbong extends MY_Controller
           }
         }
       }
+      if ($this->input->get('exp')) {
+        $this->load->library('PHPExcel');
+        $objExcel = new PHPExcel;
+        $objExcel->setActiveSheetIndex(0);
+        $sheet = $objExcel->getActiveSheet()->setTitle('Danh Sách SV HB');
+        $rowcount = 1;
+        $sheet->setCellValue('A'.$rowcount, 'Mã sinh viên');
+        $sheet->setCellValue('B'.$rowcount, 'Họ tên');
+        $sheet->setCellValue('C'.$rowcount, 'Ngành học');
+        $sheet->setCellValue('D'.$rowcount, 'Khóa học');
+        $sheet->setCellValue('E'.$rowcount, 'Điểm trung bình học tập');
+        $sheet->setCellValue('F'.$rowcount, 'Điểm trung bình rèn luyện');
+
+        foreach ($data_user_pass as $MSSV => $value) {
+          for ($i=0; $i < count($value); $i++) { 
+            $rowcount++;
+            $sheet->setCellValue('A'.$rowcount, $value['MSSV']);
+            $sheet->setCellValue('B'.$rowcount, $value['Ho']. ' '.$value['Ten']);
+            $sheet->setCellValue('C'.$rowcount, $value['Nganh']);
+            $sheet->setCellValue('D'.$rowcount, $value['Khoa']);
+            $sheet->setCellValue('E'.$rowcount, $value['TBHT']);
+            $sheet->setCellValue('F'.$rowcount, $value['TBRL']);
+            break;
+          }
+        }
+        $objWriter = new PHPExcel_Writer_Excel2007($objExcel);
+        $filename = 'abc.xlsx';
+        $objWriter->save($filename);
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Content-Type: application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet');
+        header('Content-Length: '.filesize($filename));
+        header('Content-Transfer-Encoding: binary');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: no-cache');
+        readfile($filename);
+        return;
+      }
       $data['listsvpasshb'] = $data_user_pass;
       $data['listnganhhoc'] = $listnganhhoc;
 			$data['temp'] = 'Giaovu/Hocbong/Hocbong';
