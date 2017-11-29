@@ -85,7 +85,7 @@ Class Diemrenluyen extends MY_Controller
                   }
                   //else{
                     //$error['load'] = false;
-                  //}
+                  ////}
 
                 }
                 else
