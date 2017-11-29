@@ -98,10 +98,6 @@ Class Doan extends MY_Controller
         }
         }
 
-
-
-
-
         $objWriter = new PHPExcel_Writer_Excel2007($objExcel);
         $filename = 'abc.xlsx';
         $objWriter->save($filename);

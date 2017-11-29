@@ -134,9 +134,9 @@
             <div class="modal-dialog" style="width:400px !important;height:600px !important">
                 <div class="modal-content">
                 <form id="form-delete-nganhhoc" name="frmCreateEmployee" method="post"  class="form-horizontal" role="form" ng-submit="UpdateEmployee()">
-                    <div class="modal-header bg-primary" style="padding:0px;text-align:center">
-                        <button onclick="reload()" type="button" class="close" data-dismiss="modal">×</button>
-                        <h5><strong class="modal-title">Xóa Ngành Học</strong></h5>
+                        <div class="modal-header bg-primary" style="padding:0px;text-align:center">
+                            <button onclick="reload()" type="button" class="close" data-dismiss="modal">×</button>
+                            <h5><strong class="modal-title">Xóa Ngành Học</strong></h5>
                         </div>
                         <div hidden="hidden" id="msg-success-delete-nganh" class="modal-header add_success" style="padding:0px;text-align:center">
                             <h5><strong class="modal-title"></strong></h5>
@@ -167,10 +167,8 @@
                 <!-- <form id="form-validation-add-nganhhoc" name="frmCreateEmployee" method="post"  class="form-horizontal" role="form" ng-submit="UpdateEmployee()"> -->
                 <form id="form-validation-add-nganhhoc" name="frmCreateEmployee" method="post"  class="thongbao" role="form" ng-submit="UpdateEmployee()">
                     <div class="modal-header bg-primary" style="padding:0px;text-align:center">
-                        
                         <h5><strong class="modal-title">Thông Báo</strong></h5>
                         </div>
-                    
                 <div style="color:green;" class="modal-body text-center">
                 <font size="5">Thành Công</font>
               </div>

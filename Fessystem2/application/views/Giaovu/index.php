@@ -67,7 +67,7 @@
 							});
 
 					});
-					
+
 					function reload() {
 						window.location.reload();
 					}
@@ -134,7 +134,7 @@
 										}
 										if (data.thongbao.UpdateSucess != '' && data.thongbao.DateUpdate != '' && data.thongbao.ReviewImage != '') {
 											$('#msg-validation').prop("style").display = "none";
-											$('#msg-success').prop("style").display = "block";	
+											$('#msg-success').prop("style").display = "block";
 											$('#msg-success h5').html(data.thongbao.UpdateSucess);
 										}
 										else{
@@ -204,7 +204,7 @@
 										}
 										if (data.message.UpdateSucess != '' && data.message.DateUpdate != '' && data.message.ReviewImage != '') {
 											$('#msg-validation').prop("style").display = "none";
-											$('#msg-success').prop("style").display = "block";	
+											$('#msg-success').prop("style").display = "block";
 											$('#msg-success h5').html(data.message.UpdateSucess);
 										}
 										else{
@@ -267,7 +267,7 @@
 							//$('#msg-fail-HocPhi').prop("style").display = "none";
 							$('#msg-success-HocPhi').prop("style").display = "none";
 							$.ajax({
-								
+
 								url:"<?php echo base_url('Giaovu/Hocphi/importHP') ?>",
 								type: "POST",
 								data:form_data,
@@ -481,7 +481,7 @@
 								data:{'dkda_id' : idkda},
 								dataType: 'json',
 								success: function(data){
-									
+
 												$('#dieukien_doan_edit_id').val(data.dkda_info.dkda_id);
 												$('#nganhhoc_dieukien_doan_edit').val(data.dkda_info.tennganh);
 												$('#khoahoc_dieukien_doan_edit').val(data.dkda_info.tenkhoa);
@@ -558,11 +558,8 @@
 														$('#msg-success').prop('hidden',true);
 													}
 													if (data.check == true) {
-														$('#form-Add').trigger("reset");
-														//$('#form-success').modal('show');
-														$('#msg-success h5').html("Thêm Thành Công");
-														$('#msg-success').prop('hidden',false);
-														$('#msg-fail').prop('hidden',true);
+														$('#dialogAdd').modal('hide');
+														$('#dialogValidation_Add_Nganh').modal('show');
 													}
 													// $('#form-Add').trigger("reset");
 													// $('#msg-success').prop('hidden',false);
@@ -768,7 +765,6 @@
 												$('#ghichu_edit_ctdt').val(data.ctdt_info.ghichu);
 												$('a').attr('title',data.ctdt_info.noidung);
 												}
-
 											 });
 							});
 					});
@@ -788,7 +784,6 @@
 											form_data.append('file', file_data);
 											form_data.append('mactdt', idctdt);
 											form_data.append('ghichu', ghichu);
-
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Chuongtrinhdaotao/editFILE') ?>",
 												type: "POST",
@@ -798,25 +793,20 @@
 												processData: false,
 												contentType: false,
 												success: function(data){
-
 													if (data.thanhcong != '') {
 														$('#msg-success-edit-ctdt').prop('hidden',false);
 														$('#msg-success-edit-ctdt h5').html("Sửa Thành Công");
 														$('#msg-fail-edit-ctdt').prop('hidden',true);
-
 													}
 													if (data.khongchonfile != '') {
 														$('#msg-fail-edit-ctdt').prop('hidden',false);
 														$('#msg-fail-edit-ctdt h5').html(data.khongchonfile);
 														$('#msg-success-edit-ctdt').prop('hidden',true);
 													}
-
 													if (data.UploadError != '') {
-
 														$('#msg-validation').prop('hidden',false);
 														$('#msg-validation h5').html(data.UploadError);
 														//$('#msg-success-edit-ctdt').prop('hidden',true);
-
 													}
 													// $('#form-Add').trigger("reset");
 													// $('#msg-success').prop('hidden',false);
@@ -909,7 +899,7 @@
 														$('#msg-success').prop('hidden',true);
 													}
 													if (data.load == true) {
-														
+
 														$('#msg-success').prop('hidden',false);
 														$('#msg-success h5').html("Thêm Thành Công");
 														$('#msg-fail').prop('hidden',true);
@@ -1043,7 +1033,6 @@
 												$('#nambd_edit').val(data.khoahoc_info.nam_batdau);
 												$('#namkt_edit').val(data.khoahoc_info.nam_ketthuc);
 												}
-
 											 });
 							});
 					});
@@ -1082,10 +1071,8 @@
 													}
 													if (data.check == true) {
 														//alert('word');
-														$('#form-Edit-Khoahoc').trigger("reset");
-														$('#msg-success-edit-khoa').prop('hidden',false);
-														$('#msg-success-edit-khoa h5').html("Sửa Thành Công");
-														$('#msg-fail-edit-khoa').prop('hidden',true);
+														$('#dialogEdit').modal('hide');
+														$('#dialogValidation_Add_Khoa').modal('show');
 													}
 													// $('#form-Add').trigger("reset");
 													// $('#msg-success').prop('hidden',false);
@@ -1115,10 +1102,8 @@
 														$('#msg-success-delete-khoa').prop('hidden',true);
 													}
 													if (data.check == true) {
-
-														$('#msg-success-delete-khoa').prop('hidden',false);
-														$('#msg-success-delete-khoa h5').html("Xóa Thành Công");
-														$('#msg-fail-delete-khoa').prop('hidden',true);
+														$('#dialogDelete').modal('hide');
+														$('#dialogValidation_Add_Khoa').modal('show');
 													}
 												}
 
@@ -1143,13 +1128,11 @@
 														$('#msg-success-delete-dkda').prop('hidden',true);
 													}
 													if (data.check == true) {
-
 														$('#msg-success-delete-dkda').prop('hidden',false);
 														$('#msg-success-delete-dkda h5').html("Xóa Thành Công");
 														$('#msg-fail-delete-dkda').prop('hidden',true);
 													}
 												}
-
 											 });
 							});
 							});
@@ -1225,12 +1208,10 @@
 					});
 					$(document).ready(function() {
 							$('#submit_addkhoa').on('click', function() {
-
 									var nganhhoc = $('#nganhhoc_add_khoahoc').val();
 									var khoahoc = $('#khoahoc_add_khoahoc').val();
 									var nambd = $('#nambd_add_khoahoc').val();
 									var namkt = parseInt($('#nambd_add_khoahoc').val()) + 4;
-									alert(namkt);
 									if(nganhhoc == '' || khoahoc == '' || nambd == '') {
 											$('#msg-fail').prop('hidden',false);
 											$('#msg-fail h5').html('Dữ Liệu Không Được Để Trống');
@@ -1256,12 +1237,9 @@
 														$('#msg-success').prop('hidden',true);
 													}
 													if (data.check == true) {
-														$('#form-Add').trigger("reset");
-														$('#msg-success').prop('hidden',false);
-														$('#msg-fail').prop('hidden',true);
+														$('#dialogAdd').modal('hide');
+														$('#dialogValidation_Add_Khoa').modal('show');
 													}
-													$('#form-add-khoahoc').trigger("reset");
-													$('#msg-success').prop('hidden',false);
 												}
 												}
 
@@ -1447,10 +1425,8 @@
 														$('#msg-success-edit-mon').prop('hidden',true);
 													}
 													if (data.check == true) {
-														$('#form-Edit-Monhoc').trigger("reset");
-														$('#msg-success-edit-mon').prop('hidden',false);
-														$('#msg-success-edit-mon h5').html("Sửa Thành Công");
-														$('#msg-fail-edit-mon').prop('hidden',true);
+														$('#dialogEdit').modal('hide');
+														$('#dialogValidation_Add_Mon').modal('show');
 													}
 													// $('#form-Add').trigger("reset");
 													// $('#msg-success').prop('hidden',false);
@@ -1480,10 +1456,8 @@
 														$('#msg-success-delete-mon').prop('hidden',true);
 													}
 													if (data.check == true) {
-
-														$('#msg-success-delete-mon').prop('hidden',false);
-														$('#msg-success-delete-mon h5').html("Xóa Thành Công");
-														$('#msg-fail-delete-mon').prop('hidden',true);
+														$('#dialogDelete').modal('hide');
+														$('#dialogValidation_Add_Mon').modal('show');
 													}
 												}
 
@@ -1493,7 +1467,6 @@
 					});
 					$(document).ready(function() {
 							$('#submit_addmonhoc').on('click', function() {
-
 									var mamon = $('#mamon_add_monhoc').val();
 									var tenmon = $('#tenmon_add_monhoc').val();
 									if(mamon == '' || tenmon == '') {
@@ -1521,12 +1494,9 @@
 														$('#msg-success').prop('hidden',true);
 													}
 													if (data.check == true) {
-														$('#form-Add').trigger("reset");
-														$('#msg-success').prop('hidden',false);
-														$('#msg-fail').prop('hidden',true);
+														$('#dialogAdd').modal('hide');
+														$('#dialogValidation_Add_Mon').modal('show');
 													}
-													$('#form-add-monhoc').trigger("reset");
-													$('#msg-success').prop('hidden',false);
 												}
 												}
 
@@ -1569,10 +1539,8 @@
 														$('#msg-success-delete-nganh').prop('hidden',true);
 													}
 													if (data.check == true) {
-
-														$('#msg-success-delete-nganh').prop('hidden',false);
-														$('#msg-success-delete-nganh h5').html("Xóa Thành Công");
-														$('#msg-fail-delete-nganh').prop('hidden',true);
+														$('#dialogDelete').modal('hide');
+														$('#dialogValidation_Add_Nganh').modal('show');
 													}
 												}
 
@@ -1609,10 +1577,8 @@
 														$('#msg-success-edit-nganh').prop('hidden',true);
 													}
 													if (data.check == true) {
-														$('#form-Edit-Nganhhoc').trigger("reset");
-														$('#msg-success-edit-nganh').prop('hidden',false);
-														$('#msg-success-edit-nganh h5').html("Sửa Thành Công");
-														$('#msg-fail-edit-nganh').prop('hidden',true);
+														$('#dialogEdit').modal('hide');
+														$('#dialogValidation_Add_Nganh').modal('show');
 													}
 													// $('#form-Add').trigger("reset");
 													// $('#msg-success').prop('hidden',false);
@@ -1730,7 +1696,7 @@
 												//$('#idnganhhoc_edit_monkhdt').val(data.khdt_info.nganhhoc_id);
 												//$('#idkhoahoc_edit_monkhdt').val(data.khdt_info.khoahoc_id);
 												//$('#idmon_edit_monkhdt').val(data.khdt_info.monhoc_id);
-												
+
 												$('#mamon_edit_monkhdt').val(data.khdt_info.MaMH);
 												$('#tenmon_edit_monkhdt').val(data.khdt_info.TenMH);
 												$('#dvht_tc_edit_monkhdt').val(data.khdt_info.dvht_tc);
@@ -1773,8 +1739,8 @@
 												data:{'khdt_id':idkhdt,'hocki_id' : idhocki, 'dvht':dvht, 'tongso':tongso, 'lythuyet':lithuyet, 'thuchanh':thuchanh, 'baitap':baitap,'baitaplon':baitaplon, 'doAn':doan, 'khoaluan':khoaluan},
 												dataType: 'json',
 												success: function(data){
-													
-													
+
+
 
 													if (data.check == false) {
 
@@ -1791,7 +1757,7 @@
 													}
 													// $('#form-Add').trigger("reset");
 													// $('#msg-success').prop('hidden',false);
-												
+
 												}
 												// error: function(){
 												// 	$('#msg-fail h5').html('Thêm Thất Bại');
