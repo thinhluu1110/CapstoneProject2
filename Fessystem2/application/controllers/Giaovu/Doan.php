@@ -72,8 +72,8 @@ Class Doan extends MY_Controller
       }
       }
       if ($this->input->get('exp')) {
-         $this->load->library('PHPExcel');
-          $objExcel = new PHPExcel;
+        $this->load->library('PHPExcel');
+        $objExcel = new PHPExcel;
         $objExcel->setActiveSheetIndex(0);
         $sheet = $objExcel->getActiveSheet()->setTitle('Danh Sách SV Làm Đồ Án');
         $rowcount = 1;
@@ -82,9 +82,7 @@ Class Doan extends MY_Controller
         $sheet->setCellValue('C'.$rowcount, 'Ten');
         $sheet->setCellValue('D'.$rowcount, 'nganh');
         $sheet->setCellValue('E'.$rowcount, 'khoa');
-
         foreach ($data_user_pass as $MSSV => $value) {
-
           for ($i=0; $i <count($value) ; $i++) {
             if ($value['status'] == 0) {
               $rowcount++;
@@ -97,7 +95,6 @@ Class Doan extends MY_Controller
           break;
         }
         }
-
         $objWriter = new PHPExcel_Writer_Excel2007($objExcel);
         $filename = 'abc.xlsx';
         $objWriter->save($filename);
@@ -116,5 +113,4 @@ Class Doan extends MY_Controller
       $this->load->view('Giaovu/index',$data);
     }
   }
-
  ?>
