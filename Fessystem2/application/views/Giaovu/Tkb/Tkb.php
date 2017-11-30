@@ -50,7 +50,7 @@
                     </div>
                   <?php } ?>
                     <div id="review_image" >
-                        <div class=container-fluid text-right">
+                        <div class="container-fluid text-right">
                             <a href=""></a>
                         </div>
                         <div class="container-fluid text-center">

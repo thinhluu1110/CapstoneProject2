@@ -94,29 +94,50 @@ class Sinhvien extends MY_Controller
     $id = $this->input->post('MSSV');
     $ngaybd = strtotime($this->input->post('ngay_batdau'));
     $ngaykt = strtotime($this->input->post('ngay_ketthuc'));
+    $tinhtrang = $this->input->post('tinhtrang');
     $error = array
           (
               'msg' => '',
               'check' => true
           );
-    if ($ngaybd >= $ngaykt ) {
-      $error['msg'] = 'Ngày bắt đầu không được nhỏ hơn ngày kết thúc';
-    }
+    if ($tinhtrang == 2) {
+      if ($ngaykt == null) {
+        $data = array(
+        'Tinhtrang' => $this->input->post('tinhtrang'),
+        'MaHS' => $this->input->post('MaHS'),
+        'LiDo' => $this->input->post('LiDo'),
+        'ngay_batdau' => $this->input->post('ngay_batdau'),
+        'ngay_ketthuc' => $this->input->post('ngay_ketthuc'),
+        );
+        if($this->Sinhvien_model->update($id,$data)){
+          $error['check'] = true;
+        }
+        else{
+          $error['check'] = false;
+        }
+      }
+          }
+    
     else{
-    $data = array(
-    'Tinhtrang' => $this->input->post('tinhtrang'),
-    'MaHS' => $this->input->post('MaHS'),
-    'LiDo' => $this->input->post('LiDo'),
-    'ngay_batdau' => $this->input->post('ngay_batdau'),
-    'ngay_ketthuc' => $this->input->post('ngay_ketthuc'),
-    );
-    if($this->Sinhvien_model->update($id,$data)){
-      $error['check'] = true;
+        if ($ngaybd >= $ngaykt ) {
+          $error['msg'] = 'Ngày bắt đầu không được nhỏ hơn ngày kết thúc';
+        }
+        else{
+        $data = array(
+        'Tinhtrang' => $this->input->post('tinhtrang'),
+        'MaHS' => $this->input->post('MaHS'),
+        'LiDo' => $this->input->post('LiDo'),
+        'ngay_batdau' => $this->input->post('ngay_batdau'),
+        'ngay_ketthuc' => $this->input->post('ngay_ketthuc'),
+        );
+        if($this->Sinhvien_model->update($id,$data)){
+          $error['check'] = true;
+        }
+        else{
+          $error['check'] = false;
+        }
+      }
     }
-    else{
-      $error['check'] = false;
-    }
-  }
     echo json_encode($error);
     
   }

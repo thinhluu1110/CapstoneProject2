@@ -323,10 +323,11 @@
 														$('#msg-success-capnhattt').prop('hidden',true);
 													}
 													if (data.check == true) {
-														$('#msgbdlonkt').prop('hidden',true);
-														$('#msg-success-capnhattt').prop('hidden',false);
-														$('#msg-success-capnhattt h5').html("Thiết Lập Thành Công");
-														$('#msg-fail-capnhattt').prop('hidden',true);
+														$('#dialogValidation_Thietlaptrangthai_SV').modal('show');
+														// $('#msgbdlonkt').prop('hidden',true);
+														// $('#msg-success-capnhattt').prop('hidden',false);
+														// $('#msg-success-capnhattt h5').html("Thiết Lập Thành Công");
+														// $('#msg-fail-capnhattt').prop('hidden',true);
 														// if(data.tinhtrang == 1){
 														// 	window.location = "<?php echo base_url('Giaovu/Tamngung/index') ?>";
 														// }
@@ -340,7 +341,7 @@
 														// 		}
 														// 	}
 														// }
-														setTimeout(function(){window.location = "<?php echo base_url('Giaovu/Sinhvien/index') ?>"},2500);
+														//setTimeout(function(){window.location = "<?php echo base_url('Giaovu/Sinhvien/index') ?>"},2500);
 													}
 												}
 													// $('#form-Add').trigger("reset");
@@ -1182,8 +1183,8 @@
 									dataType: 'json',
 									success: function(data){
 										if (data.msg != '') {
-											$('#msg-success-delete-BL').prop("style").display = "block";
-											$('#msg-success-delete-BL').html(data.msg);
+											$('#dialogDelete').modal('hide');						
+											$('#dialogValidation_Delete_Baoluu').modal('show');
 										}
 									}
 
@@ -1205,8 +1206,8 @@
 									dataType: 'json',
 									success: function(data){
 										if (data.msg != '') {
-											$('#msg-success-delete-TN').prop("style").display = "block";
-											$('#msg-success-delete-TN').html(data.msg);
+											$('#dialogDelete').modal('hide');						
+											$('#dialogValidation_Delete_Tamngung').modal('show');
 										}
 									}
 
@@ -1643,9 +1644,8 @@
 														$('#msg-success').prop('hidden',true);
 													}
 													if (data.load == true) {
-														$('#msg-success').prop('hidden',false);
-														$('#msg-success h5').html("Thêm Thành Công");
-														$('#msg-fail').prop('hidden',true);
+														$('#dialogImport').modal('hide');
+														$('#dialogValidation_Import_SV').modal('show');
 													}
 													// if (data.load == false) {
 													// 	$('#msg-fail').prop('hidden',false);
