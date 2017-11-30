@@ -258,6 +258,7 @@ Class Kehoachdaotao extends MY_Controller
         {
           $error = array(
             'check' => false,
+            'checkhk' => false,
             'msg' => '',
           );
           $id = $this->input->post('khdt_id');
@@ -275,7 +276,11 @@ Class Kehoachdaotao extends MY_Controller
             $khoahoc1 = $this->input->post('khoahoc');
             $hocki1 = $this->input->post('hocki_id');
             //$monhoc1 = $this->input->post('monhoc_id');
-            $checkdiemhk = $this->Kehoachdaotao_model->Editmon_checkkhdt($nganhhoc1,$khoahoc1,$hocki1)
+            $checkdiemhk = $this->Kehoachdaotao_model->Editmon_checkkhdt($nganhhoc1,$khoahoc1,$hocki1);
+            if (count($checkdiemhk) > 0) {
+                $error['msg'] = 'Học Kì Vùa Chọn Đã Kết THúc';
+              }
+              else{
               $dataKHDT = array(
               //'monhoc_id' => $this->input->post('monhoc_id'),
               'dvht_tc' => $this->input->post('dvht'),
@@ -296,6 +301,7 @@ Class Kehoachdaotao extends MY_Controller
                 $error['check'] = true;
             }else{
                 $error['check'] = false;
+            }
             }
           }
               echo json_encode($error);

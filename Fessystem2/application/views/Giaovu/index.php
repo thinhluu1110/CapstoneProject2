@@ -1750,7 +1750,7 @@
 									var baitaplon = $('#baitaplon_edit_monkhdt').val();
 									var doan = $('#doan_edit_monkhdt').val();
 									var khoaluan = $('#khoaluan_edit_monkhdt').val();
-									alert(idnganh);
+									alert(idmon);
 									if(dvht == '' || tongso == '' || lithuyet == '' || thuchanh == '' || baitap == '' || baitaplon == '' || doan == '' || khoaluan == '') {
 											$('#msg-fail-editmon-khdt').prop('hidden',false);
 											$('#msg-fail-editmon-khdt h5').html('Dữ Liệu Không Được Để Trống');
@@ -1759,7 +1759,7 @@
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Kehoachdaotao/editmon_khdt') ?>",
 												type: "POST",
-												data:{'nganhhoc':idnganh,'khoahoc':idkhoa,'monhoc':monhoc_id,'khdt_id':idkhdt,'hocki_id' : idhocki, 'dvht':dvht, 'tongso':tongso, 'lythuyet':lithuyet, 'thuchanh':thuchanh, 'baitap':baitap,'baitaplon':baitaplon, 'doAn':doan, 'khoaluan':khoaluan},
+												data:{'nganhhoc':idnganh,'khoahoc':idkhoa,'monhoc':idmon,'khdt_id':idkhdt,'hocki_id' : idhocki, 'dvht':dvht, 'tongso':tongso, 'lythuyet':lithuyet, 'thuchanh':thuchanh, 'baitap':baitap,'baitaplon':baitaplon, 'doAn':doan, 'khoaluan':khoaluan},
 												dataType: 'json',
 												success: function(data){
 
