@@ -1750,7 +1750,6 @@
 									var baitaplon = $('#baitaplon_edit_monkhdt').val();
 									var doan = $('#doan_edit_monkhdt').val();
 									var khoaluan = $('#khoaluan_edit_monkhdt').val();
-									alert(idmon);
 									if(dvht == '' || tongso == '' || lithuyet == '' || thuchanh == '' || baitap == '' || baitaplon == '' || doan == '' || khoaluan == '') {
 											$('#msg-fail-editmon-khdt').prop('hidden',false);
 											$('#msg-fail-editmon-khdt h5').html('Dữ Liệu Không Được Để Trống');
