@@ -30,10 +30,10 @@ Class Chuongtrinhdaotao extends MY_Controller
 		}
     function importCTDT()
     {
-      $data['thongbao'] = array(
-            'UploadSucces' => '',
-            'UploadError' => '',
-            'UploadFail' => ''
+      $data = array(
+            'khongchonfile' => '',
+            'msg' => '',
+            'check' => false,
             //'UpdateSucess' => '',
             //'UpdateError' => ''
             //'ReviewImage' => ''
@@ -42,8 +42,8 @@ Class Chuongtrinhdaotao extends MY_Controller
         $khoa=$this->input->post('makhoa');
 
         // if (!empty($_FILE['file']['tmp_name'])) {
-        $check = $this->Chuongtrinhdaotao_model->checkCTDT($nganh,$khoa);
-        if ($check == true) {
+        $check1 = $this->Chuongtrinhdaotao_model->checkCTDT($nganh,$khoa);
+        if ($check1 == true) {
           $this->load->library('uploadword_library');
           $upload_path = './upload/CTDT';
           $upload_data = $this->uploadword_library->upload($upload_path,'file');
@@ -60,15 +60,15 @@ Class Chuongtrinhdaotao extends MY_Controller
             if($this->Chuongtrinhdaotao_model->create($data))
             {
                 //tạo ra nội dung thông báo
-                $data['thongbao']['UploadSucces'] = 'Thêm Thành Công';
+                $data['check'] = true;
             }
           }
           else{
-            $data['thongbao']['UploadError'] = $upload_data;
+            $data['khongchonfile'] = 'Vui Lòng Chọn File';
           }
         }
         else{
-          $data['thongbao']['UploadFail'] = 'Chương Trình Đào Tạo Của Khóa Này Đã Tồn Tại';
+          $data['msg'] = 'Chương Trình Đào Tạo Của Khóa Này Đã Tồn Tại';
         }
         echo json_encode($data);
     }

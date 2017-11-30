@@ -837,9 +837,12 @@
 									var makhoa = $('#khoahocImportCTDT').val();
 									//alert(makhoa);
 									if(manganh == '' || makhoa == '' ) {
-										$('#msg-validation-import-ctdt').prop('hidden',false);
-									$('#msg-validation-import-ctdt h5').html('Vui Lòng Chọn Ngành Học Hoặc Khóa Học Hoặc Học Kì');
-									$('#msg-success-import-ctdt').prop('hidden',true);
+										$('#msg-success-import-ctdt').prop('hidden',true);
+										$('#msg-fail-import-ctdt').prop('hidden',false);
+										$('#msg-fail-import-ctdt h5').html("Vui Lòng Chọn Ngành Học Hoặc Khóa Học Hoặc Học Kì");
+										
+									
+									
 									}else{
 										 	var form_data = new FormData();
 											form_data.append('file', file_data);
@@ -854,20 +857,22 @@
 												processData: false,
 												contentType: false,
 												success: function(data){
-													if (data.thongbao.UploadSucces != '') {
-														$('#msg-validation-import-ctdt').prop('hidden',true);
-														$('#msg-success-import-ctdt').prop('hidden',false);
-														$('#msg-success-import-ctdt h5').html(data.thongbao.UploadSucces);
+													if (data.check == true) {
+														$('#dialogImportCTDT').modal('hide');						
+														$('#dialogValidation_Import_CTDT').modal('show');
 													}
-													if (data.thongbao.UploadError != '') {
-														$('#msg-validation-import-ctdt').prop('hidden',true);
-														$('#msg-success-import-ctdt').prop('hidden',false);
-														$('#msg-success-import-ctdt h5').html(data.thongbao.UploadError);
-													}
-													if (data.thongbao.UploadFail != '') {
-														$('#msg-validation-import-ctdt').prop('hidden',true);
+													if (data.khongchonfile != '') {
+														$('#msg-success-import-ctdt').prop('hidden',true);
+														
+														$('#msg-fail-import-ctdt h5').html(data.khongchonfile);
 														$('#msg-fail-import-ctdt').prop('hidden',false);
-														$('#msg-fail-import-ctdt h5').html(data.thongbao.UploadFail);
+														
+													}
+													if (data.msg != '') {
+														$('#msg-success-import-ctdt').prop('hidden',true);
+														
+														$('#msg-fail-import-ctdt h5').html(data.msg);
+														$('#msg-fail-import-ctdt').prop('hidden',false);
 													}
 												}
 												// error: function(){
