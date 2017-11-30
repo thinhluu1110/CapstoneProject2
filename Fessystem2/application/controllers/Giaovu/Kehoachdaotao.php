@@ -257,9 +257,25 @@ Class Kehoachdaotao extends MY_Controller
          function editmon_khdt()
         {
           $error = array(
-            'check' => true,
+            'check' => false,
+            'msg' => '',
           );
           $id = $this->input->post('khdt_id');
+          $value = $this->Kehoachdaotao_model->khdt_info($id);
+           $nganhhoc = $value['nganhhoc_id'];
+          $khoahoc = $value['khoahoc_id'];
+          $hocki = $value['hocki_id'];
+          $monhoc = $value['monhoc_id'];
+          $checkdiem = $this->Kehoachdaotao_model->Delmon_checkkhdt($id,$nganhhoc,$khoahoc,$hocki,$monhoc);
+          if (count($checkdiem) > 0) {
+          $error['msg'] = 'Đã Có Dữ Liệu Kết Quả Học Tập Cho Kế Hoạch Đào Tạo Này';
+          }
+          else{
+            $nganhhoc1 = $this->input->post('nganhhoc');
+            $khoahoc1 = $this->input->post('khoahoc');
+            $hocki1 = $this->input->post('hocki_id');
+            //$monhoc1 = $this->input->post('monhoc_id');
+            $checkdiemhk = $this->Kehoachdaotao_model->Editmon_checkkhdt($nganhhoc1,$khoahoc1,$hocki1)
               $dataKHDT = array(
               //'monhoc_id' => $this->input->post('monhoc_id'),
               'dvht_tc' => $this->input->post('dvht'),
@@ -281,20 +297,31 @@ Class Kehoachdaotao extends MY_Controller
             }else{
                 $error['check'] = false;
             }
-
+          }
               echo json_encode($error);
         }
         function Delmon_KHDT()
         {
           $error = array(
-            'check' => true,
+            'check' => false,
+            'msg' => '',
           );
           $id = $this->input->post('khdt_id');
-          //pre($id);
+          $value = $this->Kehoachdaotao_model->khdt_info($id);
+          $nganhhoc = $value['nganhhoc_id'];
+          $khoahoc = $value['khoahoc_id'];
+          $hocki = $value['hocki_id'];
+          $monhoc = $value['monhoc_id'];
+          $checkdiem = $this->Kehoachdaotao_model->Delmon_checkkhdt($id,$nganhhoc,$khoahoc,$hocki,$monhoc);
+        if (count($checkdiem) > 0) {
+          $error['msg'] = 'Đã Có Dữ Liệu Kết Quả Học Tập Cho Kế Hoạch Đào Tạo Này';
+        }
+        else
+        {
           $this->Kehoachdaotao_model->delete($id);
             $error['check'] = true;
-          
-          echo json_encode($error);
+        }
+          echo json_encode($error); 
         }
 	}
 

@@ -109,5 +109,36 @@ Class Kehoachdaotao_model extends MY_Model
       $query = $this->db->get();
       return $query->row_array();
     }
+    function Delmon_checkkhdt($id,$nganh,$khoa,$hk,$mon)
+    {
+      $this->db->select('*')
+      ->from('kehoachdaotao as k')
+      ->join('nganhhoc as n','k.nganhhoc_id = n.nganhhoc_id')
+      ->join('khoahoc as kh','k.khoahoc_id = kh.khoahoc_id')
+      ->join('sinhvien as s','k.khoahoc_id = s.khoahoc_id','k.nganhhoc_id = s.nganhhoc_id')
+      ->join('ketquahoctap as kq','s.MSSV = kq.sinhvien_id','k.monhoc_id = kq.monhoc_id', 'k.hocki_id = kq.hocki_id')
+      ->where('khdt_id',$id)
+      ->where('s.nganhhoc_id',$nganh)
+      ->where('s.khoahoc_id',$khoa)
+      ->where('kq.hocki_id',$hk)
+      ->where('kq.monhoc_id',$mon);
+      $query = $this->db->get();
+      return $query->result_array();
+    }
+    function Editmon_checkkhdt($nganh,$khoa,$hk)
+    {
+      $this->db->select('*')
+      ->from('kehoachdaotao as k')
+      ->join('nganhhoc as n','k.nganhhoc_id = n.nganhhoc_id')
+      ->join('khoahoc as kh','k.khoahoc_id = kh.khoahoc_id')
+      ->join('hocki as h','k.hocki_id = h.hocki_id')
+      ->join('sinhvien as s','k.khoahoc_id = s.khoahoc_id','k.nganhhoc_id = s.nganhhoc_id')
+      ->join('ketquahoctap as kq','s.MSSV = kq.sinhvien_id', 'k.hocki_id = kq.hocki_id')
+      ->where('s.nganhhoc_id',$nganh)
+      ->where('s.khoahoc_id',$khoa)
+      ->where('kq.hocki_id',$hk);
+      $query = $this->db->get();
+      return $query->result_array();
+    }
 }
 ?>

@@ -215,7 +215,7 @@
                 </div>
                 <div class="modal-footer" style="padding:0px">
                     <!-- <button type="button" class="btn btn-sm btn-success" id="submit_edit_DKDA" name="submit">Sửa</button> -->
-                    <input type="button" class="btn btn-sm btn-success" id="submit_edit_DKDA" name="submit" value="Thêm">
+                    <input type="button" class="btn btn-sm btn-success" id="submit_edit_DKDA" name="submit" value="Sửa">
                 </div>
             </form>
         </div>
@@ -247,6 +247,28 @@
               </div>
               <div class="modal-footer" style="padding:0px">
                 <input type="button" class="btn btn-sm btn-danger" id="submit_deldkda" name="Xóa" value="Xóa">
+            </div>
+        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div id="dialogValidation_Add_DKDA" data-backdrop = "static" data-keyboard = "false" class="modal fade" tabindex="-1" style="padding-top: 0px; padding-bottom: 0px; padding-left: 17px;" aria-hidden="false">
+            <div class="modal-dialog" style="width:400px !important;height:600px !important">
+                <div class="modal-content">
+                <!-- <form id="form-validation-add-nganhhoc" name="frmCreateEmployee" method="post"  class="form-horizontal" role="form" ng-submit="UpdateEmployee()"> -->
+                <form id="form-validation-add-nganhhoc" name="frmCreateEmployee" method="post"  class="thongbao" role="form" ng-submit="UpdateEmployee()">
+                    <div class="modal-header bg-primary" style="padding:0px;text-align:center">
+                        <h5><strong class="modal-title">Thông Báo</strong></h5>
+                        </div>
+                <div style="color:green;" class="modal-body text-center">
+                <font size="5">Thành Công</font>
+              </div>
+              <div class="modal-footer" style="padding:0px;">
+                <input type="button" style="width: 100%;" class="btn btn-sm btn-success" id="submit_delnganh" name="Xóa" onclick="reload()" value="OK">
             </div>
         </form>
                 </div>
