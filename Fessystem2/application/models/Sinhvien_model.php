@@ -109,5 +109,18 @@ Class Sinhvien_model extends MY_Model
       $query = $this->db->get();
       return $query->result_array();
   }
+  function checkSV_Hocphi($id)
+   {
+     $this->db->select('*')
+     ->from('sinhvien as sv')
+     ->where('sv.MSSV',$id);
+     $query = $this->db->get();
+     if ($query->num_rows() > 0) {
+      return true;
+     }
+     else {
+      return false;
+     }
+   }
 }
 ?>

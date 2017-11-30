@@ -276,11 +276,12 @@
 								processData: false,
 								contentType: false,
 								success: function(data){
-									if (typeof data.message.ImportSucces !== undefined) {
-										$('#msg-success-HocPhi').prop("style").display = "block";
-										$('#msg-success-HocPhi h5').html(data.message.ImportSucces);
-										//$('#msg-fail-HocPhi').prop("style").display = "none";
-									}
+									console.log(data);
+									// if (typeof data.message.ImportSucces !== undefined) {
+									// 	$('#msg-success-HocPhi').prop("style").display = "block";
+									// 	$('#msg-success-HocPhi h5').html(data.message.ImportSucces);
+									// 	//$('#msg-fail-HocPhi').prop("style").display = "none";
+									// }
 									// if (typeof data.message.ImportFail !== undefined) {
 									// 	$('#msg-fail-HocPhi').prop("style").display = "block";
 									// 	$('#msg-fail-HocPhi h5').html(data.message.ImportFail);
@@ -909,9 +910,8 @@
 													}
 													if (data.load == true) {
 
-														$('#msg-success').prop('hidden',false);
-														$('#msg-success h5').html("Thêm Thành Công");
-														$('#msg-fail').prop('hidden',true);
+														$('#dialogImport').modal('hide');						
+														$('#dialogValidation_Import_DRL').modal('show');
 													}
 													if (data.load == false) {
 														$('#msg-fail').prop('hidden',false);
@@ -926,82 +926,83 @@
 									}
 							});
 					});
-					$(document).ready(function() {
-							$('#submit_import_hocphi').on('click', function(e) {
-									e.preventDefault();
-									var file_data = $('#fileHocPhi').prop('files')[0];
-										 	var form_data = new FormData();
+					// $(document).ready(function() {
+					// 		$('#submit_import_hocphi').on('click', function(e) {
+					// 				e.preventDefault();
+					// 				var file_data = $('#fileHocPhi').prop('files')[0];
+					// 					 	var form_data = new FormData();
 
-											$.ajax({
-												url:"<?php echo base_url('Giaovu/Hocphi/importHP') ?>",
-												type: "POST",
-												data:form_data,
-												dataType: 'json',
-												cache: false,
-												processData: false,
-												contentType: false,
-												success: function(data){
-													if (data.khongchonfile != '') {
-														$('#msg-fail').prop('hidden',false);
-														$('#msg-fail h5').html(data.khongchonfile);
-														$('#msg-success').prop('hidden',true);
-													}
-													if (data.load == true) {
-														$('#msg-success').prop('hidden',false);
-														$('#msg-success h5').html("Thêm Thành Công");
-														$('#msg-fail').prop('hidden',true);
-													}
-													// if (data.load == false) {
-													// 	$('#msg-fail').prop('hidden',false);
-													// 	$('#msg-fail h5').html("Dữ Liệu Đã Tồn Tại");
-													// 	$('#msg-success').prop('hidden',true);
-													// }
-												}
-												// $('#msg-success-delete-khoa').prop('hidden',false);
-												// 		$('#msg-success-delete-khoa h5').html("Xóa Thành Công");
-												// 		$('#msg-fail-delete-khoa').prop('hidden',true);
-											});
+					// 						$.ajax({
+					// 							url:"<?php echo base_url('Giaovu/Hocphi/importHP') ?>",
+					// 							type: "POST",
+					// 							data:form_data,
+					// 							dataType: 'json',
+					// 							cache: false,
+					// 							processData: false,
+					// 							contentType: false,
+					// 							success: function(data){
+					// 								console.log(data);
+					// 								if (data.khongchonfile != '') {
+					// 									$('#msg-fail').prop('hidden',false);
+					// 									$('#msg-fail h5').html(data.khongchonfile);
+					// 									$('#msg-success').prop('hidden',true);
+					// 								}
+					// 								if (data.load == true) {
+					// 									$('#msg-success').prop('hidden',false);
+					// 									$('#msg-success h5').html("Thêm Thành Công");
+					// 									$('#msg-fail').prop('hidden',true);
+					// 								}
+					// 								// if (data.load == false) {
+					// 								// 	$('#msg-fail').prop('hidden',false);
+					// 								// 	$('#msg-fail h5').html("Dữ Liệu Đã Tồn Tại");
+					// 								// 	$('#msg-success').prop('hidden',true);
+					// 								// }
+					// 							}
+					// 							// $('#msg-success-delete-khoa').prop('hidden',false);
+					// 							// 		$('#msg-success-delete-khoa h5').html("Xóa Thành Công");
+					// 							// 		$('#msg-fail-delete-khoa').prop('hidden',true);
+					// 						});
 
-							});
-					});
-					$(document).ready(function() {
-						$('#submit_import_hocphi').on('click', function(e) {
-							e.preventDefault();
-							var file_data = $('#fileHocPhi').prop('files')[0];
-						 	var form_data = new FormData();
+					// 		});
+					// });
+					// $(document).ready(function() {
+					// 	$('#submit_import_hocphi').on('click', function(e) {
+					// 		e.preventDefault();
+					// 		var file_data = $('#fileHocPhi').prop('files')[0];
+					// 	 	var form_data = new FormData();
 
-							$.ajax({
-								url:"<?php echo base_url('Giaovu/Hocphi/importHP') ?>",
-								type: "POST",
-								data:form_data,
-								dataType: 'json',
-								cache: false,
-								processData: false,
-								contentType: false,
-								success: function(data){
-									if (data.khongchonfile != '') {
-										$('#msg-fail').prop('hidden',false);
-										$('#msg-fail h5').html(data.khongchonfile);
-										$('#msg-success').prop('hidden',true);
-									}
-									if (data.load == true) {
-										$('#msg-success').prop('hidden',false);
-										$('#msg-success h5').html("Thêm Thành Công");
-										$('#msg-fail').prop('hidden',true);
-									}
-									// if (data.load == false) {
-									// 	$('#msg-fail').prop('hidden',false);
-									// 	$('#msg-fail h5').html("Dữ Liệu Đã Tồn Tại");
-									// 	$('#msg-success').prop('hidden',true);
-									// }
-								}
-								// $('#msg-success-delete-khoa').prop('hidden',false);
-								// 		$('#msg-success-delete-khoa h5').html("Xóa Thành Công");
-								// 		$('#msg-fail-delete-khoa').prop('hidden',true);
-							});
+					// 		$.ajax({
+					// 			url:"<?php echo base_url('Giaovu/Hocphi/importHP') ?>",
+					// 			type: "POST",
+					// 			data:form_data,
+					// 			dataType: 'json',
+					// 			cache: false,
+					// 			processData: false,
+					// 			contentType: false,
+					// 			success: function(data){
+					// 				if (data.khongchonfile != '') {
+					// 					$('#msg-fail').prop('hidden',false);
+					// 					$('#msg-fail h5').html(data.khongchonfile);
+					// 					$('#msg-success').prop('hidden',true);
+					// 				}
+					// 				if (data.load == true) {
+					// 					$('#msg-success').prop('hidden',false);
+					// 					$('#msg-success h5').html("Thêm Thành Công");
+					// 					$('#msg-fail').prop('hidden',true);
+					// 				}
+					// 				// if (data.load == false) {
+					// 				// 	$('#msg-fail').prop('hidden',false);
+					// 				// 	$('#msg-fail h5').html("Dữ Liệu Đã Tồn Tại");
+					// 				// 	$('#msg-success').prop('hidden',true);
+					// 				// }
+					// 			}
+					// 			// $('#msg-success-delete-khoa').prop('hidden',false);
+					// 			// 		$('#msg-success-delete-khoa h5').html("Xóa Thành Công");
+					// 			// 		$('#msg-fail-delete-khoa').prop('hidden',true);
+					// 		});
 
-						});
-					});
+					// 	});
+					// });
 					$(document).ready(function() {
 							$('#nganhhocImportDRL').on('change', function() {
 									var nganhhoc_id = $(this).val();
@@ -1160,8 +1161,8 @@
 									dataType: 'json',
 									success: function(data){
 										if (data.msg != '') {
-											$('#msg-success-delete-DC').prop("style").display = "block";
-											$('#msg-success-delete-DC').html(data.msg);
+											$('#dialogDelete').modal('hide');						
+											$('#dialogValidation_Delete_Dinhchi').modal('show');
 										}
 									}
 

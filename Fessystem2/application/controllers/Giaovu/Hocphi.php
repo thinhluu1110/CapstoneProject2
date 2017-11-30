@@ -8,6 +8,7 @@ Class Hocphi extends MY_Controller
     $this->load->model('Khoahoc_model');
     $this->load->model('Hocki_model');
     $this->load->model('Hocphi_model');
+    $this->load->model('Sinhvien_model');
   }
   function index()
   {
@@ -37,7 +38,7 @@ Class Hocphi extends MY_Controller
     {
       $this->load->library('PHPExcel');
       $file = $_FILES['file']['tmp_name'];
-      $delAll = $this->Hocphi_model->delAll();
+     
       $objReader = PHPExcel_IOFactory::createReaderForFile($file);
       $objExcel = $objReader->load($file);
       $worksheet = $objExcel->getSheet(0);
@@ -45,27 +46,52 @@ Class Hocphi extends MY_Controller
       $sheetData = $objExcel->getActiveSheet()->toArray('null',true,true,true);
       $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
       $noidung = $sheetData[5]['A'];
-      for ($row=11; $row < $highestRow ; $row++) 
+      $checkSV = true;
+
+      for ($row=11; $i < $highestRow ; $row++) 
+      { 
+        $break = $sheetData[$row]['B'];
+        $kiemtraSV = $this->Sinhvien_model->checkSV_Hocphi($break);
+
+        if ($kiemtraSV == false ) 
+        {
+          $checkSV = false;
+          break;
+        }
+      }
+      echo json_encode('adada');
+      exit;
+      if($checkSV == false)
       {
-        $data = array(
+        $data['message']['ImportFail'] = 'Thông tin SV không tồn tại trong hệ thống';
+      }
+      else
+      {
+        $delAll = $this->Hocphi_model->delAll();
+        for ($row=11; $row < $highestRow ; $row++) 
+        {
+          $data = array(
           'MSSV' => $sheetData[$row]['B'],
           'hocphi_chinh' => $sheetData[$row]['G'],
           'hocphi_hoclai' => $sheetData[$row]['H'],
           'hocphi_tong' => $sheetData[$row]['F'],
           'noidung' =>$noidung,
-        );
-        if($this->Hocphi_model->create($data)){
-          // $this->session->set_flashdata('message', 'Thêm mới dữ liệu thành công');
-          $data['message']['ImportSucces'] = 'Thêm mới dữ liệu thành công';
-        }
+          );
+          if($this->Hocphi_model->create($data))
+          {
+            $data['message']['ImportSucces'] = 'Thêm mới dữ liệu thành công';
+          }
+        }    
       }
     }
-    else{
-      $data['message']['ImportFail'] = 'Xin vui lòng chọn file ';
-    }
-    echo json_encode($data);
-  }
+      else
+          {
+           $data['message']['ImportFail'] = 'Xin vui lòng chọn file ';
+          }
+    
+  echo json_encode($data);
+
 }
 
-
+}
 ?>
