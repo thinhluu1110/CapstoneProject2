@@ -440,6 +440,8 @@
 							$('#submit_add_DKDA').on('click', function() {
 									var nganhhoc_id = $('#nganhhoc_dieukien_doan').val();
 									var khoahoc_id = $('#khoahoc_dieukien_doan').val();
+									var maxmonno = $('#maxmonno_dieukien_doan').val();
+									
 									if(nganhhoc_id == '' || khoahoc_id == '') {
 										$('#msg-fail-dkda').prop('hidden',false);
 										$('#msg-fail-dkda h5').html('Dữ Liệu Không Được Để Trống');

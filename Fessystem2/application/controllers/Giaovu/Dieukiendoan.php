@@ -57,6 +57,12 @@ Class Dieukiendoan extends MY_Controller
           $mon_cam = implode(",",$mon);
         }
 
+//         if (is_null($this->input->post('maxmonno'))) {
+//           $maxmonno = 0;
+//         }
+// else{
+//   $maxmonno = $this->input->post('maxmonno');
+// }
         $idn = $this->input->post('nganhhoc');
         $idk = $this->input->post('khoahoc');
         $data = array(
@@ -70,8 +76,8 @@ Class Dieukiendoan extends MY_Controller
         $error['thatbai'] = '';
         $check = $this->Dieukiendoan_model->checkdkda($idn,$idk);
 
-          if ($data['max_monno'] < $count) {
-            $error['check'] = "Môn Không Được Nợ Lớn Hơn Số Môn Nợ Tối Đa";
+          if ($check == true) {
+            $error['tontaidk'] = "Điều Kiện Đồ Án Cho Khóa Này Đã Tồn Tại";
           }
           else {
           if ($this->Dieukiendoan_model->create($data)) {

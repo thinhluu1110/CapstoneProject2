@@ -63,6 +63,9 @@
                                     </td>
                                     <?php
                                         $str = '';
+                                        if (isset($listDKDA[$i]['mamoncam'])) {
+                                        
+                                        
                                         if(count($listDKDA[$i]['mamoncam']) > 0){
                                             $str = 'Không nợ 1 trong các môn sau: ';
                                             for ($j = 0; $j < count($listDKDA[$i]['mamoncam']); $j++){
@@ -71,6 +74,7 @@
                                                 }
                                                 $str .= '<b style="color: red">'.$listDKDA[$i]['mamoncam'][$j]['TenMH'].'</b>';
                                             }
+                                        }
                                         }
                                     ?>
                                     <td>
