@@ -38,7 +38,7 @@ Class Hocphi extends MY_Controller
     {
       $this->load->library('PHPExcel');
       $file = $_FILES['file']['tmp_name'];
-     
+
       $objReader = PHPExcel_IOFactory::createReaderForFile($file);
       $objExcel = $objReader->load($file);
       $worksheet = $objExcel->getSheet(0);
@@ -48,19 +48,16 @@ Class Hocphi extends MY_Controller
       $noidung = $sheetData[5]['A'];
       $checkSV = true;
 
-      for ($row=11; $i < $highestRow ; $row++) 
-      { 
+      for ($row=11; $row < $highestRow ; $row++)
+      {
         $break = $sheetData[$row]['B'];
         $kiemtraSV = $this->Sinhvien_model->checkSV_Hocphi($break);
-
-        if ($kiemtraSV == false ) 
+        if ($kiemtraSV == false )
         {
           $checkSV = false;
           break;
         }
-      }
-      echo json_encode('adada');
-      exit;
+        }
       if($checkSV == false)
       {
         $data['message']['ImportFail'] = 'Thông tin SV không tồn tại trong hệ thống';
@@ -68,7 +65,7 @@ Class Hocphi extends MY_Controller
       else
       {
         $delAll = $this->Hocphi_model->delAll();
-        for ($row=11; $row < $highestRow ; $row++) 
+        for ($row=11; $row < $highestRow ; $row++)
         {
           $data = array(
           'MSSV' => $sheetData[$row]['B'],
@@ -81,14 +78,14 @@ Class Hocphi extends MY_Controller
           {
             $data['message']['ImportSucces'] = 'Thêm mới dữ liệu thành công';
           }
-        }    
+        }
       }
     }
       else
           {
            $data['message']['ImportFail'] = 'Xin vui lòng chọn file ';
           }
-    
+
   echo json_encode($data);
 
 }

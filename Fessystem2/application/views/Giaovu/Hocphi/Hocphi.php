@@ -122,16 +122,15 @@
                         <div class="modal-header btn-success" style="padding:0px;text-align:center" id="msg-success-HocPhi" hidden>
                             <h5></h5>
                         </div>
-                        
-                       <!--  <div class="modal-header btn-danger" style="padding:0px;text-align:center" id="msg-fail-HocPhi" hidden>
+                        <div class="modal-header btn-danger" style="padding:0px;text-align:center" id="msg-fail-HocPhi" hidden>
                             <h5></h5>
-                        </div> -->
+                        </div>
                         <div class="modal-body">
-                            
+
 
                             <div class="row" style="margin:10px">
                                 <div class="col-xs-12 col-md-12 col-lg-12">
-                                  
+
                                     <div class="form-group">
                                         <label class="coltrol-lable">Chọn Tập Tin:</label>
                                         <input type="file" id="fileHocPhi" name="file">

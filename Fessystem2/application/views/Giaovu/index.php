@@ -265,9 +265,7 @@
 							//thêm files vào trong form data
 							form_data.append('file', file_data);
 							//$('#msg-fail-HocPhi').prop("style").display = "none";
-							$('#msg-success-HocPhi').prop("style").display = "none";
 							$.ajax({
-
 								url:"<?php echo base_url('Giaovu/Hocphi/importHP') ?>",
 								type: "POST",
 								data:form_data,
@@ -276,17 +274,19 @@
 								processData: false,
 								contentType: false,
 								success: function(data){
-									console.log(data);
-									// if (typeof data.message.ImportSucces !== undefined) {
-									// 	$('#msg-success-HocPhi').prop("style").display = "block";
-									// 	$('#msg-success-HocPhi h5').html(data.message.ImportSucces);
-									// 	//$('#msg-fail-HocPhi').prop("style").display = "none";
-									// }
-									// if (typeof data.message.ImportFail !== undefined) {
-									// 	$('#msg-fail-HocPhi').prop("style").display = "block";
-									// 	$('#msg-fail-HocPhi h5').html(data.message.ImportFail);
-									// 	//$('#msg-success-HocPhi').prop("style").display = "none";
-									// }
+									if (data.message.ImportSucces != '') {
+										$('#msg-success-HocPhi').prop('hidden',false);
+										$('#msg-fail-HocPhi').prop('hidden',true);
+										$('#msg-success-HocPhi h5').html(data.message.ImportSucces);
+										//$('#msg-fail-HocPhi').prop("style").display = "none";
+									}
+
+									else if (data.message.ImportFail != '') {
+										$('#msg-fail-HocPhi').prop('hidden',false);
+										$('#msg-success-HocPhi').prop('hidden',true);
+										$('#msg-fail-HocPhi h5').html(data.message.ImportFail);
+										//$('#msg-success-HocPhi').prop("style").display = "none";
+									}
 								}
 							});
 						});
@@ -310,7 +310,7 @@
 												data:{'MSSV':mssv, 'MaHS':maHS, 'tinhtrang':tinhtrang, 'LiDo': lido, 'ngay_batdau':ngaybatdau, 'ngay_ketthuc':ngayketthuc},
 												dataType: 'json',
 												success: function(data){
-													if (data.msg != '') 
+													if (data.msg != '')
 													{
 														$('#msgbdlonkt').prop('hidden',false);
 														$('#msg-success-capnhattt').prop('hidden',true);
@@ -910,7 +910,7 @@
 													}
 													if (data.load == true) {
 
-														$('#dialogImport').modal('hide');						
+														$('#dialogImport').modal('hide');
 														$('#dialogValidation_Import_DRL').modal('show');
 													}
 													if (data.load == false) {
@@ -1161,7 +1161,7 @@
 									dataType: 'json',
 									success: function(data){
 										if (data.msg != '') {
-											$('#dialogDelete').modal('hide');						
+											$('#dialogDelete').modal('hide');
 											$('#dialogValidation_Delete_Dinhchi').modal('show');
 										}
 									}
@@ -1184,7 +1184,7 @@
 									dataType: 'json',
 									success: function(data){
 										if (data.msg != '') {
-											$('#dialogDelete').modal('hide');						
+											$('#dialogDelete').modal('hide');
 											$('#dialogValidation_Delete_Baoluu').modal('show');
 										}
 									}
@@ -1207,7 +1207,7 @@
 									dataType: 'json',
 									success: function(data){
 										if (data.msg != '') {
-											$('#dialogDelete').modal('hide');						
+											$('#dialogDelete').modal('hide');
 											$('#dialogValidation_Delete_Tamngung').modal('show');
 										}
 									}
