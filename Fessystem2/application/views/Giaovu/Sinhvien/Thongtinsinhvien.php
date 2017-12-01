@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-xs-5">
                         <div class="input-group add-on hitec-w-100percent">
-                            <input class="form-control" id="timkiem_ttsv" name="search" placeholder="Tìm kiếm theo mã sinh viên" type="text" >
+                            <input class="form-control" id="timkiem_ttsv" name="timkiem_ttsv" placeholder="Tìm kiếm theo mã sinh viên" type="text" >
                             <div class="input-group-btn">
                                 <button class="btn btn-sm btn-default" type="submit" ><span class="fa fa-search"></span></button>
                             </div>
