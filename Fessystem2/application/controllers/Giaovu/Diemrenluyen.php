@@ -39,7 +39,7 @@ Class Diemrenluyen extends MY_Controller
         'khongchonfile' => '',
         'load' => false,
       );
-        
+
         $this->load->library('PHPExcel');
         $nganh = $this->input->post('manganh');
         $khoahoc = $this->input->post('makhoa');
@@ -59,7 +59,7 @@ Class Diemrenluyen extends MY_Controller
           if (empty($break_xeploai)) {
              $check_xeploai = true;
               break;
-           } 
+           }
           }
           if ($check_xeploai == false) {
             for ($row = 4; $row <= $highestRow; $row ++)
@@ -67,7 +67,7 @@ Class Diemrenluyen extends MY_Controller
             $break = $sheetData[$row]['A'];
             if (!empty($break)) {
               $mssv = $sheetData[$row]['B'];
-              $checksv = $this->SinhVien_model->checkSV($mssv);
+              $checksv = $this->Sinhvien_model->checkSV($mssv);
               if ($checksv == false) {
                 $checkdiem = $this->Diemrenluyen_model->checkDRL($mssv,$hocki);
                 if ($checkdiem == false) {
@@ -91,7 +91,6 @@ Class Diemrenluyen extends MY_Controller
                 else
                 {
                   $id_drl = $checkdiem['drl_id'];
-
                   $data = array(
                     'diem' => $sheetData[$row]['F'],
                   );

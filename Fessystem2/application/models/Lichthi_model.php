@@ -36,6 +36,15 @@ Class Lichthi_model extends MY_Model
 	    	$query = $this->db->get();
 	    	return $query->result();
   	}
+		function Getlichthisv_byNKHK($idn,$idk,$idhk)
+  	{
+	  	$this->db->select('*')
+			->from('lichthi as lt');
+			$this->db->where('lt.nganhhoc_id',$idn)->where('lt.khoahoc_id',$idk)->where('lt.hocki_id',$idhk);
+			//$this->db->order_by('lt.lanthi','desc');
+	    	$query = $this->db->get();
+	    	return $query->row_array();
+  	}
   	function fillterLichThi($idn,$idk,$idhk,$idlt)
 	{
 		$this->db->select('*')
@@ -61,7 +70,7 @@ Class Lichthi_model extends MY_Model
 			->from('lichthi as lt');
 			$this->db->where('lt.nganhhoc_id',$idn)->where('lt.khoahoc_id',$idk)->where('lt.hocki_id',$idhk)->where('lt.lanthi',$idlt);
 		    	$query = $this->db->get();
-		    	
+
 		  	  	if ($query->num_rows() > 0) {
 		      		return $query->row_array();
 		  		}
