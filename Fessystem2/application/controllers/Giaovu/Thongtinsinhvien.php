@@ -33,69 +33,92 @@ class Thongtinsinhvien extends MY_Controller
   function importSV()
   {
     $error  = array(
-        'khongchonfile' => '',
-        'load' => false
-      );
+      'khongchonfile' => '',
+      'load' => false,
+      'kiemtrafile' => false,
+      'kiemtra_mssv' => false,
+    );
     $nganh=$this->input->post('manganh');
     $khoa=$this->input->post('makhoa');
     $this->load->library('PHPExcel');
     if (!empty($_FILES['file']['tmp_name'])) {
       $file = $_FILES['file']['tmp_name'];
-      $objReader = PHPExcel_IOFactory::createReaderForFile($file);
-      $objExcel = $objReader->load($file);
-      $worksheet = $objExcel->getSheet(0);
-      $objReader->setLoadSheetsOnly($worksheet);
-      $sheetData = $objExcel->getActiveSheet()->toArray(null,true,true,true);
-      $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
-      for ($row = 3; $row <= $highestRow; $row ++)
+      if ($_FILES['file']['type'] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || $_FILES['file']['type'] == "application/vnd.ms-excel" ) 
       {
-        $break = $sheetData[$row]['B'];
-        if (!empty($break)) {
-          $sv_id = $sheetData[$row]['B'];
-          $check = $this->Sinhvien_model->checkSV($sv_id);
-          if ($check == true) {
-            $data = array(
-              'MSSV' => $sheetData[$row]['B'],
-              'Ho'   => $sheetData[$row]['C'],
-              'Ten'  => $sheetData[$row]['D'],
-              'username' => $sheetData[$row]['B'],
-              'password' => md5($sheetData[$row]['B']),
-              'nganhhoc_id' => $nganh,
-              'khoahoc_id' => $khoa,
-              'SDT' => $sheetData[$row]['AN'],
-              'Email' => $sheetData[$row]['AO'],
-              'Tinhtrang' => 0,
-              'Ngaysinh' => $sheetData[$row]['E'],
-              'phanquyen_id' => 0,
-              'Phai'=> $sheetData[$row]['F'],
-            );
-            if($this->Sinhvien_model->create($data))
-            {
-                $error['load'] = true;
-            }
-            //else{
-                //$error['load'] = false;
-            //}
+        $objReader = PHPExcel_IOFactory::createReaderForFile($file);
+        $objExcel = $objReader->load($file);
+        $worksheet = $objExcel->getSheet(0);
+        $objReader->setLoadSheetsOnly($worksheet);
+        $sheetData = $objExcel->getActiveSheet()->toArray(null,true,true,true);
+        $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
+        $checkmssv = false;
+        for ($row=3; $row <= $highestRow ; $row++) {
+            $break_dongtrong = $sheetData[$row]['B'];
+            $break_mssv = $sheetData[$row]['B'];
+            if (empty($break_mssv) && !empty($break_dongtrong)) {
+            $checkmssv = true;
+            break;
+            } 
           }
-          else
+        if ($checkmssv == false) {
+          for ($row = 3; $row <= $highestRow; $row ++)
           {
-            $data = array(
-              //'MSSV' => $sheetData[$row]['B'],
-              'Ho'   => $sheetData[$row]['C'],
-              'Ten'  => $sheetData[$row]['D'],
-              'SDT' => $sheetData[$row]['AN'],
-              'Email' => $sheetData[$row]['AO'],
-              'Ngaysinh' => $sheetData[$row]['E'],
-              'Phai'=> $sheetData[$row]['F'],
-            );
-            if ($this->Sinhvien_model->update($sv_id,$data)) {
-              $error['load'] = true;
+            $break = $sheetData[$row]['B'];
+            if (!empty($break)) {
+              $sv_id = $sheetData[$row]['B'];
+              $check = $this->Sinhvien_model->checkSV($sv_id);
+              if ($check == true) {
+                $data = array(
+                  'MSSV' => $sheetData[$row]['B'],
+                  'Ho'   => $sheetData[$row]['C'],
+                  'Ten'  => $sheetData[$row]['D'],
+                  'username' => $sheetData[$row]['B'],
+                  'password' => md5($sheetData[$row]['B']),
+                  'nganhhoc_id' => $nganh,
+                  'khoahoc_id' => $khoa,
+                  'SDT' => $sheetData[$row]['AN'],
+                  'Email' => $sheetData[$row]['AO'],
+                  'Tinhtrang' => 0,
+                  'Ngaysinh' => $sheetData[$row]['E'],
+                  'phanquyen_id' => 0,
+                  'Phai'=> $sheetData[$row]['F'],
+                );
+                if($this->Sinhvien_model->create($data))
+                {
+                    $error['load'] = true;
+                }
+                //else{
+                    //$error['load'] = false;
+                //}
+              }
+              else
+              {
+                $data = array(
+                  //'MSSV' => $sheetData[$row]['B'],
+                  'Ho'   => $sheetData[$row]['C'],
+                  'Ten'  => $sheetData[$row]['D'],
+                  'SDT' => $sheetData[$row]['AN'],
+                  'Email' => $sheetData[$row]['AO'],
+                  'Ngaysinh' => $sheetData[$row]['E'],
+                  'Phai'=> $sheetData[$row]['F'],
+                );
+                if ($this->Sinhvien_model->update($sv_id,$data)) {
+                  $error['load'] = true;
+                }
+              }
+            }
+            else {
+              break;
             }
           }
         }
-        else {
-          break;
+        else{
+          $error['kiemtra_mssv'] = true;
         }
+      }
+      else
+      {
+        $error['kiemtrafile'] = true;
       }
     }
     else{

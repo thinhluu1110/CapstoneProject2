@@ -109,7 +109,7 @@ Class Sinhvien_model extends MY_Model
       $query = $this->db->get();
       return $query->result_array();
   }
-  function checkSV_Hocphi($id)
+  function checksv_hocphi($id)
    {
      $this->db->select('*')
      ->from('sinhvien as sv')

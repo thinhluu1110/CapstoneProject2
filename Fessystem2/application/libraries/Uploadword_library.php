@@ -73,7 +73,7 @@ Class Uploadword_library
         //thuc mục chứa file
         $config['upload_path']   = $upload_path;
         //Định dạng file được phép tải
-        $config['allowed_types'] = 'docx|pdf';
+        $config['allowed_types'] = 'docx|pdf|doc';
         //Dung lượng tối đa
         $config['max_size']      = '1500';
         //Chiều rộng tối đa

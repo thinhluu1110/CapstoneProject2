@@ -38,7 +38,8 @@ Class Hocphi extends MY_Controller
     {
       $this->load->library('PHPExcel');
       $file = $_FILES['file']['tmp_name'];
-
+      if ($_FILES['file']['type'] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || $_FILES['file']['type'] == "application/vnd.ms-excel" ) 
+      {
       $objReader = PHPExcel_IOFactory::createReaderForFile($file);
       $objExcel = $objReader->load($file);
       $worksheet = $objExcel->getSheet(0);
@@ -81,9 +82,13 @@ Class Hocphi extends MY_Controller
         }
       }
     }
+    else{
+       $data['message']['kiemtrafile'] = 'Vui lòng chọn đúng định dạng file Excel';
+    }
+  }
       else
           {
-           $data['message']['ImportFail'] = 'Xin vui lòng chọn file ';
+           $data['message']['ImportFail'] = 'Vui lòng chọn file ';
           }
 
   echo json_encode($data);
