@@ -64,7 +64,6 @@ Class Diemrenluyen extends MY_Controller
 
           for ($row=4; $row <= $highestRow ; $row++) {
             $break_xeploai = $sheetData[$row]['G'];
-<<<<<<< .mine
             $break_mssv = $sheetData[$row]['B'];
             $break_dongtrong = $sheetData[$row]['A'];
             if ((empty($break_xeploai) || empty($break_mssv)) && !empty($break_dongtrong)) {
@@ -72,19 +71,8 @@ Class Diemrenluyen extends MY_Controller
             $check_mssv = true;
             break;
             } 
-||||||| .r83
-          if (empty($break_xeploai)) {
-             $check_xeploai = true;
-              break;
-           } 
-=======
-          if (empty($break_xeploai)) {
-             $check_xeploai = true;
-              break;
-           }
->>>>>>> .r85
+
           }
-<<<<<<< .mine
           if ($check_xeploai == false || $check_mssv == false) {
 
               
@@ -109,53 +97,7 @@ Class Diemrenluyen extends MY_Controller
                     {
                       $error['load'] = true;
                     }
-||||||| .r83
-          if ($check_xeploai == false) {
-            for ($row = 4; $row <= $highestRow; $row ++)
-          {
-            $break = $sheetData[$row]['A'];
-            if (!empty($break)) {
-              $mssv = $sheetData[$row]['B'];
-              $checksv = $this->SinhVien_model->checkSV($mssv);
-              if ($checksv == false) {
-                $checkdiem = $this->Diemrenluyen_model->checkDRL($mssv,$hocki);
-                if ($checkdiem == false) {
-                  $data = array(
-                    'MSSV' => $sheetData[$row]['B'],
-                    'nganhhoc_id' => $nganh,
-                    'khoahoc_id' => $khoahoc,
-                    'hocky_id' => $hocki,
-                    'diem' => $sheetData[$row]['F'],
-                    'xeploai' => $sheetData[$row]['G'],
-                  );
-                  if($this->Diemrenluyen_model->create($data))
-                  {
-                    $error['load'] = true;
-                  }
-=======
-          if ($check_xeploai == false) {
-            for ($row = 4; $row <= $highestRow; $row ++)
-          {
-            $break = $sheetData[$row]['A'];
-            if (!empty($break)) {
-              $mssv = $sheetData[$row]['B'];
-              $checksv = $this->Sinhvien_model->checkSV($mssv);
-              if ($checksv == false) {
-                $checkdiem = $this->Diemrenluyen_model->checkDRL($mssv,$hocki);
-                if ($checkdiem == false) {
-                  $data = array(
-                    'MSSV' => $sheetData[$row]['B'],
-                    'nganhhoc_id' => $nganh,
-                    'khoahoc_id' => $khoahoc,
-                    'hocky_id' => $hocki,
-                    'diem' => $sheetData[$row]['F'],
-                    'xeploai' => $sheetData[$row]['G'],
-                  );
-                  if($this->Diemrenluyen_model->create($data))
-                  {
-                    $error['load'] = true;
-                  }
->>>>>>> .r85
+
                   //else{
                     //$error['load'] = false;
                   ////}
