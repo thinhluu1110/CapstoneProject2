@@ -38,6 +38,9 @@ Class Diemrenluyen extends MY_Controller
       $error  = array(
         'khongchonfile' => '',
         'load' => false,
+        'kiemtra_xeploai' => false,
+        
+        'kiemtrafile' => false,
       );
 
         $this->load->library('PHPExcel');
@@ -45,7 +48,11 @@ Class Diemrenluyen extends MY_Controller
         $khoahoc = $this->input->post('makhoa');
         $hocki = $this->input->post('mahocki');
         if (!empty($_FILES['file']['tmp_name'])) {
+          
           $file = $_FILES['file']['tmp_name'];
+          if ($_FILES['file']['type'] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || $_FILES['file']['type'] == "application/vnd.ms-excel"  ) {
+          
+          
           $objReader = PHPExcel_IOFactory::createReaderForFile($file);
           $objExcel = $objReader->load($file);
           $worksheet = $objExcel->getSheet(0);
@@ -53,14 +60,79 @@ Class Diemrenluyen extends MY_Controller
           $sheetData = $objExcel->getActiveSheet()->toArray(null,true,true,true);
           $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
           $check_xeploai = false;
+          $check_mssv = false;
 
           for ($row=4; $row <= $highestRow ; $row++) {
             $break_xeploai = $sheetData[$row]['G'];
+<<<<<<< .mine
+            $break_mssv = $sheetData[$row]['B'];
+            $break_dongtrong = $sheetData[$row]['A'];
+            if ((empty($break_xeploai) || empty($break_mssv)) && !empty($break_dongtrong)) {
+            $check_xeploai = true;
+            $check_mssv = true;
+            break;
+            } 
+||||||| .r83
+          if (empty($break_xeploai)) {
+             $check_xeploai = true;
+              break;
+           } 
+=======
           if (empty($break_xeploai)) {
              $check_xeploai = true;
               break;
            }
+>>>>>>> .r85
           }
+<<<<<<< .mine
+          if ($check_xeploai == false || $check_mssv == false) {
+
+              
+              for ($row = 4; $row <= $highestRow; $row ++)
+              {
+              $break = $sheetData[$row]['A'];
+              if (!empty($break)) {
+                $mssv = $sheetData[$row]['B'];
+                $checksv = $this->SinhVien_model->checkSV($mssv);
+                if ($checksv == false) {
+                  $checkdiem = $this->Diemrenluyen_model->checkDRL($mssv,$hocki);
+                  if ($checkdiem == false) {
+                    $data = array(
+                      'MSSV' => $sheetData[$row]['B'],
+                      'nganhhoc_id' => $nganh,
+                      'khoahoc_id' => $khoahoc,
+                      'hocky_id' => $hocki,
+                      'diem' => $sheetData[$row]['F'],
+                      'xeploai' => $sheetData[$row]['G'],
+                    );
+                    if($this->Diemrenluyen_model->create($data))
+                    {
+                      $error['load'] = true;
+                    }
+||||||| .r83
+          if ($check_xeploai == false) {
+            for ($row = 4; $row <= $highestRow; $row ++)
+          {
+            $break = $sheetData[$row]['A'];
+            if (!empty($break)) {
+              $mssv = $sheetData[$row]['B'];
+              $checksv = $this->SinhVien_model->checkSV($mssv);
+              if ($checksv == false) {
+                $checkdiem = $this->Diemrenluyen_model->checkDRL($mssv,$hocki);
+                if ($checkdiem == false) {
+                  $data = array(
+                    'MSSV' => $sheetData[$row]['B'],
+                    'nganhhoc_id' => $nganh,
+                    'khoahoc_id' => $khoahoc,
+                    'hocky_id' => $hocki,
+                    'diem' => $sheetData[$row]['F'],
+                    'xeploai' => $sheetData[$row]['G'],
+                  );
+                  if($this->Diemrenluyen_model->create($data))
+                  {
+                    $error['load'] = true;
+                  }
+=======
           if ($check_xeploai == false) {
             for ($row = 4; $row <= $highestRow; $row ++)
           {
@@ -83,29 +155,38 @@ Class Diemrenluyen extends MY_Controller
                   {
                     $error['load'] = true;
                   }
+>>>>>>> .r85
                   //else{
                     //$error['load'] = false;
                   ////}
 
-                }
-                else
-                {
-                  $id_drl = $checkdiem['drl_id'];
-                  $data = array(
-                    'diem' => $sheetData[$row]['F'],
-                  );
-                  if($this->Diemrenluyen_model->update($id_drl,$data))
-                  {
-                    $error['load'] = true;
                   }
-                }
+                  else
+                  {
+                   $id_drl = $checkdiem['drl_id'];
+                    $data = array(
+                      'diem' => $sheetData[$row]['F'],
+                    );
+                    if($this->Diemrenluyen_model->update($id_drl,$data))
+                    {
+                      $error['load'] = true;
+                    }
+                  }
               }
             }
+            else {
+              break;
+            }
+          }
+        
+      }
+          else{
+            $error['kiemtra_xeploai'] = true;
           }
         }
-          else{
-            $error['load'] = false;
-          }
+        else{
+          $error['kiemtrafile'] = true;
+        }
         }
         else{
           $error['khongchonfile'] = 'Vui Lòng Chọn File';
