@@ -34,6 +34,7 @@ Class Chuongtrinhdaotao extends MY_Controller
             'khongchonfile' => '',
             'msg' => '',
             'check' => false,
+            'checkfile' => '',
             //'UpdateSucess' => '',
             //'UpdateError' => ''
             //'ReviewImage' => ''
@@ -62,6 +63,9 @@ Class Chuongtrinhdaotao extends MY_Controller
                 //tạo ra nội dung thông báo
                 $data['check'] = true;
             }
+            // else{
+            //   $data['checkfile'] = $upload_data;
+            // }
           }
           else{
             $data['khongchonfile'] = 'Vui Lòng Chọn File';

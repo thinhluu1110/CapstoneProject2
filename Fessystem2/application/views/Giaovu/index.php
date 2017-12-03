@@ -834,7 +834,7 @@
 									if(manganh == '' || makhoa == '' ) {
 										$('#msg-success-import-ctdt').prop('hidden',true);
 										$('#msg-fail-import-ctdt').prop('hidden',false);
-										$('#msg-fail-import-ctdt h5').html("Vui Lòng Chọn Ngành Học Hoặc Khóa Học Hoặc Học Kì");
+										$('#msg-fail-import-ctdt h5').html("Vui Lòng Chọn Ngành Học Hoặc Khóa Học");
 										
 									
 									
@@ -869,6 +869,13 @@
 														$('#msg-fail-import-ctdt h5').html(data.msg);
 														$('#msg-fail-import-ctdt').prop('hidden',false);
 													}
+													// if (data.checkfile != '') {
+													// 	$('#msg-success-import-ctdt').prop('hidden',true);
+														
+													// 	$('#msg-fail-import-ctdt h5').html(data.checkfile);
+													// 	$('#msg-fail-import-ctdt').prop('hidden',false);
+														
+													// }
 												}
 												// error: function(){
 												// 	$('#msg-fail h5').html('Thêm Thất Bại');

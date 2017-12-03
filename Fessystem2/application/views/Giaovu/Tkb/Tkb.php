@@ -63,7 +63,7 @@
                             <a><h1> Ngày cập nhật : <?php echo $row->ngay_cap_nhat ?></h1></a>
                         </div>
                         <div class="container-fluid text-center">
-                            <img src="<?php echo base_url('upload/tkb/'.$row->ten_anh)?>">
+                            <img src="<?php echo base_url('upload/Tkb/'.$row->ten_anh)?>">
                         </div>
                     <?php endforeach;?>
 
