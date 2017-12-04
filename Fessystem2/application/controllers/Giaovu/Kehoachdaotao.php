@@ -14,7 +14,7 @@ Class Kehoachdaotao extends MY_Controller
 		}
 		function index()
 		{
-      
+
       $listhocki = $this->Hocki_model->get_list();
       $data['listhocki'] = $listhocki;
       $listnganhhoc = $this->Nganhhoc_model->get_list();
@@ -134,13 +134,13 @@ Class Kehoachdaotao extends MY_Controller
               $worksheet = $objExcel->getSheet(0);
               $objReader->setLoadSheetsOnly($worksheet);
               $sheetData = $objExcel->getActiveSheet()->toArray('null',true,true,true);
-              
-              
+
+
               $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
               // echo $highestRow;
               // exit;
-              
-              // for ($row = 6; $row <= $highestRow; $row++) { 
+
+              // for ($row = 6; $row <= $highestRow; $row++) {
               //   //$break_dongtrong = $sheetData[$row]['A'];
               //   $break_mamon = $sheetData[$row]['B'];
               //   $break_tenmon = $sheetData[$row]['C'];
@@ -161,6 +161,8 @@ Class Kehoachdaotao extends MY_Controller
               // if($check_mamon == false)
               // {
           for ($row = 6; $row <= $highestRow; $row ++) {
+            // $break = $sheetData[$row]['B'];
+  					// if ($break == 'null') {
               $dataKHDT = array(
                 'monhoc_id' => $sheetData[$row]['B'],
                 'TenMH' => $sheetData[$row]['C'],
@@ -175,11 +177,13 @@ Class Kehoachdaotao extends MY_Controller
                 'nganhhoc_id' => $nganh,
                 'hocki_id' => $sheetData[$row]['L'],
                 'khoahoc_id' => $khoa,
+                'monphu_id' => 0,
               );
               if($this->Kehoachdaotao_tam_model->create($dataKHDT))
               {
                 $error['load'] = true;
               }
+              // }
             }
           // }
           // else{
@@ -203,6 +207,10 @@ Class Kehoachdaotao extends MY_Controller
             $error['thanhcong'] = '';
             $error['thatbai'] = '';
             $error['tontaimon'] = '';
+            $monphu = 0;
+            if ($this->input->post('monphu') == 1) {
+              $monphu = 1;
+            }
             $monhoc_id = $this->input->post('tenmon');
             $khoahoc_id = $this->input->post('khoahoc');
             $nganhhoc_id = $this->input->post('nganhhoc');
@@ -221,6 +229,7 @@ Class Kehoachdaotao extends MY_Controller
               'nganhhoc_id' => $this->input->post('nganhhoc'),
               'hocki_id' => $this->input->post('hocki'),
               'khoahoc_id' => $this->input->post('khoahoc'),
+              'monphu_id' => $monphu,
             );
             if($this->Kehoachdaotao_model->create($dataKHDT))
             {
@@ -292,7 +301,7 @@ Class Kehoachdaotao extends MY_Controller
         {
         $id = $this->input->post('khdt_id');
         //$data['listnganhhoc'] = $this->Nganhhoc_model->get_list();
-      
+
         $data['khdt_info'] = $this->Kehoachdaotao_model->Getmon_khdtID($id);
         echo json_encode($data);
         }
@@ -309,6 +318,7 @@ Class Kehoachdaotao extends MY_Controller
           $khoahoc = $value['khoahoc_id'];
           $hocki = $value['hocki_id'];
           $monhoc = $value['monhoc_id'];
+
           $checkdiem = $this->Kehoachdaotao_model->Delmon_checkkhdt($id,$nganhhoc,$khoahoc,$hocki,$monhoc);
           if (count($checkdiem) > 0) {
           $error['msg'] = 'Đã Có Dữ Liệu Kết Quả Học Tập Cho Kế Hoạch Đào Tạo Này';
@@ -335,6 +345,7 @@ Class Kehoachdaotao extends MY_Controller
               'khoaluan' => $this->input->post('khoaluan'),
               //'nganhhoc_id' => $this->input->post('nganhhoc_id'),
               'hocki_id' => $this->input->post('hocki_id'),
+              'monphu_id' => $this->input->post('monphu'),
               //'khoahoc_id' => $this->input->post('khoahoc_id'),
             );
             if($this->Kehoachdaotao_model->update($id,$dataKHDT))
@@ -369,7 +380,7 @@ Class Kehoachdaotao extends MY_Controller
           $this->Kehoachdaotao_model->delete($id);
             $error['check'] = true;
         }
-          echo json_encode($error); 
+          echo json_encode($error);
         }
 	}
 

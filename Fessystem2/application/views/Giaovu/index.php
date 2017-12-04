@@ -278,17 +278,17 @@
 										$('#msg-success-HocPhi').prop('hidden',true);
 										$('#msg-fail-HocPhi h5').html(data.message.kiemtrafile);
 										$('#msg-fail-HocPhi').prop('hidden',false);
-										
+
 										//$('#msg-fail-HocPhi').prop("style").display = "none";
 									}
 									// if (data.message.kiemtra_mssv == true) {
 									// 	$('#msg-success-HocPhi').prop('hidden',true);
 									// 	$('#msg-fail-HocPhi h5').html("Dữ liệu");
 									// 	$('#msg-fail-HocPhi').prop('hidden',false);
-										
+
 									// 	//$('#msg-fail-HocPhi').prop("style").display = "none";
 									// }
-									
+
 									if (data.message.ImportSucces != '') {
 										$('#dialogImport').modal('hide');
 										$('#dialogValidation_Import_HocPhi').modal('show');
@@ -605,6 +605,7 @@
 									var baitaplon = $('#baitaplon').val();
 									var doan = $('#doan').val();
 									var khoaluan = $('#khoaluan').val();
+
 									if(manganh == '' || makhoa == '' || mahocki == '' || mamon == '' || dvht_tc == '' || tongso == '' || lythuyet == '' || thuchanh == '' || baitap == '' || baitaplon == '' || doan == '' || khoaluan == '' ) {
 											$('#msg-fail').prop('hidden',false);
 											$('#msg-fail h5').html('Vui Lòng Chọn Và Nhập Thông Tin Đầy Đủ');
@@ -834,7 +835,7 @@
 												contentType: false,
 												success: function(data){
 													if (data.thanhcong != '') {
-														$('#dialogEditCTDT').modal('hide');						
+														$('#dialogEditCTDT').modal('hide');
 														$('#dialogValidation_Import_CTDT').modal('show');
 													}
 													if (data.khongchonfile != '') {
@@ -1656,14 +1657,14 @@
 														$('#msg-fail-edit-nganh h5').html(data.msg);
 														$('#msg-success-edit-nganh').prop('hidden',true);
 													}
-													
+
 													if (data.check == true) {
 														$('#dialogEdit').modal('hide');
 														$('#dialogValidation_Add_Nganh').modal('show');
 													}
 													// $('#form-Add').trigger("reset");
 													// $('#msg-success').prop('hidden',false);
-												
+
 												}
 												// error: function(){
 												// 	$('#msg-fail h5').html('Thêm Thất Bại');
@@ -1775,13 +1776,16 @@
 								data:{'khdt_id' : idkhdt},
 								dataType: 'json',
 								success: function(data){
+												console.log(data);
+												if (data.khdt_info.monphu_id == 1) {
+													$('#monphu_edit').attr('checked','checked');
+												}
 												$('#idkhdt_edit_monkhdt').val(data.khdt_info.khdt_id);
 												$('#nganhhoc_edit_monkhdt').val(data.khdt_info.tennganh);
 												$('#khoahoc_edit_monkhdt').val(data.khdt_info.tenkhoa);
 												$('#idnganhhoc_edit_monkhdt').val(data.khdt_info.nganhhoc_id);
 												$('#idkhoahoc_edit_monkhdt').val(data.khdt_info.khoahoc_id);
 												$('#idmon_edit_monkhdt').val(data.khdt_info.monhoc_id);
-
 												$('#mamon_edit_monkhdt').val(data.khdt_info.MaMH);
 												$('#tenmon_edit_monkhdt').val(data.khdt_info.TenMH);
 												$('#dvht_tc_edit_monkhdt').val(data.khdt_info.dvht_tc);
@@ -1813,7 +1817,11 @@
 									var baitaplon = $('#baitaplon_edit_monkhdt').val();
 									var doan = $('#doan_edit_monkhdt').val();
 									var khoaluan = $('#khoaluan_edit_monkhdt').val();
-									if(dvht == '' || tongso == '' || lithuyet == '' || thuchanh == '' || baitap == '' || baitaplon == '' || doan == '' || khoaluan == '') {
+									var monphu = 0;
+									if ($('#monphu_edit').is(":checked")) {
+										monphu = 1;
+									}
+									if(dvht == '' || tongso == '' || lithuyet == '' || thuchanh == '' || baitap == '' || baitaplon == '' || doan == '' || khoaluan == '' || idhocki == '') {
 											$('#msg-fail-editmon-khdt').prop('hidden',false);
 											$('#msg-fail-editmon-khdt h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success-editmon-khdt').prop('hidden',true);
@@ -1821,7 +1829,7 @@
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Kehoachdaotao/editmon_khdt') ?>",
 												type: "POST",
-												data:{'nganhhoc':idnganh,'khoahoc':idkhoa,'monhoc':idmon,'khdt_id':idkhdt,'hocki_id' : idhocki, 'dvht':dvht, 'tongso':tongso, 'lythuyet':lithuyet, 'thuchanh':thuchanh, 'baitap':baitap,'baitaplon':baitaplon, 'doAn':doan, 'khoaluan':khoaluan},
+												data:{'nganhhoc':idnganh,'khoahoc':idkhoa,'monhoc':idmon,'khdt_id':idkhdt,'hocki_id' : idhocki, 'dvht':dvht, 'tongso':tongso, 'lythuyet':lithuyet, 'thuchanh':thuchanh, 'baitap':baitap,'baitaplon':baitaplon, 'doAn':doan, 'khoaluan':khoaluan, 'monphu' : monphu},
 												dataType: 'json',
 												success: function(data){
 

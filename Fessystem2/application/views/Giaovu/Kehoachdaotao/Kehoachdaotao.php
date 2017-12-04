@@ -56,10 +56,12 @@
                     <span>Tổng số DVHT của chương trình:
                       <strong>
                           <?php
-                          if(@$listCTDT){
+                          if(isset($listCTDT)){
                           $tong = 0; foreach ($listCTDT as $keyval => $value)
                         {
+                          if ($listCTDT[$keyval]['monphu_id'] == 0) {
                           $tong = $tong+ $listCTDT[$keyval]['dvht_tc'];
+                          }
                         }
                         echo $tong;
                           }
@@ -804,6 +806,11 @@
                                   </div>
                               </div>
                               </div>
+                              <div class="row">
+                              <div class=" form-group col-xs-6" style="margin-left:5px" >
+                                    <input type="checkbox"  id="monphu" value="1"name="monphu">Không Tính Đơn Vị Học Trình(Tín Chỉ) Cho Môn Này
+                              </div>
+                            </div>
                             </div>
                         </div>
                         <div class="modal-footer" style="padding:0px">
@@ -839,21 +846,21 @@
                                <div class="row">
                                  <div class="form-group col-xs-4" style="margin-left:5px">
                                      <label class="coltrol-lable">Ngành:</label>
-                                     
+
                                           <input class="form-control" id="nganhhoc_edit_monkhdt" name="nganhhoc_edit_monkhdt" disabled  />
-                                     
+
                                  </div>
                                   <div hidden class="form-group col-xs-4" style="margin-left:5px">
                                      <label class="coltrol-lable">ID KHDT:</label>
-                                     
+
                                           <input class="form-control" id="idkhdt_edit_monkhdt" name="idkhdt_edit_monkhdt" disabled  />
-                                     
+
                                  </div>
                                  <div hidden class="form-group col-xs-4" style="margin-left:5px">
                                      <label class="coltrol-lable">ID Ngành:</label>
-                                     
+
                                           <input class="form-control" id="idnganhhoc_edit_monkhdt" name="idnganhhoc_edit_monkhdt" disabled  />
-                                     
+
                                  </div>
                                  <div hidden class="form-group col-xs-4" style="margin-left:10px">
                                     <label class="coltrol-lable">ID Khóa:</label>
@@ -879,7 +886,7 @@
                                 </div>
                               </div>
                               <div class="row">
-                                <div class="form-group col-xs-4"s tyle="margin-left:5px">
+                                <div class="form-group col-xs-4"  style="margin-left:5px">
                                     <label class="coltrol-lable">Nhập Mã Môn Học:</label>
                                     <input class="form-control" id="mamon_edit_monkhdt" name="mamon" disabled  />
                                 </div>
@@ -926,10 +933,16 @@
                           </div>
                           </div>
                         </div>
+                        <div class="row">
+                        <div class=" form-group col-xs-6" style="margin-left:20px" >
+                              <input type="checkbox"  id="monphu_edit" value="yes" name="monphu">Không Tính Đơn Vị Học Trình(Tín Chỉ) Cho Môn Này
+                        </div>
+                        </div>
                     </div>
+
                     <div class="modal-footer" style="padding:0px">
+
                         <input type="button" class="btn btn-sm btn-success" value="Sửa" id="submit_edit_monkhdt" name="submit">
-                        
                     </div>
                 </form>
                 </div>
