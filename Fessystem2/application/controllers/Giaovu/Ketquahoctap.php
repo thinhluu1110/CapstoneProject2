@@ -83,9 +83,11 @@
 			$this->load->library('PHPExcel');
 			if (!empty($_FILES['file']['tmp_name'])) {
 				$file = $_FILES['file']['tmp_name'];
-				if ($_FILES['file']['type'] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || $_FILES['file']['type'] == "application/vnd.ms-excel"  )
+<<<<<<< .mine				echo json_encode($_FILES['file']['type']);
+				exit;
+=======				if ($_FILES['file']['type'] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || $_FILES['file']['type'] == "application/vnd.ms-excel"  )
 				{
-				$objReader = PHPExcel_IOFactory::createReaderForFile($file);
+>>>>>>> .theirs				$objReader = PHPExcel_IOFactory::createReaderForFile($file);
 				$objExcel = $objReader->load($file);
 				$worksheet = $objExcel->getSheet(0);
 				$objReader->setLoadSheetsOnly($worksheet);

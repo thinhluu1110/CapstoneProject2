@@ -454,7 +454,7 @@
 									var nganhhoc_id = $('#nganhhoc_dieukien_doan').val();
 									var khoahoc_id = $('#khoahoc_dieukien_doan').val();
 									var maxmonno = $('#maxmonno_dieukien_doan').val();
-									
+
 									if(nganhhoc_id == '' || khoahoc_id == '') {
 										$('#msg-fail-dkda').prop('hidden',false);
 										$('#msg-fail-dkda h5').html('Dữ Liệu Không Được Để Trống');
@@ -480,7 +480,7 @@
 														$('#msg-success-dkda').prop('hidden',true);
 													}
 													if (data.thanhcong != '') {
-														$('#dialogAdd').modal('hide');						
+														$('#dialogAdd').modal('hide');
 														$('#dialogValidation_Add_DKDA').modal('show');
 													}
 												}
@@ -542,7 +542,7 @@
 														$('#msg-success-dkda-edit').prop('hidden',true);
 													}
 													if (data.thanhcong != '') {
-														$('#dialogEditDKDA').modal('hide');						
+														$('#dialogEditDKDA').modal('hide');
 														$('#dialogValidation_Add_DKDA').modal('show');
 													}
 
@@ -618,7 +618,7 @@
 											dataType: 'json',
 											success: function(data){
 												if (data.thanhcong != '') {
-													$('#dialogAdd').modal('hide');						
+													$('#dialogAdd').modal('hide');
 													$('#dialogValidation_Addmon_KHDT').modal('show');
 												}
 												if (data.tontaimon != '') {
@@ -720,7 +720,8 @@
 								processData: false,
 								contentType: false,
 								success: function(data){
-									//console.log(data);
+									console.log(data);
+
 									$('#msg-success').prop('hidden',true);
 									$('#msg-fail').prop('hidden',true);
 									if (data.khongchonfile != '') {
@@ -868,9 +869,9 @@
 										$('#msg-success-import-ctdt').prop('hidden',true);
 										$('#msg-fail-import-ctdt').prop('hidden',false);
 										$('#msg-fail-import-ctdt h5').html("Vui Lòng Chọn Ngành Học Hoặc Khóa Học");
-										
-									
-									
+
+
+
 									}else{
 										 	var form_data = new FormData();
 											form_data.append('file', file_data);
@@ -886,28 +887,28 @@
 												contentType: false,
 												success: function(data){
 													if (data.check == true) {
-														$('#dialogImportCTDT').modal('hide');						
+														$('#dialogImportCTDT').modal('hide');
 														$('#dialogValidation_Import_CTDT').modal('show');
 													}
 													if (data.khongchonfile != '') {
 														$('#msg-success-import-ctdt').prop('hidden',true);
-														
+
 														$('#msg-fail-import-ctdt h5').html(data.khongchonfile);
 														$('#msg-fail-import-ctdt').prop('hidden',false);
-														
+
 													}
 													if (data.msg != '') {
 														$('#msg-success-import-ctdt').prop('hidden',true);
-														
+
 														$('#msg-fail-import-ctdt h5').html(data.msg);
 														$('#msg-fail-import-ctdt').prop('hidden',false);
 													}
 													// if (data.checkfile != '') {
 													// 	$('#msg-success-import-ctdt').prop('hidden',true);
-														
+
 													// 	$('#msg-fail-import-ctdt h5').html(data.checkfile);
 													// 	$('#msg-fail-import-ctdt').prop('hidden',false);
-														
+
 													// }
 												}
 												// error: function(){
@@ -1819,7 +1820,7 @@
 
 													if (data.check == true) {
 														//alert('word');
-														$('#dialogEdit_KHDT').modal('hide');						
+														$('#dialogEdit_KHDT').modal('hide');
 														$('#dialogValidation_Addmon_KHDT').modal('show');
 													}
 
@@ -1829,7 +1830,7 @@
 														$('#msg-fail-editmon-khdt h5').html("Sửa Thất Bại");
 														$('#msg-success-editmon-khdt').prop('hidden',true);
 													}
-													
+
 													if(data.msg != '')
 													{
 														$('#msg-fail-editmon-khdt').prop('hidden',false);
@@ -1862,7 +1863,7 @@
 								success: function(data){
 												if (data.check == true) {
 
-														$('#dialogDelete_KHDT').modal('hide');						
+														$('#dialogDelete_KHDT').modal('hide');
 														$('#dialogValidation_Addmon_KHDT').modal('show');
 													}
 												if (data.msg != '') {
@@ -1870,7 +1871,7 @@
 														$('#msg-fail-deletemon-khdt h5').html(data.msg);
 														$('#msg-success-deletemon-khdt').prop('hidden',true);
 													}
-													
+
 												}
 
 											 });
