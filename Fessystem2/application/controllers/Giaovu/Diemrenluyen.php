@@ -38,7 +38,7 @@ Class Diemrenluyen extends MY_Controller
       $error  = array(
         'khongchonfile' => '',
         'load' => false,
-        'kiemtra_xeploai' => false,
+        //'kiemtra_xeploai' => false,
         
         'kiemtrafile' => false,
       );
@@ -62,23 +62,23 @@ Class Diemrenluyen extends MY_Controller
           $check_xeploai = false;
           $check_mssv = false;
 
-          for ($row=4; $row <= $highestRow ; $row++) {
-            $break_xeploai = $sheetData[$row]['G'];
-            $break_mssv = $sheetData[$row]['B'];
-            $break_dongtrong = $sheetData[$row]['A'];
-            if ((empty($break_xeploai) || empty($break_mssv)) && !empty($break_dongtrong)) {
-            $check_xeploai = true;
-            $check_mssv = true;
-            break;
-            } 
+          // for ($row=4; $row <= $highestRow ; $row++) {
+          //   $break_xeploai = $sheetData[$row]['G'];
+          //   $break_mssv = $sheetData[$row]['B'];
+          //   $break_dongtrong = $sheetData[$row]['A'];
+          //   if ((empty($break_xeploai) || empty($break_mssv)) && !empty($break_dongtrong)) {
+          //   $check_xeploai = true;
+          //   $check_mssv = true;
+          //   break;
+          //   } 
 
-          }
-          if ($check_xeploai == false || $check_mssv == false) {
+          // }
+          // if ($check_xeploai == false || $check_mssv == false) {
 
               
               for ($row = 4; $row <= $highestRow; $row ++)
               {
-              $break = $sheetData[$row]['A'];
+              $break = $sheetData[$row]['B'];
               if (!empty($break)) {
                 $mssv = $sheetData[$row]['B'];
                 $checksv = $this->SinhVien_model->checkSV($mssv);
@@ -121,10 +121,10 @@ Class Diemrenluyen extends MY_Controller
             }
           }
         
-      }
-          else{
-            $error['kiemtra_xeploai'] = true;
-          }
+      // }
+      //     else{
+      //       $error['kiemtra_xeploai'] = true;
+      //     }
         }
         else{
           $error['kiemtrafile'] = true;

@@ -22,6 +22,16 @@ Class Nganhhoc_model extends MY_Model
 			 return true;
 		 }
 	 }
+   function checktn($tennganh)
+   {
+     $this->db->select('*')
+      ->from('nganhhoc as n')
+      ->where('n.tennganh', $tennganh);
+      $query = $this->db->get();
+     if ($query->num_rows() > 0) {
+       return true;
+     }
+   }
     function Get_nganhbyid($id)
     {
       $this->db->where('nganhhoc_id',$id);

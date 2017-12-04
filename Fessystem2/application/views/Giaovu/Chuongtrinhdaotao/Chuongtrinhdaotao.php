@@ -113,7 +113,7 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <div id="dialogImportCTDT" class="modal fade" tabindex="-1" style="padding-top: 0px; padding-bottom: 0px; padding-left: 17px;" aria-hidden="false">
+        <div id="dialogImportCTDT" data-backdrop = "static" data-keyboard = "false" class="modal fade" tabindex="-1" style="padding-top: 0px; padding-bottom: 0px; padding-left: 17px;" aria-hidden="false">
             <div class="modal-dialog" style="width:400px !important;height:600px !important">
                 <div class="modal-content">
                     <form id="form_CTDT" name="frmCreateEmployee" class="form-horizontal" role="form" ng-submit="UpdateEmployee()" method="post"  enctype="multipart/form-data">
@@ -156,7 +156,7 @@
                         </div>
                         <div class="modal-footer" style="padding:0px">
                             <input type="button" class="btn btn-sm btn-success" id="submit_ctdt_import" name="Thêm" value="Thêm">
-                            <button class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
+                            <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                         </div>
                     </form>
                 </div>
@@ -166,7 +166,7 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <div id="dialogImportKHDT" class="modal fade" tabindex="-1" style="padding-top: 0px; padding-bottom: 0px; padding-left: 17px;" aria-hidden="false">
+        <div id="dialogImportKHDT" data-backdrop = "static" data-keyboard = "false" class="modal fade" tabindex="-1" style="padding-top: 0px; padding-bottom: 0px; padding-left: 17px;" aria-hidden="false">
             <div class="modal-dialog" style="width:400px !important;height:600px !important">
                 <div class="modal-content">
                     <form id="form_KHDT" name="frmCreateEmployee" class="form-horizontal" role="form" method="post"ng-submit="UpdateEmployee()"  enctype="multipart/form-data">
@@ -208,7 +208,7 @@
                         </div>
                         <div class="modal-footer" style="padding:0px">
                             <input type="button" class="btn btn-sm btn-success" id="submit_khdt_import" name="Thêm" value="Thêm">
-                            <button class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
+                            <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                         </div>
                     </form>
                 </div>
@@ -274,6 +274,7 @@
                         </div>
                         <div class="modal-footer" style="padding:0px">
                             <input type="button" class="btn btn-sm btn-success" value="Sửa" id="submit_edit_ctdt" name="submit">
+                            <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                         </div>
                     </form>
                 </div>

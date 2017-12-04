@@ -68,6 +68,9 @@ Class Hocphi extends MY_Controller
         $delAll = $this->Hocphi_model->delAll();
         for ($row=11; $row < $highestRow ; $row++)
         {
+          $break = $sheetData[$row]['B'];
+          if (!empty($break))
+          {
           $data = array(
           'MSSV' => $sheetData[$row]['B'],
           'hocphi_chinh' => $sheetData[$row]['G'],
@@ -78,6 +81,9 @@ Class Hocphi extends MY_Controller
           if($this->Hocphi_model->create($data))
           {
             $data['message']['ImportSucces'] = 'Thêm mới dữ liệu thành công';
+          }
+          }else{
+            break;
           }
         }
       }

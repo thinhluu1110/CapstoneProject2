@@ -7,14 +7,14 @@
 <div class="hitec-content">
     <h2>KẾT QUẢ HỌC TẬP</h2>
     <div class="container-fluid">
-        <form method="post" action="<?php echo base_url('Giaovu/Ketquahoctap/index')?>" id="formSearch" role="form" onsubmit="return true;">
+        <form method="get" action="<?php echo base_url('Giaovu/Ketquahoctap/index')?>" id="formSearch" role="form" onsubmit="return true;">
             <div class="row">
               <div class="col-xs-3">
                   <div class="input-group hitec-w-100percent">
                       <select class="form-control" id="monhoc" name="monhoc" onchange='if(this.value != 0) { this.form.submit(); }'>
                           <option value="">--- Chọn Môn Học ---</option>
                           <?php foreach ($listmon as $row):?>
-                          <option value="<?php echo $row['monhoc_id'] ?>" <?php echo ($this->input->post('monhoc') == $row['monhoc_id']) ? 'selected' : '' ?> ><?php echo $row['TenMH'] ?></option>
+                          <option value="<?php echo $row['monhoc_id'] ?>" <?php echo ($this->input->get('monhoc') == $row['monhoc_id']) ? 'selected' : '' ?> ><?php echo $row['TenMH'] ?></option>
                           <?php endforeach;?>
                       </select>
                   </div>
@@ -24,7 +24,7 @@
                         <select class="form-control" id="lophoc" name="lophoc" onchange='if(this.value != 0) { this.form.submit(); }'>
                             <option value="">--- Chọn Lớp Học ---</option>
                             <?php foreach ($listlophoc as $row):?>
-                            <option value="<?php echo $row['lophoc_id'] ?>" <?php echo ($this->input->post('lophoc') == $row['lophoc_id']) ? 'selected' : '' ?> ><?php echo $row['tenlop'] ?></option>
+                            <option value="<?php echo $row['lophoc_id'] ?>" <?php echo ($this->input->get('lophoc') == $row['lophoc_id']) ? 'selected' : '' ?> ><?php echo $row['tenlop'] ?></option>
                             <?php endforeach;?>
                         </select>
                     </div>
@@ -47,8 +47,13 @@
 	<div class="container-fluid text-right">
                 <a href="javascript:void(0)"  title="Import excel" data-toggle="modal" data-target="#dialogImport">[Nhập Kết Quả Học Tập]</a>
             </div>
+            <div class="container-fluid text-right">
+                    <a href="<?php echo base_url('Giaovu/Ketquahoctap/index?exp=exp&monhoc=').$this->input->get('monhoc').'&lophoc='.$this->input->get('lophoc')?> "><u>Xuất Danh Sách Ra Excel</u></a>
+            </div>
+            
           <?php } ?>
         <div class="container-fluid">
+            
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>

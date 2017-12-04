@@ -17,6 +17,7 @@ Class Nganhhoc extends MY_Controller
     function Add()
     {
         $manganh = $this->input->post('manganh');
+        $tennganh = $this->input->post('tennganh');
         $data = array(
           'tennganh' => $this->input->post('tennganh'),
           'ma_nganhhoc' => $this->input->post('manganh')
@@ -25,8 +26,8 @@ Class Nganhhoc extends MY_Controller
           'msg' => '',
           'check' => true
         );
-        if ($this->Nganhhoc_model->checkNH($manganh) == true) {
-          $error['msg'] = 'Mã Ngành Đã Tồn Tại';
+        if (($this->Nganhhoc_model->checkNH($manganh) == true)||($this->Nganhhoc_model->checktn($tennganh) == true)) {
+          $error['msg'] = 'Mã Ngành Hoặc Tên Ngành Đã Tồn Tại';
         }
         else {
           if($this->Nganhhoc_model->create($data))

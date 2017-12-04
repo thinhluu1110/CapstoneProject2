@@ -10,6 +10,7 @@ Class Kehoachdaotao extends MY_Controller
       $this->load->model('Khoahoc_model');
       $this->load->model('Nganhhoc_model');
       $this->load->model('Hocki_model');
+      $this->load->model('Chuongtrinhdaotao_model');
 		}
 		function index()
 		{
@@ -105,29 +106,61 @@ Class Kehoachdaotao extends MY_Controller
       $error  = array(
         'tontaikhdt' => '',
         'khongchonfile' => '',
-        'load' => false
+        'load' => false,
+        'kiemtrafile' => false,
+        'kiemtradulieu' => false,
+        'tontaictdt' => '',
       );
-        $this->load->library('PHPExcel');
-        if (!empty($_FILES['file']['tmp_name'])) {
+      $this->load->library('PHPExcel');
+      if (!empty($_FILES['file']['tmp_name'])) {
         $nganh=$this->input->post('manganh');
         $khoa=$this->input->post('makhoa');
-        $check = $this->Kehoachdaotao_model->checkKHDT($nganh,$khoa);
-        if ($check == false) {
-          $error['tontaikhdt'] = "Kế Hoạch Đào Tạo Cho Khóa Này Đã Tồn Tại";
+        $check_mamon = false;
+        $checkctdt = $this->Chuongtrinhdaotao_model->checkCTDT($nganh,$khoa);
+        if ($checkctdt == true) {
+          $error['tontaictdt'] = "CTDT của khóa này chưa tồn tại";
         }
-        else {
-          $file = $_FILES['file']['tmp_name'];
-          $objReader = PHPExcel_IOFactory::createReaderForFile($file);
-          $objExcel = $objReader->load($file);
-          $worksheet = $objExcel->getSheet(0);
-          $objReader->setLoadSheetsOnly($worksheet);
-          $sheetData = $objExcel->getActiveSheet()->toArray('null',true,true,true);
-
-          $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
-          // echo $highestRow;
-          // exit;
-
-          for ($row = 6; $row < $highestRow; $row ++) {
+        else{
+          $check = $this->Kehoachdaotao_model->checkKHDT($nganh,$khoa);
+          if ($check == false) {
+            $error['tontaikhdt'] = "Kế Hoạch Đào Tạo Cho Khóa Này Đã Tồn Tại";
+          }
+          else {
+            $file = $_FILES['file']['tmp_name'];
+            if ($_FILES['file']['type'] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || $_FILES['file']['type'] == "application/vnd.ms-excel" )
+            {
+              $objReader = PHPExcel_IOFactory::createReaderForFile($file);
+              $objExcel = $objReader->load($file);
+              $worksheet = $objExcel->getSheet(0);
+              $objReader->setLoadSheetsOnly($worksheet);
+              $sheetData = $objExcel->getActiveSheet()->toArray('null',true,true,true);
+              
+              
+              $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
+              // echo $highestRow;
+              // exit;
+              
+              // for ($row = 6; $row <= $highestRow; $row++) { 
+              //   //$break_dongtrong = $sheetData[$row]['A'];
+              //   $break_mamon = $sheetData[$row]['B'];
+              //   $break_tenmon = $sheetData[$row]['C'];
+              //   $break_dvht = $sheetData[$row]['D'];
+              //   $break_ts = $sheetData[$row]['E'];
+              //   $break_lt = $sheetData[$row]['F'];
+              //   $break_bt = $sheetData[$row]['G'];
+              //   $break_th = $sheetData[$row]['H'];
+              //   $break_btl = $sheetData[$row]['I'];
+              //   $break_da = $sheetData[$row]['J'];
+              //   $break_kl = $sheetData[$row]['K'];
+              //   $break_hocki = $sheetData[$row]['L'];
+              //   if (is_null($break_mamon) || is_null($break_tenmon) || is_null($break_hocki) || is_null($break_dvht) || is_null($break_ts) || is_null($break_lt) || is_null($break_bt) || is_null($break_th) || is_null($break_btl) || is_null($break_da) || is_null($break_kl) ) {
+              //     $check_mamon = true;
+              //     break;
+              //   }
+              // }
+              // if($check_mamon == false)
+              // {
+          for ($row = 6; $row <= $highestRow; $row ++) {
               $dataKHDT = array(
                 'monhoc_id' => $sheetData[$row]['B'],
                 'TenMH' => $sheetData[$row]['C'],
@@ -148,7 +181,16 @@ Class Kehoachdaotao extends MY_Controller
                 $error['load'] = true;
               }
             }
+          // }
+          // else{
+          //   $error['kiemtradulieu'] = true;
+          // }
+          }
+          else{
+            $error['kiemtrafile'] = true;
+          }
         }
+      }
       }
       else {
           $error['khongchonfile'] = 'Vui Lòng Chọn File';

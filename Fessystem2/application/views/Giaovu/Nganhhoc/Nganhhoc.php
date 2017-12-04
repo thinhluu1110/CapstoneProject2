@@ -79,6 +79,7 @@
                         </div>
                         <div class="modal-footer" style="padding:0px">
                           <input type="button" class="btn btn-sm btn-success" id="submit_add" name="Thêm" value="Thêm">
+                          <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                         </div>
                     </form>
                 </div>
@@ -121,6 +122,7 @@
                         </div>
                         <div class="modal-footer" style="padding:0px">
                           <input type="button" class="btn btn-sm btn-success" id="submit_editnganh" name="Sửa" value="Sửa">
+                          <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                         </div>
                     </form>
                 </div>
@@ -152,6 +154,7 @@
               </div>
               <div class="modal-footer" style="padding:0px">
                 <input type="button" class="btn btn-sm btn-danger" id="submit_delnganh" name="Xóa" value="Xóa">
+                <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
             </div>
         </form>
                 </div>

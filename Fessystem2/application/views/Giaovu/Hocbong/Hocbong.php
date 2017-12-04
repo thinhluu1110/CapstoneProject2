@@ -6,13 +6,15 @@
          <div class="hitec-content">
              <img id="ajax-loader" src="/Teacher/images/icons/ajax-loader.gif" alt="" style="display: none;">
              <h2>Danh Sách Sinh Viên Đủ Điều Kiện Nhận Học Bổng</h2>
+             <?php if ($this->session->userdata('phanquyen') == 1) { ?>
              <div class="container-fluid text-right">
-                 <a href="javascript:void(0)"  title="Thêm" data-toggle="modal" data-target="#dialogEdit">[Nhập Điều Kiện Duyệt Đồ Án]</a>
+                 <a href="javascript:void(0)"  title="Thêm" data-toggle="modal" data-target="#dialogEdit">[Nhập Điều Kiện Duyệt Học Bổng]</a>
             </div>
             <div id="searchResult" style="margin-top:5px;">
             <div class="container-fluid text-right">
                     <a href="<?php if($listsvpasshb != null){echo base_url('Giaovu/Hocbong/index?exp=exp&nganhhoc=').$this->input->get('nganhhoc').'&khoahoc='.$this->input->get('khoahoc').'&hocki='.$this->input->get('hocki').'&tbht='.$this->input->get('tbht').'&tbrl='.$this->input->get('tbrl').'&thilai='.$this->input->get('thilai');}?> "><u>Xuất Danh Sách Ra Excel</u></a>
             </div>
+            <?php } ?>
            <div class="container-fluid">
                <table class="table table-bordered table-striped table-hover">
                    <thead>

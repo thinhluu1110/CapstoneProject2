@@ -68,7 +68,7 @@ Class Chuongtrinhdaotao extends MY_Controller
             // }
           }
           else{
-            $data['khongchonfile'] = 'Vui Lòng Chọn File';
+            $data['khongchonfile'] = $upload_data;
           }
         }
         else{

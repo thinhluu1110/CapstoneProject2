@@ -36,7 +36,7 @@ class Thongtinsinhvien extends MY_Controller
       'khongchonfile' => '',
       'load' => false,
       'kiemtrafile' => false,
-      'kiemtra_mssv' => false,
+      // 'kiemtra_mssv' => false,
     );
     $nganh=$this->input->post('manganh');
     $khoa=$this->input->post('makhoa');
@@ -52,15 +52,15 @@ class Thongtinsinhvien extends MY_Controller
         $sheetData = $objExcel->getActiveSheet()->toArray(null,true,true,true);
         $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
         $checkmssv = false;
-        for ($row=3; $row <= $highestRow ; $row++) {
-            $break_dongtrong = $sheetData[$row]['B'];
-            $break_mssv = $sheetData[$row]['B'];
-            if (empty($break_mssv) && !empty($break_dongtrong)) {
-            $checkmssv = true;
-            break;
-            } 
-          }
-        if ($checkmssv == false) {
+        // for ($row=3; $row <= $highestRow ; $row++) {
+        //     $break_dongtrong = $sheetData[$row]['A'];
+        //     $break_mssv = $sheetData[$row]['B'];
+        //     if (empty($break_mssv) && !empty($break_dongtrong)) {
+        //     $checkmssv = true;
+        //     break;
+        //     } 
+        //   }
+        //if ($checkmssv == false) {
           for ($row = 3; $row <= $highestRow; $row ++)
           {
             $break = $sheetData[$row]['B'];
@@ -101,6 +101,8 @@ class Thongtinsinhvien extends MY_Controller
                   'Email' => $sheetData[$row]['AO'],
                   'Ngaysinh' => $sheetData[$row]['E'],
                   'Phai'=> $sheetData[$row]['F'],
+                  'nganhhoc_id' => $nganh,
+                  'khoahoc_id' => $khoa,
                 );
                 if ($this->Sinhvien_model->update($sv_id,$data)) {
                   $error['load'] = true;
@@ -111,10 +113,10 @@ class Thongtinsinhvien extends MY_Controller
               break;
             }
           }
-        }
-        else{
-          $error['kiemtra_mssv'] = true;
-        }
+        // }
+        // else{
+        //   $error['kiemtra_mssv'] = true;
+        // }
       }
       else
       {

@@ -16,8 +16,8 @@
 			//get lophoc list
 			$input = array();
 			$data['listmon'] = $this->Monhoc_model->get_monhoc();
-			$monhoc = $this->input->post('monhoc');
-			$lophoc = $this->input->post('lophoc');
+			$monhoc = $this->input->get('monhoc');
+			$lophoc = $this->input->get('lophoc');
 			if($monhoc)
 			{
 				$data['listlophoc'] = $this->Lophoc_model->get_lop_mon($monhoc);
@@ -25,6 +25,49 @@
 			if ($lophoc && $monhoc) {
 				$data['listDiem'] = $this->Ketquahoctap_model->get_Diem_kqht($lophoc,$monhoc);
 			}
+			//pre($data['listDiem']);
+			 if ($this->input->get('exp')) {
+		        $this->load->library('PHPExcel');
+		        $objExcel = new PHPExcel;
+		        $objExcel->setActiveSheetIndex(0);
+		        $sheet = $objExcel->getActiveSheet()->setTitle('Danh Sách Điểm SV');
+		        $rowcount = 1;
+		        $sheet->setCellValue('A'.$rowcount, 'Mã sinh viên');
+		        $sheet->setCellValue('B'.$rowcount, 'Họ');
+		        $sheet->setCellValue('C'.$rowcount, 'Tên');
+		        $sheet->setCellValue('D'.$rowcount, 'Ngày sinh');
+		        $sheet->setCellValue('E'.$rowcount, 'Lớp');
+		        $sheet->setCellValue('F'.$rowcount, 'Mã Ngành');
+		        $sheet->setCellValue('G'.$rowcount, 'Mã Môn');
+		        $sheet->setCellValue('H'.$rowcount, 'Tên Môn');
+		        $sheet->setCellValue('I'.$rowcount, 'ĐTB');
+		        foreach ($data['listDiem'] as $row => $value) {
+		          for ($i=0; $i < count($value) ; $i++) { 
+		            $rowcount++;
+		            $sheet->setCellValue('A'.$rowcount, $value['sinhvien_id']);
+		            $sheet->setCellValue('B'.$rowcount, $value['Ho']);
+		            $sheet->setCellValue('C'.$rowcount, $value['Ten']);
+		            $sheet->setCellValue('D'.$rowcount, $value['Ngaysinh']);
+		            $sheet->setCellValue('E'.$rowcount, $value['tenlop']);
+		            $sheet->setCellValue('F'.$rowcount, $value['ma_nganhhoc']);
+		            $sheet->setCellValue('G'.$rowcount, $value['MaMH']);
+		            $sheet->setCellValue('H'.$rowcount, $value['TenMH']);
+		            $sheet->setCellValue('I'.$rowcount, $value['diemTB']);
+		            break;
+		          }
+		        }
+		        $objWriter = new PHPExcel_Writer_Excel2007($objExcel);
+		        $filename = 'abc.xlsx';
+		        $objWriter->save($filename);
+		        header('Content-Disposition: attachment; filename="' . $filename . '"');
+		        header('Content-Type: application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet');
+		        header('Content-Length: '.filesize($filename));
+		        header('Content-Transfer-Encoding: binary');
+		        header('Cache-Control: must-revalidate');
+		        header('Pragma: no-cache');
+		        readfile($filename);
+		        return;
+		      }
 			$data['temp'] = 'Giaovu/Ketquahoctap/Ketquahoctap';
 			$this->load->view('Giaovu/index', $data);
 		}
@@ -33,12 +76,15 @@
 		{
 			$error  = array(
 				'khongchonfile' => '',
-				'load' => false
+				'load' => false,
+				'kiemtrafile' => '',
 			);
 			//$hocki=$this->input->post('hocki');
 			$this->load->library('PHPExcel');
 			if (!empty($_FILES['file']['tmp_name'])) {
 				$file = $_FILES['file']['tmp_name'];
+				if ($_FILES['file']['type'] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || $_FILES['file']['type'] == "application/vnd.ms-excel"  )
+				{
 				$objReader = PHPExcel_IOFactory::createReaderForFile($file);
 				$objExcel = $objReader->load($file);
 				$worksheet = $objExcel->getSheet(0);
@@ -78,6 +124,10 @@
 						break;
 					}
 				}
+			}
+			else{
+				$error['kiemtrafile'] = 'Vui lòng chọn đúng định dạng file';
+			}
 			}
 			else {
 				$error['khongchonfile'] = 'Vui Lòng Chọn File';
