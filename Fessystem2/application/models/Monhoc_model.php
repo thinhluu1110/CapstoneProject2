@@ -73,5 +73,16 @@ Class Monhoc_model extends MY_Model
        return true;
       }
     }
+    function Check_tenmon($tenmon)
+    {
+      $this->db->select('*')
+      ->from('monhoc as m')
+      ->where('m.TenMH', $tenmon);
+      $query = $this->db->get();
+      if ($query->num_rows() > 0) 
+      {
+       return true;
+      }
+    }
 }
 ?>

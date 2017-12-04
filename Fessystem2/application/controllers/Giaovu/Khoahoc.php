@@ -20,8 +20,8 @@ Class Khoahoc extends MY_Controller
 		}
 		function Add()
 		{
-			$tenkhoa = $this->input->post('khoahoc');
-      $manganh = $this->input->post('nganhhoc');
+			$tenkhoa = $this->input->post('tenkhoa');
+      $manganh = $this->input->post('nganhhoc_id');
 			$data = array(
           	'nganhhoc_id' => $this->input->post('nganhhoc_id'),
 			'tenkhoa' => $this->input->post('tenkhoa'),
@@ -38,7 +38,7 @@ Class Khoahoc extends MY_Controller
        		}
        		else
        		{
-			if($this->Khoahoc_model->create($data))
+			     if($this->Khoahoc_model->create($data))
               {
                 $error['check'] = true;
               }
@@ -65,7 +65,10 @@ Class Khoahoc extends MY_Controller
               'check' => true
           );
 
-
+          if ($this->Khoahoc_model->Check_Khoa($tenkhoa,$manganh) == true) {
+            $error['msg'] = 'Khóa học đã tồn tại trong hệ thống';
+          }
+          else{
           if($this->Khoahoc_model->update($id,$data))
               {
 
@@ -75,7 +78,7 @@ Class Khoahoc extends MY_Controller
               {
                 $error['check'] = false;
               }
-
+            }
 				echo json_encode($error);
 		}
 		function Del()

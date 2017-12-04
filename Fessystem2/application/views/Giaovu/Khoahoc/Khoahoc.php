@@ -111,7 +111,7 @@
                         </div>
                         <div class="modal-footer" style="padding:0px">
                             <input type="button" class="btn btn-sm btn-success" value="Thêm" id="submit_addkhoa" name="submit">
-
+                            <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                         </div>
                     </form>
                 </div>
@@ -151,7 +151,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="coltrol-lable">Nhập Tên Khóa:</label>
-                                        <input class="form-control" value="" id="tenkhoa_edit" name="tenkhoa_edit" disabled />
+                                        <input class="form-control" value="" id="tenkhoa_edit" name="tenkhoa_edit" />
                                     </div>
                                     <div class="form-group">
                                         <label class="coltrol-lable">Nhập Năm Bắt Đầu:</label>
@@ -166,6 +166,7 @@
                         </div>
                         <div class="modal-footer" style="padding:0px">
                           <input type="button" class="btn btn-sm btn-success" id="submit_editkhoa" name="Sửa" value="Sửa">
+                          <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                         </div>
                     </form>
                 </div>
@@ -197,6 +198,7 @@
               </div>
               <div class="modal-footer" style="padding:0px">
                 <input type="button" class="btn btn-sm btn-danger" id="submit_delkhoa" name="Xóa" value="Xóa">
+                <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
             </div>
         </form>
                 </div>

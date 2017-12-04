@@ -17,7 +17,8 @@ Class Monhoc extends MY_Controller
 		}
 		function Add()
 		{
-				$mamon = $this->input->post('mamonhoc');	
+				$mamon = $this->input->post('mamonhoc');
+        $tenmon = $this->input->post('tenmonhoc');  	
 				$data = array(
 					'MaMH' => $this->input->post('mamonhoc'),
 					'TenMH' => $this->input->post('tenmonhoc')
@@ -27,9 +28,9 @@ Class Monhoc extends MY_Controller
 					'msg' => '',
           			'check' => true
 				);
-				if ($this->Monhoc_model->Check_Mon($mamon) == true) 
+				if (($this->Monhoc_model->Check_Mon($mamon) == true) || ($this->Monhoc_model->Check_tenmon($tenmon) == true)) 
 				{
-					$error['msg'] = 'Môn học đã tồn tại trong hệ thống';
+					$error['msg'] = 'Mã Môn Hoặc Tên Môn Đã Tồn Tại Trong Hệ Thống';
 				}
 				else
        			{

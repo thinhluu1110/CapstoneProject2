@@ -1105,11 +1105,22 @@
 									var nambd = $('#nambd_edit').val();
 									var namkt = parseInt($('#nambd_edit').val()) + 4;
 
-									if(tenkhoa == '' || nambd == '' || namkt == '' ) {
+									if(tenkhoa == '' || nambd == '') {
 											$('#msg-fail-edit-khoa').prop('hidden',false);
 											$('#msg-fail-edit-khoa h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success-edit-khoa').prop('hidden',true);
-									}else{
+									}
+									else if (isNaN(namkt)) {
+										$('#msg-fail-edit-khoa').prop('hidden',false);
+										$('#msg-fail-edit-khoa h5').html('Năm Bắt Đầu Phải Nhập Số');
+										$('#msg-success-edit-khoa').prop('hidden',true);
+									}
+									else if (nambd.length > 4) {
+										$('#msg-fail-edit-khoa').prop('hidden',false);
+										$('#msg-fail-edit-khoa h5').html('Năm Học Không Được Lớn Hơn 4 Số');
+										$('#msg-success-edit-khoa').prop('hidden',true);
+									}
+									else{
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/khoahoc/Edit') ?>",
 												type: "POST",
@@ -1272,6 +1283,7 @@
 									var khoahoc = $('#khoahoc_add_khoahoc').val();
 									var nambd = $('#nambd_add_khoahoc').val();
 									var namkt = parseInt($('#nambd_add_khoahoc').val()) + 4;
+
 									if(nganhhoc == '' || khoahoc == '' || nambd == '') {
 											$('#msg-fail').prop('hidden',false);
 											$('#msg-fail h5').html('Dữ Liệu Không Được Để Trống');
@@ -1644,19 +1656,14 @@
 														$('#msg-fail-edit-nganh h5').html(data.msg);
 														$('#msg-success-edit-nganh').prop('hidden',true);
 													}
-													else {
-													if (data.check == false) {
-														$('#msg-fail-edit-nganh').prop('hidden',false);
-														$('#msg-fail-edit-nganh h5').html("Sửa Thất Bại");
-														$('#msg-success-edit-nganh').prop('hidden',true);
-													}
+													
 													if (data.check == true) {
 														$('#dialogEdit').modal('hide');
 														$('#dialogValidation_Add_Nganh').modal('show');
 													}
 													// $('#form-Add').trigger("reset");
 													// $('#msg-success').prop('hidden',false);
-												}
+												
 												}
 												// error: function(){
 												// 	$('#msg-fail h5').html('Thêm Thất Bại');

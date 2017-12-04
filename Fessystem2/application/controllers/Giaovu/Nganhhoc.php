@@ -49,6 +49,7 @@ Class Nganhhoc extends MY_Controller
     function Edit()
     {
       $manganh = $this->input->post('manganh');
+      $tennganh = $this->input->post('tennganh');
       $id = $this->input->post('idnganh');
         $data = array(
           'tennganh' => $this->input->post('tennganh'),
@@ -56,16 +57,17 @@ Class Nganhhoc extends MY_Controller
         );
         $error = array(
           'msg' => '',
-          'check' => true
+          'check' => false,
         );
-
+        if ($this->Nganhhoc_model->checktn($tennganh) == true) {
+          $error['msg'] = 'Tên Ngành Đã Tồn Tại';
+        }
+        else{
           if($this->Nganhhoc_model->update($id,$data))
           {
             $error['check'] = true;
           }
-          else {
-              $error['check'] = false;
-          }
+        }
 
         echo json_encode($error);
     }

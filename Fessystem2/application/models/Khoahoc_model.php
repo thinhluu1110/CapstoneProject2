@@ -43,8 +43,8 @@ Class Khoahoc_model extends MY_Model
     {
       $this->db->select('*')
       ->from('khoahoc as k')
-      ->join('nganhhoc as n','k.nganhhoc_id = n.nganhhoc_id')
-      ->where('n.nganhhoc_id', $manganh)
+      //->join('nganhhoc as n','k.nganhhoc_id = n.nganhhoc_id')
+      ->where('k.nganhhoc_id', $manganh)
       ->where('k.tenkhoa', $tenkhoa);
       
       $query = $this->db->get();
