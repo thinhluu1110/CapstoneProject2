@@ -19,11 +19,13 @@
 	        $data['listCTDT'] = $this->Kehoachdaotao_model->filterKHDT($khoa,$nganh);
 	        //$data['listCTDT_by_hk'] = $this->Kehoachdaotao_model->filterKHDT_by_hk($khoa, $nganh, $ech_hoc_ki);
 			}
-			else{
+			else if($ech_hoc_ki){
 
 	        $data['listCTDT'] = $this->Kehoachdaotao_model->filterKHDT_by_hk($khoa, $nganh, $ech_hoc_ki);
 			//pre($data['listCTDT_by_hk']);
 			}
+			
+			$data['listCTDThk'] = $this->Kehoachdaotao_model->filterKHDT($khoa,$nganh);
 			
 			//$listhocki = 
 			$data['listhocki'] = $this->Hocki_model->Get_hk();

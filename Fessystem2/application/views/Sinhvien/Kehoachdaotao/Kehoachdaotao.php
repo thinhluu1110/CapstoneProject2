@@ -32,18 +32,18 @@
                 <div class="container-fluid" style="margin-top:10px; margin-bottom:10px">
                     <div class="row">
                         <div class="col-xs-12">
-                            Kế Hoạch Đào Tạo Ngành: <strong><?php if(@$listCTDT == null){ echo "";}else{echo @$listCTDT[0]['tennganh'];}?></strong>
+                            Kế Hoạch Đào Tạo Ngành: <strong><?php if(@$listCTDThk == null){ echo "";}else{echo @$listCTDThk[0]['tennganh'];}?></strong>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            Kế Hoạch Đào Tạo Khóa: <strong><?php if(@$listCTDT == null){ echo "";} else{echo @$listCTDT[0]['tenkhoa'];}?></strong>
+                            Kế Hoạch Đào Tạo Khóa: <strong><?php if(@$listCTDThk == null){ echo "";} else{echo @$listCTDThk[0]['tenkhoa'];}?></strong>
                         </div>
                         
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <span>Tổng số MÔN của chương trình: <strong><?php echo @count($listCTDT);?> môn</strong></span>
+                            <span>Tổng số MÔN của chương trình: <strong><?php echo @count($listCTDThk);?> môn</strong></span>
                         </div>
                     </div>
                     <div class="row">
@@ -51,10 +51,10 @@
                             <span>Tổng số DVHT của chương trình:
                               <strong>
                                   <?php
-                                  if(@$listCTDT){
-                                  $tong = 0; foreach ($listCTDT as $keyval => $value)
+                                  if(@$listCTDThk){
+                                  $tong = 0; foreach ($listCTDThk as $keyval => $value)
                                 {
-                                  $tong = $tong+ $listCTDT[$keyval]['dvht_tc'];
+                                  $tong = $tong+ $listCTDThk[$keyval]['dvht_tc'];
                                 }
                                 echo $tong;
                                   }
