@@ -42,7 +42,7 @@
 		        $sheet->setCellValue('H'.$rowcount, 'Tên Môn');
 		        $sheet->setCellValue('I'.$rowcount, 'ĐTB');
 		        foreach ($data['listDiem'] as $row => $value) {
-		          for ($i=0; $i < count($value) ; $i++) { 
+		          for ($i=0; $i < count($value) ; $i++) {
 		            $rowcount++;
 		            $sheet->setCellValue('A'.$rowcount, $value['sinhvien_id']);
 		            $sheet->setCellValue('B'.$rowcount, $value['Ho']);
@@ -83,11 +83,9 @@
 			$this->load->library('PHPExcel');
 			if (!empty($_FILES['file']['tmp_name'])) {
 				$file = $_FILES['file']['tmp_name'];
-<<<<<<< .mine				echo json_encode($_FILES['file']['type']);
-				exit;
-=======				if ($_FILES['file']['type'] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || $_FILES['file']['type'] == "application/vnd.ms-excel"  )
+				if ($_FILES['file']['type'] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || $_FILES['file']['type'] == "application/vnd.ms-excel"  )
 				{
->>>>>>> .theirs				$objReader = PHPExcel_IOFactory::createReaderForFile($file);
+					$objReader = PHPExcel_IOFactory::createReaderForFile($file);
 				$objExcel = $objReader->load($file);
 				$worksheet = $objExcel->getSheet(0);
 				$objReader->setLoadSheetsOnly($worksheet);
