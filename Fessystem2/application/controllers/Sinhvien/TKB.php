@@ -13,37 +13,17 @@ Class Tkb extends MY_Controller
      */
     function index()
     {
-        //load ra thu vien phan trang
-        $this->load->library('pagination');
-        $config = array();
-        $config['per_page']   = 10;//so luong san pham hien thi tren 1 trang
-
-        //khoi tao cac cau hinh phan trang
-        $this->pagination->initialize($config);
-
-        $segment = $this->uri->segment(4);
-        $segment = intval($segment);
-
         $input = array();
-        $input['limit'] = array($config['per_page'], $segment);
-
-        //kiem tra co thuc hien loc du lieu hay khong
-
-        //fillter Hoc ki
         $sch_hoc_ky = $this->input->get('Hocki');
-        $sch_hoc_ky = intval($sch_hoc_ky);
-        if($sch_hoc_ky > 0)
-        {
-            $input['where']['hocki_id'] = $sch_hoc_ky;
-        }
-
+        $nganh = $this->session->userdata('nganhhoc_id');
+        $khoa = $this->session->userdata('khoahoc_id');
         //lay danh sach thơi khoa bieu
-        $listTkb = $this->thoikhoabieu_model->get_list($input);
+        $listTkb = $this->thoikhoabieu_model->gettkbsv_byNKHK($nganh,$khoa,$sch_hoc_ky);
         $this->data['listTkb'] = $listTkb;
 
         //lay daanh sach hoc ki
         $this->load->model('hocki_model');
-        $input = array();
+ 
         $listhocki = $this->hocki_model->get_list($input);
         $this->data['listhocki'] = $listhocki;
 
@@ -56,3 +36,4 @@ Class Tkb extends MY_Controller
         $this->load->view('Sinhvien/index', $this->data);
     }    
 }
+?>

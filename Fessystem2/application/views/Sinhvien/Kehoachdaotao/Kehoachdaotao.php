@@ -54,7 +54,10 @@
                                   if(@$listCTDThk){
                                   $tong = 0; foreach ($listCTDThk as $keyval => $value)
                                 {
-                                  $tong = $tong+ $listCTDThk[$keyval]['dvht_tc'];
+                                    if ($listCTDThk[$keyval]['monphu_id'] == 0) {
+                                        $tong = $tong+ $listCTDThk[$keyval]['dvht_tc'];
+                                    }
+                                  
                                 }
                                 echo $tong;
                                   }
@@ -90,7 +93,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php for($j=0; $j < count($listCTDT); $j++) { 
+                            <?php if(isset($listCTDT)) { for($j=0; $j < count($listCTDT); $j++) { 
                                 if ($listCTDT[$j]['hocki_id'] ==1) {
                             ?>
                             <tr>
@@ -98,7 +101,7 @@
                                     <strong>Học Kì 1:</strong>
                                 </td>
                             </tr>
-                            <?php break;} } ?>
+                            <?php break;} } } ?>
                             <?php
 
                                 @$list = $listCTDT;
@@ -161,7 +164,7 @@
 
                             </tr>
                           <?php } } ?>
-                            <?php for($j=0; $j < count($listCTDT); $j++) { 
+                            <?php if(isset($listCTDT)) { for($j=0; $j < count($listCTDT); $j++) { 
                                 if ($listCTDT[$j]['hocki_id'] ==2) {
                             ?>
                             <tr>
@@ -169,7 +172,7 @@
                                     <strong>Học Kì 2:</strong>
                                 </td>
                             </tr>
-                            <?php break;} } ?>
+                            <?php break;} }} ?>
                             <?php
 
                                 @$list = $listCTDT;
@@ -232,7 +235,7 @@
 
                             </tr>
                           <?php } } ?>
-                          <?php for($j=0; $j < count($listCTDT); $j++) { 
+                          <?php if(isset($listCTDT)) { for($j=0; $j < count($listCTDT); $j++) { 
                                 if ($listCTDT[$j]['hocki_id'] ==3) {
                             ?>
                             <tr>
@@ -240,7 +243,7 @@
                                     <strong>Học Kì 3:</strong>
                                 </td>
                             </tr>
-                            <?php break;} } ?>
+                            <?php break;} } } ?>
                             <?php
 
                                 @$list = $listCTDT;
@@ -303,7 +306,7 @@
 
                             </tr>
                           <?php } } ?>
-                          <?php for($j=0; $j < count($listCTDT); $j++) { 
+                          <?php if(isset($listCTDT)) { for($j=0; $j < count($listCTDT); $j++) { 
                                 if ($listCTDT[$j]['hocki_id'] ==4) {
                             ?>
                             <tr>
@@ -311,7 +314,7 @@
                                     <strong>Học Kì 4:</strong>
                                 </td>
                             </tr>
-                            <?php break;} } ?>
+                            <?php break;} } } ?>
                             <?php
 
                                 @$list = $listCTDT;
@@ -374,7 +377,7 @@
 
                             </tr>
                           <?php } } ?>
-                          <?php for($j=0; $j < count($listCTDT); $j++) { 
+                          <?php if(isset($listCTDT)) { for($j=0; $j < count($listCTDT); $j++) { 
                                 if ($listCTDT[$j]['hocki_id'] ==5) {
                             ?>
                             <tr>
@@ -382,7 +385,7 @@
                                     <strong>Học Kì 5:</strong>
                                 </td>
                             </tr>
-                            <?php break;} } ?>
+                            <?php break;} } } ?>
                             <?php
 
                                 @$list = $listCTDT;
@@ -445,7 +448,7 @@
 
                             </tr>
                           <?php } } ?>
-                          <?php for($j=0; $j < count($listCTDT); $j++) { 
+                          <?php if(isset($listCTDT)) { for($j=0; $j < count($listCTDT); $j++) { 
                                 if ($listCTDT[$j]['hocki_id'] ==6) {
                             ?>
                             <tr>
@@ -453,7 +456,7 @@
                                     <strong>Học Kì 6:</strong>
                                 </td>
                             </tr>
-                            <?php break;} } ?>
+                            <?php break;} } } ?>
                             <?php
 
                                 @$list = $listCTDT;
@@ -516,7 +519,7 @@
 
                             </tr>
                           <?php } } ?>
-                          <?php for($j=0; $j < count($listCTDT); $j++) { 
+                          <?php if(isset($listCTDT)) { for($j=0; $j < count($listCTDT); $j++) { 
                                 if ($listCTDT[$j]['hocki_id'] ==7) {
                             ?>
                             <tr>
@@ -524,7 +527,7 @@
                                     <strong>Học Kì 7:</strong>
                                 </td>
                             </tr>
-                            <?php break;} } ?>
+                            <?php break;} } } ?>
                             <?php
 
                                 @$list = $listCTDT;
@@ -587,7 +590,7 @@
 
                             </tr>
                           <?php } } ?>
-                          <?php for($j=0; $j < count($listCTDT); $j++) { 
+                          <?php if(isset($listCTDT)) { for($j=0; $j < count($listCTDT); $j++) { 
                                 if ($listCTDT[$j]['hocki_id'] ==8) {
                             ?>
                             <tr>
@@ -595,7 +598,7 @@
                                     <strong>Học Kì 8:</strong>
                                 </td>
                             </tr>
-                            <?php break;} } ?>
+                            <?php break;} } } ?>
                             <?php
 
                                 @$list = $listCTDT;

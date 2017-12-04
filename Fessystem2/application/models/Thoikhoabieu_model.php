@@ -43,7 +43,7 @@ Class Thoikhoabieu_model extends MY_Model
     	$query = $this->db->get();
     	return $query->result();
 	}
-		function gettkbsv_byNKHK($idn,$idk,$idhk)
+	function gettkbsv_byNKHK($idn,$idk,$idhk)
 	{
 		$this->db->select('*')
 				->from('thoikhoabieu as tkb')->order_by('tkb.thoikhoabieu_id','desc');
@@ -59,7 +59,7 @@ Class Thoikhoabieu_model extends MY_Model
 			->from('thoikhoabieu as tkb');
 			$this->db->where('tkb.nganhhoc_id',$idn)->where('tkb.khoahoc_id',$idk)->where('tkb.hocki_id',$idhk);
       	$query = $this->db->get();
-
+      	
 		if ($query->num_rows() > 0) {
       		return $query->row_array();
  		}

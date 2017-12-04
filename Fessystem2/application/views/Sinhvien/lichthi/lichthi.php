@@ -41,12 +41,12 @@
                     </form>
                 </div> -->
                 <!-- /////////////////// -->
-                <?php foreach ($listLichthi as $row):?>
+                
                         <div class="container-fluid text-center">
-                            <img src="<?php echo base_url('upload/Lichthi/'.$row->ten_anh)?>">
+                            <img src="<?php echo base_url('upload/Lichthi/'.$listLichthi['ten_anh'])?>">
                             <br><br><br>        
                         </div>
-                    <?php endforeach;?>
+
                 
                 
             </div>
