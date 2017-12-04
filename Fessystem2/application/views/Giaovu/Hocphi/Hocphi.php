@@ -141,6 +141,7 @@
                         <div class="modal-footer" style="padding:0px">
                             <!-- <button class="btn btn-sm btn-success">Thêm</button> -->
                             <input type="button" id="submit_HocPhi" class="btn btn-sm btn-success" value="Thêm" name='submit' />
+                            <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                             <!-- <button class="btn btn-sm btn-danger" data-dismiss="modal">Thôi</button> -->
                         </div>
                     </form>

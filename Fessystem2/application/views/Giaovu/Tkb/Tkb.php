@@ -134,8 +134,8 @@
                                     </div>
                                     <div class="modal-footer" style="padding:0px">
                                         <!-- <button class="btn btn-sm btn-success">Thêm</button> -->
-                                        <input id="submit_TKB"  class="btn btn-sm btn-success   " value="Thêm" name='submit' />
-
+                                        <input id="submit_TKB" type="button"  class="btn btn-sm btn-success" value="Thêm" name='submit' />
+                                        <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                                     </div>
                                 </form>
 

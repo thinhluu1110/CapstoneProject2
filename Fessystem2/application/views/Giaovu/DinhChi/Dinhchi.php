@@ -9,7 +9,7 @@
 <div class="col-xs-12 col-offset-200">
     <div class="hitec-content">
         <img id="ajax-loader" src="/Teacher/images/icons/ajax-loader.gif" alt="" style="display: none;">
-        <h2>DANH SÁCH SINH VIÊN BUỘC Đình Chỉ</h2>
+        <h2>DANH SÁCH SINH VIÊN BUỘC ĐÌNH CHỈ</h2>
 		<div class="container-fluid">
         <form id="formSearch" role="form" onsubmit="return false;">
             <div class="row">
@@ -25,10 +25,12 @@
         </form>
 		</div>
         <div id="searchResult" style="margin-top:5px;">
+            <?php if ($this->session->userdata('phanquyen') == 1) { ?>
             <div class="container-fluid text-right">
-                <a href="<?php if($svStatus != null){echo base_url('Giaovu/Dinhchi/index?exp=exp');}?> "><u>Xuất Danh Sách Ra Excel</u>
+                <a href="<?php if($svStatus != null){echo base_url('Giaovu/Dinhchi/index?exp=exp');}?> "><u>[Xuất Danh Sách Ra Excel]</u>
                 </a>
             </div>
+            <?php } ?>
             <div class="container-fluid">
                 <table class="table table-bordered table-striped table-hover">
                     <thead>

@@ -48,7 +48,7 @@
                 <a href="javascript:void(0)"  title="Import excel" data-toggle="modal" data-target="#dialogImport">[Nhập Kết Quả Học Tập]</a>
             </div>
             <div class="container-fluid text-right">
-                    <a href="<?php echo base_url('Giaovu/Ketquahoctap/index?exp=exp&monhoc=').$this->input->get('monhoc').'&lophoc='.$this->input->get('lophoc')?> "><u>Xuất Danh Sách Ra Excel</u></a>
+                    <a href="<?php echo base_url('Giaovu/Ketquahoctap/index?exp=exp&monhoc=').$this->input->get('monhoc').'&lophoc='.$this->input->get('lophoc')?> "><u>[Xuất Danh Sách Ra Excel]</u></a>
             </div>
             
           <?php } ?>
@@ -152,9 +152,7 @@
                         <div class="modal-body">
                             <div class="row" style="margin:10px">
                                 <div class="col-xs-12 col-md-12 col-lg-12">
-                                    <div class="form-group">
-                                        <progress id="progress_bar_themKqht" role="progressbar" value="0" max="100" style="width:100%"></progress>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <label class="coltrol-lable">File Input:</label>
                                         <input type="file" id="file_KQHT" name="file">
@@ -164,6 +162,7 @@
                         </div>
                         <div class="modal-footer" style="padding:0px">
                             <input type="button" class="btn btn-sm btn-success" id="submit_kqht_import" name="Thêm" value="Thêm">
+                            <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                         </div>
                     </form>
                 </div>

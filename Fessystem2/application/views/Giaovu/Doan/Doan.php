@@ -30,9 +30,11 @@
                       </div>
                     </form>
                 </div>
+                <?php if ($this->session->userdata('phanquyen') == 1) { ?>
                   <div class="container-fluid text-right">
-                    <a href="<?php if($this->input->get('khoahoc')){echo base_url('Giaovu/Doan/index?exp=exp&khoahoc=').$this->input->get('khoahoc').'&nganhhoc='.$this->input->get('nganhhoc');}?> "><u>Xuất Danh Sách Ra Excel</u></a>
+                    <a href="<?php if($this->input->get('khoahoc')){echo base_url('Giaovu/Doan/index?exp=exp&khoahoc=').$this->input->get('khoahoc').'&nganhhoc='.$this->input->get('nganhhoc');}?> "><u>[Xuất Danh Sách Ra Excel]</u></a>
                     </div>
+                    <?php } ?>
                 <div id="searchResult" style="margin-top:5px;">
                     <div class="container-fluid">
                       <ul class="nav nav-tabs">

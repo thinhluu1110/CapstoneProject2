@@ -90,7 +90,7 @@
 							$('#msg-success').prop("style").display = "none";
 							if(nganhhoc == '' || khoahoc == '' || hocki == '') {
 								$('#msg-validation').prop("style").display = "block";
-								$('#msg-validation h5').html('Vui Lòng Chọn Ngành Học Hoặc Khóa Học Hoặc Học Kì Hoặc Lịch Thi');
+								$('#msg-validation h5').html('Vui Lòng Chọn Ngành Học Hoặc Khóa Học Hoặc Học Kì');
 							}else{
 								//khởi tạo đối tượng form data
 								var form_data = new FormData();
@@ -1680,7 +1680,7 @@
 									var makhoa = $('#khoahocImportSV').val();
 									if(manganh == '' || makhoa == '') {
 											$('#msg-fail').prop('hidden',false);
-											$('#msg-fail h5').html('Vui Lòng Chọn Ngành Học, Học Kì');
+											$('#msg-fail h5').html('Vui Lòng Chọn Ngành Học, Khóa Học');
 											$('#msg-success').prop('hidden',true);
 									}else{
 										 	var form_data = new FormData();

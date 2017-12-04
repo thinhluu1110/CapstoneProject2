@@ -49,6 +49,7 @@ Class Monhoc extends MY_Controller
 		function Edit()
 		{
 			$mamon = $this->input->post('mamon');
+      $tenmon = $this->input->post('tenmon');
       		$id = $this->input->post('idmon');
         	$data = array(
           		'TenMH' => $this->input->post('tenmon'),
@@ -58,8 +59,10 @@ Class Monhoc extends MY_Controller
           		'msg' => '',
           		'check' => true
         	);
-
-
+          if ($this->Monhoc_model->Check_tenmon($tenmon) == true) {
+            $error['msg'] = 'Tên Môn Đã Tồn Tại Trong Hệ Thống';
+          }
+          else{
           	if($this->Monhoc_model->update($id,$data))
           	{
             	$error['check'] = true;
@@ -67,7 +70,7 @@ Class Monhoc extends MY_Controller
           	else {
               	$error['check'] = false;
           	}
-
+          }
         echo json_encode($error);
 		}
 		function Del()

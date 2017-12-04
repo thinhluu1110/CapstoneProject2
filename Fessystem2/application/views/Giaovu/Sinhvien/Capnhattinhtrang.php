@@ -110,7 +110,7 @@
                         </div>
                         <div class="col-xs-8 form-control-static">
                             <div class="col-xs-12 text-right">
-                                <button type="button" onclick="back_sv()" class="btn btn-sm btn-danger" >Hủy</button>
+                                <button type="button" onclick="window.location = '<?php echo base_url('Giaovu/Sinhvien/index')?>'" class="btn btn-sm btn-danger" >Hủy</button>
                                 <button type="button" class="btn btn-sm btn-success" id="btn-updatestatus">Thiết Lập</button>
                             </div>
                         </div>

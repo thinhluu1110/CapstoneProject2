@@ -158,6 +158,7 @@
                 </div>
                 <div class="modal-footer" style="padding:0px">
                     <button type="button" class="btn btn-sm btn-success" id="submit_add_DKDA" name="submit">Thêm</button>
+                    <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                 </div>
             </form>
         </div>
@@ -216,6 +217,7 @@
                 <div class="modal-footer" style="padding:0px">
                     <!-- <button type="button" class="btn btn-sm btn-success" id="submit_edit_DKDA" name="submit">Sửa</button> -->
                     <input type="button" class="btn btn-sm btn-success" id="submit_edit_DKDA" name="submit" value="Sửa">
+                    <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                 </div>
             </form>
         </div>
@@ -247,6 +249,7 @@
               </div>
               <div class="modal-footer" style="padding:0px">
                 <input type="button" class="btn btn-sm btn-danger" id="submit_deldkda" name="Xóa" value="Xóa">
+                <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
             </div>
         </form>
                 </div>

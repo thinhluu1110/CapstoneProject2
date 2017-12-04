@@ -58,7 +58,7 @@
                 <div id="searchResult" style="margin-top:5px;">
                     <?php if ($this->session->userdata('phanquyen') == 1) {?>
                     <div class="container-fluid text-right">
-                        <a href="javascript:void(0)"  title="Import excel" data-toggle="modal" data-target="#dialogEdit">[Import Data]</a>
+                        <a href="javascript:void(0)"  title="Import excel" data-toggle="modal" data-target="#dialogEdit">[Thêm Lịch Thi]</a>
                     </div>
                     <?php } ?>
                     <div id="review_image" >
@@ -158,6 +158,7 @@
                                     <div class="modal-footer" style="padding:0px">
                                         <!-- <button class="btn btn-sm btn-success">Thêm</button> -->
                                         <input id="submit_Lichthi" type="button" class="btn btn-sm btn-success   " value="Thêm" name='submit' />
+                                        <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                                     </div>
                                 </form>
 

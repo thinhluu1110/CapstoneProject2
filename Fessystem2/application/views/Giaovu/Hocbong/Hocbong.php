@@ -12,7 +12,7 @@
             </div>
             <div id="searchResult" style="margin-top:5px;">
             <div class="container-fluid text-right">
-                    <a href="<?php if($listsvpasshb != null){echo base_url('Giaovu/Hocbong/index?exp=exp&nganhhoc=').$this->input->get('nganhhoc').'&khoahoc='.$this->input->get('khoahoc').'&hocki='.$this->input->get('hocki').'&tbht='.$this->input->get('tbht').'&tbrl='.$this->input->get('tbrl').'&thilai='.$this->input->get('thilai');}?> "><u>Xuất Danh Sách Ra Excel</u></a>
+                    <a href="<?php if($listsvpasshb != null){echo base_url('Giaovu/Hocbong/index?exp=exp&nganhhoc=').$this->input->get('nganhhoc').'&khoahoc='.$this->input->get('khoahoc').'&hocki='.$this->input->get('hocki').'&tbht='.$this->input->get('tbht').'&tbrl='.$this->input->get('tbrl').'&thilai='.$this->input->get('thilai');}?> "><u>[Xuất Danh Sách Ra Excel]</u></a>
             </div>
             <?php } ?>
            <div class="container-fluid">
@@ -80,7 +80,7 @@
                      <form id="form_dieukien_doan" name="frmCreateEmployee" class="form-horizontal" role="form" method="get" action="<?php echo base_url('Giaovu/Hocbong/index') ?>" enctype="multipart/form-data">
                          <div class="modal-header bg-primary" style="padding:0px;text-align:center">
                              <button onclick="reload()" type="button" class="close" data-dismiss="modal">×</button>
-                             <h5><strong class="modal-title">Thêm Điều Kiện Đồ Án</strong></h5>
+                             <h5><strong class="modal-title">Nhập Điều Kiện Xét Học Bổng</strong></h5>
                          </div>
                          <div hidden="hidden" id="msg-success-dkda" class="modal-header add_success" style="padding:0px;text-align:center">
                              <h5><strong class="modal-title"></strong></h5>
@@ -144,6 +144,7 @@
                          </div>
                          <div class="modal-footer" style="padding:0px">
                              <input type="submit" class="btn btn-sm btn-success" name="submit" value="Lọc Danh Sách">
+                             <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                          </div>
                      </form>
                  </div>

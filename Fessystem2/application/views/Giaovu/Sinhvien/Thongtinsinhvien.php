@@ -158,6 +158,7 @@
                         </div>
                         <div class="modal-footer" style="padding:0px">
                             <input type="button" class="btn btn-sm btn-success" id="submit_sv_import" name="Thêm" value="Thêm">
+                            <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                         </div>
                     </form>
                 </div>
