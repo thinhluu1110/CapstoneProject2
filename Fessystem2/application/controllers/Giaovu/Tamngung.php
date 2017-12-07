@@ -10,8 +10,12 @@ Class Tamngung extends MY_Controller
 		{
       $time = $this->input->get('TimeTN');
       $status = 1;
+      $idmssv = $this->input->get('timkiem_tamngung');
       $SV_info_filter = [];
       $data['svStatus'] = $this->Sinhvien_model->get_infobyStatus($status);
+      if ($idmssv) {
+        $data['svStatus'] = $this->Sinhvien_model->get_infobystatusbaoluu($idmssv,$status);
+      } 
       if ($time == '12') {
         foreach ($data['svStatus'] as  $value) {
           $a = strtotime(date('Y-m-d'));

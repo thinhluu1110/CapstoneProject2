@@ -9,7 +9,11 @@ Class Dinhchi extends MY_Controller
 		function index()
 		{
       $status = 2;
+      $idmssv = $this->input->get('timkiem_dinhchi');
       $data['svStatus'] = $this->Sinhvien_model->get_infobyStatus($status);
+      if ($idmssv) {
+        $data['svStatus'] = $this->Sinhvien_model->get_infobystatusbaoluu($idmssv,$status);
+      } 
       if ($this->input->get('exp')) {
         $this->load->library('PHPExcel');
         $objExcel = new PHPExcel;

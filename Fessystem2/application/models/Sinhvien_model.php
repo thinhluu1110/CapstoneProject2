@@ -81,6 +81,17 @@ Class Sinhvien_model extends MY_Model
     $query = $this->db->get();
     return $query->result_array();
   }
+  function get_infobystatusbaoluu($mssv,$status)
+  {
+    $this->db->select('*')
+    ->from('sinhvien as sv')
+    ->join('nganhhoc as n', 'sv.nganhhoc_id = n.nganhhoc_id')
+    ->join('khoahoc as k', 'sv.khoahoc_id = k.khoahoc_id')
+    ->where('sv.Tinhtrang', $status)
+    ->where('sv.MSSV', $mssv);
+    $query = $this->db->get();
+    return $query->result_array();
+  }
   function getsvbyNganh($idn)
   {
 		$this->db->select('*')

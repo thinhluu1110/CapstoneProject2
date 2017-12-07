@@ -29,9 +29,9 @@
                 </div>
                 <div class="col-xs-4">
                     <div class="input-group add-on hitec-w-100percent">
-                        <input class="form-control" placeholder="Tìm kiếm theo tên/mã SV" type="text" value="">
+                        <input class="form-control" placeholder="Tìm kiếm theo tên/mã SV" type="text" name="timkiem_baoluu" id="timkiem_baoluu" value="">
                         <div class="input-group-btn">
-                            <button class="btn btn-sm btn-default" id="timkiem_baoluu" name="timkiem_baoluu" type="submit"><span class="fa fa-search"></span>Tìm Kiếm</button>
+                            <button class="btn btn-sm btn-default" type="submit"><span class="fa fa-search"></span>Tìm Kiếm</button>
                         </div>
                     </div>
                 </div>

@@ -11,13 +11,13 @@
         <img id="ajax-loader" src="/Teacher/images/icons/ajax-loader.gif" alt="" style="display: none;">
         <h2>DANH SÁCH SINH VIÊN BUỘC ĐÌNH CHỈ</h2>
 		<div class="container-fluid">
-        <form id="formSearch" role="form" onsubmit="return false;">
+        <form method="get" action="<?php echo base_url('Giaovu/Dinhchi/index') ?>" id="formSearch" role="form" onsubmit="return true">
             <div class="row">
                 <div class="col-xs-4">
                     <div class="input-group add-on hitec-w-100percent">
-                        <input class="form-control" placeholder="Tìm kiếm theo tên/mã SV" type="text" value="">
+                        <input class="form-control" placeholder="Tìm kiếm theo tên/mã SV" id="timkiem_dinhchi" name="timkiem_dinhchi" type="text" value="">
                         <div class="input-group-btn">
-                            <button class="btn btn-sm btn-default" type="button"><span class="fa fa-search"></span>Tìm Kiếm</button>
+                            <button class="btn btn-sm btn-default" type="submit" ><span class="fa fa-search"></span>Tìm Kiếm</button>
                         </div>
                     </div>
                 </div>

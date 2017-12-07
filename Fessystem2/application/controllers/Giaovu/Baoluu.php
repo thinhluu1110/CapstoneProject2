@@ -12,8 +12,11 @@ Class Baoluu extends MY_Controller
       $time = $this->input->get('TimeBL');
       $status = 3;
       $SV_info_filter = [];
+       $idmssv = $this->input->get('timkiem_baoluu');
       $data['svStatus'] = $this->Sinhvien_model->get_infobyStatus($status);
-
+       if ($idmssv) {
+        $data['svStatus'] = $this->Sinhvien_model->get_infobystatusbaoluu($idmssv,$status);
+      } 
       if ($time == '12') {
         foreach ($data['svStatus'] as  $value) {
           $a = strtotime(date('Y-m-d'));
@@ -169,34 +172,7 @@ Class Baoluu extends MY_Controller
 
       }
 
-
-
-      // foreach ($data['svStatus'] as  $value) {
-      //   $SV_info_filter[] = [
-      //     'MSSV' => $value['MSSV'],
-      //     'Ho' => $value['Ho'],
-      //     'Ten' => $value['Ten'],
-      //     'Nganh' => $value['tennganh'],
-      //     'Khoa' => $value['tenkhoa'],
-      //     'Ngaybd' => $value['ngay_batdau'],
-      //     'Ngaykt' => $value['ngay_ketthuc'],
-      //     'Thoigian' => $c,
-      //   ];
-      // }
-      // foreach ($SV_info_filter as  $value) {
-      //   if ($value['Thoigian'] <= 304) {
-      //     $SV_info_filter[] = [
-      //       'MSSV' => $value['MSSV'],
-      //       'Ho' => $value['Ho'],
-      //       'Ten' => $value['Ten'],
-      //       'Nganh' => $value['Nganh'],
-      //       'Khoa' => $value['Khoa'],
-      //       'Ngaybd' => $value['Ngaybd'],
-      //       'Ngaykt' => $value['Ngaykt'],
-      //       'Thoigian' => $value['Thoigian'],
-      //     ];
-      //   }
-      // }
+     
       if ($this->input->get('exp')) {
         $this->load->library('PHPExcel');
         $objExcel = new PHPExcel;
@@ -239,7 +215,6 @@ Class Baoluu extends MY_Controller
       }
 			$data['temp'] = 'Giaovu/Baoluu/Baoluu';
 			$this->load->view('Giaovu/index',$data);
-		}
 	}
-
+}
  ?>
