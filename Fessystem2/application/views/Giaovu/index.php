@@ -552,13 +552,19 @@
 					});
 					$(document).ready(function() {
 							$('#submit_add').on('click', function() {
-									var manganh = $('#manganh').val();
-									var tennganh = $('#tennganh').val();
+									var manganh = $('#manganh').val().trim();
+									var tennganh = $('#tennganh').val().trim();
 									if(manganh == '' || tennganh == '' ) {
 											$('#msg-fail').prop('hidden',false);
 											$('#msg-fail h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success').prop('hidden',true);
-									}else{
+									}
+									else if(/^[a-zA-Z0-9- ]*$/.test(manganh) == false || /^[a-zA-Z0-9- ]*$/.test(tennganh) == false) {
+										$('#msg-fail').prop('hidden',false);
+										$('#msg-fail h5').html('Không Được Nhập Ký Tự Đặc Biệt');
+										$('#msg-success').prop('hidden',true);
+									}
+									else{
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Nganhhoc/Add') ?>",
 												type: "POST",
@@ -1284,7 +1290,7 @@
 									var nganhhoc = $('#nganhhoc_add_khoahoc').val();
 									var khoahoc = $('#khoahoc_add_khoahoc').val();
 									var nambd = $('#nambd_add_khoahoc').val();
-									var nambdtrim = $.trim(nambd); 
+									var nambdtrim = $.trim(nambd);
 									var namkt = parseInt($('#nambd_add_khoahoc').val()) + 4;
 
 									if(nganhhoc == '' || khoahoc == '' || nambdtrim == '') {
