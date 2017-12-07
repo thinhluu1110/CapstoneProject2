@@ -47,6 +47,9 @@
 																																<input type="submit" name="login" id="login_submit" tabindex="4" class="form-control btn btn-login" value="Đăng Nhập">
                                                             </div>
                                                         </div>
+																												<div class="row text-center">
+																													<a href="<?php echo base_url('Quenmatkhau/index')?>"  style="font-size:15px; margin-top:20px;" type="button" class="btn btn-link ">Quên Mật Khẩu</a>
+																												</div>
                                                     </div>
                                                 </form>
                                             </div>
