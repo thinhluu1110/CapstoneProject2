@@ -50,7 +50,7 @@ Class Login extends MY_Controller
             redirect(base_url().'Sinhvien/Kehoachdaotao/index');
           }
           else {
-            $data['user'] = 'Tài Khoản Không Tồn Tại';
+            $data['user'] = 'Tài Khoản Hoặc Mật Khẩu Không Đúng';
           }
 				}
 			}

@@ -1128,6 +1128,11 @@
 										$('#msg-fail-edit-khoa h5').html('Năm Học Không Được Lớn Hơn 4 Số');
 										$('#msg-success-edit-khoa').prop('hidden',true);
 									}
+									else if (nambdtrim.length < 4) {
+										$('#msg-fail-edit-khoa').prop('hidden',false);
+										$('#msg-fail-edit-khoa h5').html('Năm Học Không Được Nhỏ Hơn 4 Số');
+										$('#msg-success-edit-khoa').prop('hidden',true);
+									}
 									else{
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/khoahoc/Edit') ?>",
@@ -1309,6 +1314,12 @@
 									{
 										$('#msg-fail').prop('hidden',false);
 											$('#msg-fail h5').html('Năm Học Không Được Lớn Hơn 4 Số');
+											$('#msg-success').prop('hidden',true);
+									}
+									else if(nambdtrim.length <4)
+									{
+										$('#msg-fail').prop('hidden',false);
+											$('#msg-fail h5').html('Năm Học Không Được Nhỏ Hơn 4 Số');
 											$('#msg-success').prop('hidden',true);
 									}
 									else{
