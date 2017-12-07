@@ -24,6 +24,7 @@ Class Sinhvien_model extends MY_Model
     $query = $this->db->get();
     return $query->result_array();
   }
+  
 	function get_infobyMSSV($mssv)
   {
     $this->db->select('*')

@@ -65,23 +65,23 @@ class Thongtinsinhvien extends MY_Controller
           {
             $break = $sheetData[$row]['B'];
             if (!empty($break)) {
-              $sv_id = $sheetData[$row]['B'];
+              $sv_id = trim($sheetData[$row]['B']);
               $check = $this->Sinhvien_model->checkSV($sv_id);
               if ($check == true) {
                 $data = array(
-                  'MSSV' => $sheetData[$row]['B'],
-                  'Ho'   => $sheetData[$row]['C'],
-                  'Ten'  => $sheetData[$row]['D'],
-                  'username' => $sheetData[$row]['B'],
-                  'password' => md5($sheetData[$row]['B']),
+                  'MSSV' => trim($sheetData[$row]['B']),
+                  'Ho'   => trim($sheetData[$row]['C']),
+                  'Ten'  => trim($sheetData[$row]['D']),
+                  'username' => trim($sheetData[$row]['B']),
+                  'password' => trim(md5($sheetData[$row]['B'])),
                   'nganhhoc_id' => $nganh,
                   'khoahoc_id' => $khoa,
-                  'SDT' => $sheetData[$row]['AN'],
-                  'Email' => $sheetData[$row]['AO'],
+                  'SDT' => trim($sheetData[$row]['AN']),
+                  'Email' => trim($sheetData[$row]['AO']),
                   'Tinhtrang' => 0,
-                  'Ngaysinh' => $sheetData[$row]['E'],
+                  'Ngaysinh' => trim($sheetData[$row]['E']),
                   'phanquyen_id' => 0,
-                  'Phai'=> $sheetData[$row]['F'],
+                  'Phai'=> trim($sheetData[$row]['F']),
                 );
                 if($this->Sinhvien_model->create($data))
                 {
@@ -95,12 +95,12 @@ class Thongtinsinhvien extends MY_Controller
               {
                 $data = array(
                   //'MSSV' => $sheetData[$row]['B'],
-                  'Ho'   => $sheetData[$row]['C'],
-                  'Ten'  => $sheetData[$row]['D'],
-                  'SDT' => $sheetData[$row]['AN'],
-                  'Email' => $sheetData[$row]['AO'],
-                  'Ngaysinh' => $sheetData[$row]['E'],
-                  'Phai'=> $sheetData[$row]['F'],
+                  'Ho'   => trim($sheetData[$row]['C']),
+                  'Ten'  => trim($sheetData[$row]['D']),
+                  'SDT' => trim($sheetData[$row]['AN']),
+                  'Email' => trim($sheetData[$row]['AO']),
+                  'Ngaysinh' => trim($sheetData[$row]['E']),
+                  'Phai'=> trim($sheetData[$row]['F']),
                   'nganhhoc_id' => $nganh,
                   'khoahoc_id' => $khoa,
                 );

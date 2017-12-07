@@ -46,12 +46,12 @@ Class Hocphi extends MY_Controller
       $objReader->setLoadSheetsOnly($worksheet);
       $sheetData = $objExcel->getActiveSheet()->toArray('null',true,true,true);
       $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
-      $noidung = $sheetData[5]['A'];
+      $noidung = trim($sheetData[5]['A']);
       $checkSV = true;
 
       for ($row=11; $row < $highestRow ; $row++)
       {
-        $break = $sheetData[$row]['B'];
+        $break = trim($sheetData[$row]['B']);
         $kiemtraSV = $this->Sinhvien_model->checkSV_Hocphi($break);
         if ($kiemtraSV == false )
         {
@@ -72,10 +72,10 @@ Class Hocphi extends MY_Controller
           if (!empty($break))
           {
           $data = array(
-          'MSSV' => $sheetData[$row]['B'],
-          'hocphi_chinh' => $sheetData[$row]['G'],
-          'hocphi_hoclai' => $sheetData[$row]['H'],
-          'hocphi_tong' => $sheetData[$row]['F'],
+          'MSSV' => trim($sheetData[$row]['B']),
+          'hocphi_chinh' => trim($sheetData[$row]['G']),
+          'hocphi_hoclai' => trim($sheetData[$row]['H']),
+          'hocphi_tong' => trim($sheetData[$row]['F']),
           'noidung' =>$noidung,
           );
           if($this->Hocphi_model->create($data))

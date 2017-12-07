@@ -8,7 +8,7 @@ Class Diemrenluyen extends MY_Controller
       $this->load->model('Nganhhoc_model');
       $this->load->model('Khoahoc_model');
       $this->load->model('Hocki_model');
-      $this->load->model('SinhVien_model');
+      $this->load->model('Sinhvien_model');
 		}
 		function index()
 		{
@@ -17,6 +17,7 @@ Class Diemrenluyen extends MY_Controller
       $idn = $this->input->post('nganhhoc');
       $idk = $this->input->post('khoahoc');
       $idh = $this->input->post('hocki');
+      $idmssv = $this->input->post('timkiem_drl');
       if($idn)
 			{
         $data['listkhoahoc'] = $this->Khoahoc_model->Get_khoabyidn($idn);
@@ -29,6 +30,10 @@ Class Diemrenluyen extends MY_Controller
       if($idn && $idk && $idh)
       {
       $data['listDiem']=$this->Diemrenluyen_model->filterdrlbyNHK($idn,$idk,$idh);
+      }
+      if($idmssv)
+      {
+        $data['listDiem'] = $this->Diemrenluyen_model->Get_on_infodrl($idmssv);
       }
 			$data['temp'] = 'Giaovu/Diemrenluyen/Diemrenluyen';
 			$this->load->view('Giaovu/index',$data);
@@ -81,17 +86,17 @@ Class Diemrenluyen extends MY_Controller
               $break = $sheetData[$row]['B'];
               if (!empty($break)) {
                 $mssv = $sheetData[$row]['B'];
-                $checksv = $this->SinhVien_model->checkSV($mssv);
+                $checksv = $this->Sinhvien_model->checkSV($mssv);
                 if ($checksv == false) {
                   $checkdiem = $this->Diemrenluyen_model->checkDRL($mssv,$hocki);
                   if ($checkdiem == false) {
                     $data = array(
-                      'MSSV' => $sheetData[$row]['B'],
+                      'MSSV' => trim($sheetData[$row]['B']),
                       'nganhhoc_id' => $nganh,
                       'khoahoc_id' => $khoahoc,
                       'hocky_id' => $hocki,
-                      'diem' => $sheetData[$row]['F'],
-                      'xeploai' => $sheetData[$row]['G'],
+                      'diem' => trim($sheetData[$row]['F']),
+                      'xeploai' => trim($sheetData[$row]['G']),
                     );
                     if($this->Diemrenluyen_model->create($data))
                     {
@@ -107,7 +112,7 @@ Class Diemrenluyen extends MY_Controller
                   {
                    $id_drl = $checkdiem['drl_id'];
                     $data = array(
-                      'diem' => $sheetData[$row]['F'],
+                      'diem' => trim($sheetData[$row]['F']),
                     );
                     if($this->Diemrenluyen_model->update($id_drl,$data))
                     {

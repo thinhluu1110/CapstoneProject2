@@ -36,6 +36,19 @@
 			$query = $this->db->get();
 			return $query->result_array();
 		}
+		function get_Diem_timkiemkqht($mssv)
+		{
+			$this->db->select('*')
+			->from('ketquahoctap as k')
+			->join('lophoc as lh', 'k.lophoc_id = lh.lophoc_id')
+			->join('nganhhoc as n', 'k.nganhhoc_id = n.nganhhoc_id')
+			->join('sinhvien as s', 'k.sinhvien_id = s.MSSV')
+			->join('monhoc as m', 'k.monhoc_id = m.monhoc_id')
+			->join('hocki as h', 'k.hocki_id = h.hocki_id')
+			->where('k.sinhvien_id', $mssv);
+			$query = $this->db->get();
+			return $query->result_array();
+		}
 		function get_Diem_SV($mssv,$idn,$idk)
 		{
 			$this->db->select('*')

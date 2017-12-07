@@ -113,4 +113,16 @@ Class Diemrenluyen_model extends MY_Model
       $query = $this->db->get();
       return $query->result_array();
     }
+    function Get_on_infodrl($mssv)
+    {
+      $this->db->select('*')
+      ->from('drl as d')
+      ->join('hocki as h', 'd.hocky_id = h.hocki_id')
+      ->join('nganhhoc as n', 'd.nganhhoc_id = n.nganhhoc_id')
+      ->join('khoahoc as k', 'd.khoahoc_id = k.khoahoc_id')
+      ->join('sinhvien as s', 'd.MSSV = s.MSSV')
+      ->where('d.MSSV', $mssv);
+      $query = $this->db->get();
+      return $query->result_array();
+    }
 }

@@ -17,11 +17,11 @@ Class Monhoc extends MY_Controller
 		}
 		function Add()
 		{
-				$mamon = $this->input->post('mamonhoc');
-        $tenmon = $this->input->post('tenmonhoc');  	
+				$mamon = trim($this->input->post('mamonhoc'));
+        $tenmon = trim($this->input->post('tenmonhoc'));  	
 				$data = array(
-					'MaMH' => $this->input->post('mamonhoc'),
-					'TenMH' => $this->input->post('tenmonhoc')
+					'MaMH' => trim($this->input->post('mamonhoc')),
+					'TenMH' => trim($this->input->post('tenmonhoc'))
 				);
 				$error = array
 				(
@@ -49,10 +49,10 @@ Class Monhoc extends MY_Controller
 		function Edit()
 		{
 			$mamon = $this->input->post('mamon');
-      $tenmon = $this->input->post('tenmon');
+      $tenmon = trim($this->input->post('tenmon'));
       		$id = $this->input->post('idmon');
         	$data = array(
-          		'TenMH' => $this->input->post('tenmon'),
+          		'TenMH' => trim($this->input->post('tenmon')),
           		'MaMH' => $this->input->post('mamon')
         	);
         	$error = array(

@@ -9,6 +9,7 @@
 			$this->load->model('Monhoc_model');
 			$this->load->model('Lophoc_model');
 			$this->load->model('Nganhhoc_model');
+			$this->load->model('Diemrenluyen_model');
 		}
 		function index()
 		{
@@ -18,6 +19,7 @@
 			$data['listmon'] = $this->Monhoc_model->get_monhoc();
 			$monhoc = $this->input->get('monhoc');
 			$lophoc = $this->input->get('lophoc');
+			$idmssv = $this->input->get('timkiem_kqht');
 			if($monhoc)
 			{
 				$data['listlophoc'] = $this->Lophoc_model->get_lop_mon($monhoc);
@@ -68,6 +70,9 @@
 		        readfile($filename);
 		        return;
 		      }
+		      if ($idmssv) {
+		      	$data['listDiem'] = $this->Ketquahoctap_model->get_Diem_timkiemkqht($idmssv);
+		      }
 			$data['temp'] = 'Giaovu/Ketquahoctap/Ketquahoctap';
 			$this->load->view('Giaovu/index', $data);
 		}
@@ -97,22 +102,22 @@
 					$break = $sheetData[$row]['A'];
 					if (!empty($break)) {
 						$data = array(
-							'sinhvien_id' => $sheetData[$row]['B'],
-							'ho' => $sheetData[$row]['C'],
-							'ten' => $sheetData[$row]['D'],
-							'ngaysinh' => $sheetData[$row]['E'],
-							'nganhhoc_id' => $sheetData[$row]['G'],
-							'lophoc_id' => $sheetData[$row]['F'],
-							'monhoc_id' => $sheetData[$row]['H'],
-							'TenMH' => $sheetData[$row]['I'],
-							'chuyencan' => $sheetData[$row]['J'],
-							'giuaki' => $sheetData[$row]['K'],
-							'lan1' => $sheetData[$row]['L'],
-							'lan2' => $sheetData[$row]['M'],
-							'diemTB' =>$sheetData[$row]['N'],
-							'trongso_chuyencan' => $sheetData[$row]['O'],
-							'trongso_giuaki' => $sheetData[$row]['P'],
-							'trongso_cuoiki' => $sheetData[$row]['Q'],
+							'sinhvien_id' => trim($sheetData[$row]['B']),
+							'ho' => trim($sheetData[$row]['C']),
+							'ten' => trim($sheetData[$row]['D']),
+							'ngaysinh' => trim($sheetData[$row]['E']),
+							'nganhhoc_id' => trim($sheetData[$row]['G']),
+							'lophoc_id' => trim($sheetData[$row]['F']),
+							'monhoc_id' => trim($sheetData[$row]['H']),
+							'TenMH' => trim($sheetData[$row]['I']),
+							'chuyencan' => trim($sheetData[$row]['J']),
+							'giuaki' => trim($sheetData[$row]['K']),
+							'lan1' => trim($sheetData[$row]['L']),
+							'lan2' => trim($sheetData[$row]['M']),
+							'diemTB' => trim($sheetData[$row]['N']),
+							'trongso_chuyencan' => trim($sheetData[$row]['O']),
+							'trongso_giuaki' => trim($sheetData[$row]['P']),
+							'trongso_cuoiki' => trim($sheetData[$row]['Q']),
 						);
 						if($this->Ketquahoctap_tam_model->create($data))
 						{
@@ -168,6 +173,7 @@
 					$idn = $this->input->get('nganh');
 					$idk = $this->input->get('khoa');
 					$data['listDiemChitiet'] = $this->Ketquahoctap_model->get_Diem_SV($idsv,$idn,$idk);
+					$data['listDRL'] = $this->Diemrenluyen_model->Getdrl_Chitiet($idn, $idk, $idsv);
 					$tu_dtb_hk1=null;
 			$mau_dtb_hk1=0;
 			$tu_dtb_hk2=null;

@@ -20,11 +20,11 @@ Class Khoahoc extends MY_Controller
 		}
 		function Add()
 		{
-			$tenkhoa = $this->input->post('tenkhoa');
+			$tenkhoa = trim($this->input->post('tenkhoa'));
       $manganh = $this->input->post('nganhhoc_id');
 			$data = array(
           	'nganhhoc_id' => $this->input->post('nganhhoc_id'),
-			'tenkhoa' => $this->input->post('tenkhoa'),
+			'tenkhoa' => trim($this->input->post('tenkhoa')),
 			'nam_batdau' => $this->input->post('nambd'),
 			'nam_ketthuc' => $this->input->post('namkt'),
 			);
@@ -51,12 +51,12 @@ Class Khoahoc extends MY_Controller
 		}
 		function Edit()
 		{
-      $tenkhoa = $this->input->post('tenkhoa');
+      $tenkhoa = trim($this->input->post('tenkhoa'));
       $manganh = $this->input->post('nganhhoc');
       $id = $this->input->post('idkhoa');
 				$data = array(
           'nganhhoc_id' => $this->input->post('nganhhoc'),
-					'tenkhoa' => $this->input->post('tenkhoa'),
+					'tenkhoa' => trim($this->input->post('tenkhoa')),
 					'nam_batdau' => $this->input->post('nambd'),
 					'nam_ketthuc' => $this->input->post('namkt'),
 				);

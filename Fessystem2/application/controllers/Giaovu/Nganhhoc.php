@@ -16,11 +16,11 @@ Class Nganhhoc extends MY_Controller
     }
     function Add()
     {
-        $manganh = $this->input->post('manganh');
-        $tennganh = $this->input->post('tennganh');
+        $manganh = trim($this->input->post('manganh'));
+        $tennganh = trim($this->input->post('tennganh'));
         $data = array(
-          'tennganh' => $this->input->post('tennganh'),
-          'ma_nganhhoc' => $this->input->post('manganh')
+          'tennganh' => trim($this->input->post('tennganh')),
+          'ma_nganhhoc' => trim($this->input->post('manganh'))
         );
         $error = array(
           'msg' => '',
@@ -49,10 +49,10 @@ Class Nganhhoc extends MY_Controller
     function Edit()
     {
       $manganh = $this->input->post('manganh');
-      $tennganh = $this->input->post('tennganh');
+      $tennganh = trim($this->input->post('tennganh'));
       $id = $this->input->post('idnganh');
         $data = array(
-          'tennganh' => $this->input->post('tennganh'),
+          'tennganh' => trim($this->input->post('tennganh')),
           'ma_nganhhoc' => $this->input->post('manganh')
         );
         $error = array(

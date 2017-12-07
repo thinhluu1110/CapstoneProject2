@@ -31,9 +31,9 @@
                 </div>
                 <div class="col-xs-4">
                     <div class="input-group add-on hitec-w-100percent">
-                        <input class="form-control" placeholder="Tìm kiếm theo tên/mã SV" type="text" value="">
+                        <input class="form-control" id="timkiem_kqht" name="timkiem_kqht" placeholder="Tìm kiếm theo tên/mã SV" type="text" value="">
                         <div class="input-group-btn">
-                            <button class="btn btn-sm btn-default" type="button"><span class="fa fa-search"></span>Tìm Kiếm</button>
+                            <button class="btn btn-sm btn-default" type="submit"><span class="fa fa-search"></span>Tìm Kiếm</button>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                         <th style="width:100px" class="text-center">
                             Mã SV
                         </th>
-                        <th style="width:70px" class="text-center">
+                        <th style="width:180px" class="text-center">
                             Họ
                         </th>
                         <th style="width:150px" class="text-center">
@@ -116,7 +116,7 @@
                         <td class="text-center">
                             <?php echo $listDiem[$i]['MaMH'] ?>
                         </td>
-                        <td class="text-center">
+                        <td class="text-left">
                             <?php echo $listDiem[$i]['TenMH'] ?>
                         </td>
                         <td class="text-center">

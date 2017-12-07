@@ -1104,7 +1104,8 @@
 									var idkhoa = $('#idkhoa_edit').val();
 									var tenkhoa = $('#tenkhoa_edit').val();
 									var nambd = $('#nambd_edit').val();
-									var namkt = parseInt($('#nambd_edit').val()) + 4;
+									var nambdtrim = $.trim(nambd);
+									var namkt = parseInt(nambdtrim) + 4;
 
 									if(tenkhoa == '' || nambd == '') {
 											$('#msg-fail-edit-khoa').prop('hidden',false);
@@ -1116,7 +1117,7 @@
 										$('#msg-fail-edit-khoa h5').html('Năm Bắt Đầu Phải Nhập Số');
 										$('#msg-success-edit-khoa').prop('hidden',true);
 									}
-									else if (nambd.length > 4) {
+									else if (nambdtrim.length > 4) {
 										$('#msg-fail-edit-khoa').prop('hidden',false);
 										$('#msg-fail-edit-khoa h5').html('Năm Học Không Được Lớn Hơn 4 Số');
 										$('#msg-success-edit-khoa').prop('hidden',true);
@@ -1125,7 +1126,7 @@
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/khoahoc/Edit') ?>",
 												type: "POST",
-												data:{'nganhhoc':idnganh, 'idkhoa' : idkhoa,'tenkhoa' : tenkhoa, 'nambd':nambd, 'namkt':namkt},
+												data:{'nganhhoc':idnganh, 'idkhoa' : idkhoa,'tenkhoa' : tenkhoa, 'nambd':nambdtrim, 'namkt':namkt},
 												dataType: 'json',
 												success: function(data){
 													if (data.msg != '') {
@@ -1283,9 +1284,10 @@
 									var nganhhoc = $('#nganhhoc_add_khoahoc').val();
 									var khoahoc = $('#khoahoc_add_khoahoc').val();
 									var nambd = $('#nambd_add_khoahoc').val();
+									var nambdtrim = $.trim(nambd); 
 									var namkt = parseInt($('#nambd_add_khoahoc').val()) + 4;
 
-									if(nganhhoc == '' || khoahoc == '' || nambd == '') {
+									if(nganhhoc == '' || khoahoc == '' || nambdtrim == '') {
 											$('#msg-fail').prop('hidden',false);
 											$('#msg-fail h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success').prop('hidden',true);
@@ -1297,7 +1299,7 @@
 											$('#msg-fail h5').html('Năm Bắt Đầu Phải Nhập Số');
 											$('#msg-success').prop('hidden',true);
 									}
-									else if(nambd.length >4)
+									else if(nambdtrim.length >4)
 									{
 										$('#msg-fail').prop('hidden',false);
 											$('#msg-fail h5').html('Năm Học Không Được Lớn Hơn 4 Số');
@@ -1308,7 +1310,7 @@
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Khoahoc/Add') ?>",
 												type: "POST",
-												data:{'nganhhoc_id':nganhhoc, 'tenkhoa':khoahoc, 'nambd':nambd, 'namkt':namkt},
+												data:{'nganhhoc_id':nganhhoc, 'tenkhoa':khoahoc, 'nambd':nambdtrim, 'namkt':namkt},
 												dataType: 'json',
 
 												success: function(data){

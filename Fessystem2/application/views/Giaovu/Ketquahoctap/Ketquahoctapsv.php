@@ -71,6 +71,13 @@
                                 <tr>
                                     <td  align="right" colspan="6">
                                         Điểm TB Tích Lũy Học Kì:  <?php echo @$dtb_hientai1;?>
+                                        <br>
+                                         Điểm Rèn Luyện TB :
+                                        <?php for($j=0; $j<count($listDRL); $j++) {
+                                        if($listDRL[$j]['hocky_id'] == 1) {
+                                            echo $listDRL[$j]['diem'];
+                                        }}
+                                        ?>
                                     </td>
                                     <td  align="right" colspan="8">
                                         Tổng Điểm TB Tích Lũy : <?php echo @$dtb_tong_hk1;?>
@@ -119,6 +126,13 @@
                                 <tr>
                                     <td  align="right" colspan="6">
                                         Điểm TB Tích Lũy Học Kì:  <?php echo @$dtb_hientai2;?>
+                                        <br>
+                                         Điểm Rèn Luyện TB :
+                                        <?php for($j=0; $j<count($listDRL); $j++) {
+                                        if($listDRL[$j]['hocky_id'] == 2) {
+                                            echo $listDRL[$j]['diem'];
+                                        }}
+                                        ?>
                                     </td>
                                     <td  align="right" colspan="8">
                                         Tổng Điểm TB Tích Lũy : <?php echo @$dtb_tong_hk2;?>
@@ -170,6 +184,13 @@
                                 <tr>
                                     <td  align="right" colspan="6">
                                         Điểm TB Tích Lũy Học Kì:  <?php echo @$dtb_hientai3;?>
+                                        <br>
+                                         Điểm Rèn Luyện TB :
+                                        <?php for($j=0; $j<count($listDRL); $j++) {
+                                        if($listDRL[$j]['hocky_id'] == 3) {
+                                            echo $listDRL[$j]['diem'];
+                                        }}
+                                        ?>
                                     </td>
                                     <td  align="right" colspan="8">
                                         Tổng Điểm TB Tích Lũy : <?php echo @$dtb_tong_hk3;?>
@@ -221,6 +242,13 @@
                                 <tr>
                                     <td  align="right" colspan="6">
                                         Điểm TB Tích Lũy Học Kì:  <?php echo @$dtb_hientai4;?>
+                                        <br>
+                                         Điểm Rèn Luyện TB :
+                                        <?php for($j=0; $j<count($listDRL); $j++) {
+                                        if($listDRL[$j]['hocky_id'] == 4) {
+                                            echo $listDRL[$j]['diem'];
+                                        }}
+                                        ?>
                                     </td>
                                     <td  align="right" colspan="8">
                                         Tổng Điểm TB Tích Lũy : <?php echo @$dtb_tong_hk4;?>
@@ -272,6 +300,13 @@
                                 <tr>
                                     <td  align="right" colspan="6">
                                         Điểm TB Tích Lũy Học Kì:  <?php echo @$dtb_hientai5;?>
+                                        <br>
+                                         Điểm Rèn Luyện TB :
+                                        <?php for($j=0; $j<count($listDRL); $j++) {
+                                        if($listDRL[$j]['hocky_id'] == 5) {
+                                            echo $listDRL[$j]['diem'];
+                                        }}
+                                        ?>
                                     </td>
                                     <td  align="right" colspan="8">
                                         Tổng Điểm TB Tích Lũy : <?php echo @$dtb_tong_hk5;?>
@@ -323,6 +358,13 @@
                                 <tr>
                                     <td  align="right" colspan="6">
                                         Điểm TB Tích Lũy Học Kì:  <?php echo @$dtb_hientai6;?>
+                                        <br>
+                                         Điểm Rèn Luyện TB :
+                                        <?php for($j=0; $j<count($listDRL); $j++) {
+                                        if($listDRL[$j]['hocky_id'] == 6) {
+                                            echo $listDRL[$j]['diem'];
+                                        }}
+                                        ?>
                                     </td>
                                     <td  align="right" colspan="8">
                                         Tổng Điểm TB Tích Lũy : <?php echo @$dtb_tong_hk6;?>
@@ -374,6 +416,13 @@
                                 <tr>
                                     <td  align="right" colspan="6">
                                         Điểm TB Tích Lũy Học Kì:  <?php echo @$dtb_hientai7;?>
+                                        <br>
+                                         Điểm Rèn Luyện TB :
+                                        <?php for($j=0; $j<count($listDRL); $j++) {
+                                        if($listDRL[$j]['hocky_id'] == 7) {
+                                            echo $listDRL[$j]['diem'];
+                                        }}
+                                        ?>
                                     </td>
                                     <td  align="right" colspan="8">
                                         Tổng Điểm TB Tích Lũy : <?php echo @$dtb_tong_hk7;?>
@@ -425,6 +474,13 @@
                                 <tr>
                                     <td  align="right" colspan="6">
                                         Điểm TB Tích Lũy Học Kì:  <?php echo @$dtb_hientai8;?>
+                                        <br>
+                                         Điểm Rèn Luyện TB :
+                                        <?php for($j=0; $j<count($listDRL); $j++) {
+                                        if($listDRL[$j]['hocky_id'] == 8) {
+                                            echo $listDRL[$j]['diem'];
+                                        }}
+                                        ?>
                                     </td>
                                     <td  align="right" colspan="8">
                                         Tổng Điểm TB Tích Lũy : <?php echo @$dtb_tong_hk8;?>

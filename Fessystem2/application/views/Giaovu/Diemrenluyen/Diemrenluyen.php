@@ -40,9 +40,9 @@
                             </div>
                             <div class="col-xs-3">
                                 <div class="input-group add-on hitec-w-100percent">
-                                    <input class="form-control" placeholder="Tìm kiếm theo mã Sinh Viên" type="text" value="">
+                                    <input class="form-control" id="timkiem_drl" name="timkiem_drl" placeholder="Tìm kiếm theo mã Sinh Viên" type="text" value="">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-default" type="button"><span class="fa fa-search"></span>Tìm Kiếm</button>
+                                        <button class="btn btn-sm btn-default" type="submit"><span class="fa fa-search"></span>Tìm Kiếm</button>
                                     </div>
                                 </div>
                             </div>
