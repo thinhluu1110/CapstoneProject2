@@ -19,7 +19,7 @@
                                     <div class="panel-heading">
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <a href="#" class="active" id="login-form-link">Đăng nhập hệ thống</a>
+                                                <a href="#" class="active" id="login-form-link">Đăng Nhập Hệ Thống</a>
                                             </div>
                                         </div>
                                         <hr>
