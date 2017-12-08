@@ -9,12 +9,26 @@
     <div hidden="hidden"id="alert_success" class="center">
       <h4 style="color:Green;">Thêm Thành Công</h4>
     </div>
-    <div hidden="hidden"id="alert_fail" class="center">
-      <h4 style="color:Red;">Những dữ liệu bên dưới chưa được khai báo, vui lòng xác định lại dữ liệu</h4>
+    <?php if ($this->input->get('loi') !== null) { ?>
+    <div id="alert_fail" class="center">
+      <h4 style="color:Red;">Có dữ liệu bên dưới chưa được khai báo, vui lòng xác định lại dữ liệu</h4>
     </div>
-    <div hidden="hidden" class="center">
-      <h4 style="color:Red;">Có Dữ Liệu Bị Trống Vui Lòng Xem Lại Thông Tin Dữ Liệu</h4>
+    <?php } ?>
+    <?php if ($this->input->get('dulieurong') !== null) { ?>
+    <div id="alert_fail" class="center">
+      <h4 style="color:Red;">Có Dữ Liệu Bị Rỗng. Vui Lòng Xem Lại Dữ Liệu</h4>
     </div>
+    <?php } ?>
+    <?php if (isset($listreview)) {
+      $check = true;
+      for ($i = 0; $i < count($listreview); $i++){
+        if ($listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['TenMH'] == 'null') { ?>
+          <div  class="center">
+            <h5 style="color:Red;">Màu Đỏ: Dữ Liệu Bị Trống</h5>
+            <h5 style="color:Green;">Màu Xanh: Dữ Liệu Mới</h5>
+          </div>
+  <?php break;}} } ?>
+
     <div class="container-fluid" style="margin-top:10px; margin-bottom:10px">
         <div class="row">
             <div class="col-xs-12">
@@ -84,7 +98,7 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 1){
                 ?>
-                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';}elseif($list[$i]['monmoi'] == 1){echo 'color:green';}?>">
                     <td class="hitec-td-1 text-center">
                         <?php echo $i + 1?>
                     </td>
@@ -453,8 +467,11 @@
                 			setTimeout(function(){window.location = "<?php echo base_url('Giaovu/Kehoachdaotao/index') ?>"},2500);
                 			$('#alert_success').prop('hidden',false);
                 		}
-                		if (data.check == false) {
-                			window.location = "<?php echo base_url('Giaovu/Kehoachdaotao/review_khdt') ?>";
+                		else if (data.check == false) {
+                			window.location = "<?php echo base_url('Giaovu/Kehoachdaotao/review_khdt?loi=1') ?>";
+                		}
+                    else if (data.dulieurong == false) {
+                			window.location = "<?php echo base_url('Giaovu/Kehoachdaotao/review_khdt?dulieurong=1') ?>";
                 		}
                 	}
                 });

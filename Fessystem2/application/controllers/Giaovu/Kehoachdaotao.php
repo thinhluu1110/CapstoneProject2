@@ -37,6 +37,15 @@ Class Kehoachdaotao extends MY_Controller
 		{
       $listnganhhoc = $this->Nganhhoc_model->get_list();
       $data['listreview']=$this->Kehoachdaotao_tam_model->reviewkhdt();
+      foreach ($data['listreview'] as $key => $value) {
+        $check = $this->Monhoc_model->Check_Mon($value['monhoc_id']);
+        if ($check != true  && $value['monhoc_id'] != 'null' ) {
+          $data['listreview'][$key]['monmoi'] = true;
+        }
+        else {
+          $data['listreview'][$key]['monmoi'] = false;
+        }
+      }
       $data['listnganhhoc'] = $listnganhhoc;
       $this->load->view('Giaovu/Kehoachdaotao/Kehoachdaotao_review',$data);
 		}
@@ -302,16 +311,29 @@ Class Kehoachdaotao extends MY_Controller
     			$this->load->view('Giaovu/index',$data);
     		}
         function run_sp(){
-          $this->Kehoachdaotao_model->run_sp();
-          $error['check'] = false;
-          $data['listreview']=$this->Kehoachdaotao_tam_model->reviewkhdt();
-          if ($data['listreview'] == false)
-          {
-            $error['check'] = true;
+          $list['listreview']=$this->Kehoachdaotao_tam_model->reviewkhdt();
+          $check = true;
+          foreach ($list['listreview'] as $key => $value) {
+            if ($value['monhoc_id'] == 'null' || $value['TenMH'] == 'null' ) {
+              $check = false;
+              break;
+            }  
           }
-          else
-          {
+          if ($check == true) {
+            $this->Kehoachdaotao_model->run_sp();
             $error['check'] = false;
+            $data['listreview']=$this->Kehoachdaotao_tam_model->reviewkhdt();
+            if ($data['listreview'] == false)
+            {
+              $error['check'] = true;
+            }
+            else
+            {
+              $error['check'] = false;
+            }
+          }
+          else {
+            $error['dulieurong'] = false;
           }
           echo json_encode($error);
         }

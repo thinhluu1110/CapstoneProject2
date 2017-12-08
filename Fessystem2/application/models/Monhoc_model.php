@@ -68,7 +68,7 @@ Class Monhoc_model extends MY_Model
       ->from('monhoc as m')
       ->where('m.MaMH', $mamon);
       $query = $this->db->get();
-      if ($query->num_rows() > 0) 
+      if ($query->num_rows() > 0)
       {
        return true;
       }
@@ -79,7 +79,7 @@ Class Monhoc_model extends MY_Model
       ->from('monhoc as m')
       ->where('m.TenMH', $tenmon);
       $query = $this->db->get();
-      if ($query->num_rows() > 0) 
+      if ($query->num_rows() > 0)
       {
        return true;
       }
