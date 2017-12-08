@@ -45,16 +45,16 @@ Class Lichthi extends MY_Controller
         }
 
         //lấy danh sách học kì theo Ngành và khóa
-        // if ($nganhhoc_id && $khoahoc_id) {
-        //     $listhockibykhoa = $this->Lichthi_model->Get_hockibyid($nganhhoc_id,$khoahoc_id);
-        //     $this->data['listhockibykhoa'] = $listhockibykhoa;
-        // }
+        if ($nganhhoc_id && $khoahoc_id) {
+            $listhockibykhoa = $this->Lichthi_model->Get_hockibyid($nganhhoc_id,$khoahoc_id);
+            $this->data['listhockibykhoa'] = $listhockibykhoa;
+        }
 
-        ///lay danh sach lần thi
-        // if ($nganhhoc_id && $khoahoc_id && $hocki_id) {
-        //     $listlanthibyhocki = $this->Lichthi_model->Get_lanthibyhocki($nganhhoc_id,$khoahoc_id, $hocki_id);
-        //     $this->data['listlanthibyhocki'] = $listlanthibyhocki;
-        // }
+        //lay danh sach lần thi
+        if ($nganhhoc_id && $khoahoc_id && $hocki_id) {
+            $listlanthibyhocki = $this->Lichthi_model->Get_lanthibyhocki($nganhhoc_id,$khoahoc_id, $hocki_id);
+            $this->data['listlanthibyhocki'] = $listlanthibyhocki;
+        }
 
         //Hiển thị Lich Thi
         if ($nganhhoc_id != "" && $khoahoc_id != "" && $hocki_id != "" && $lanthi_id != "") 

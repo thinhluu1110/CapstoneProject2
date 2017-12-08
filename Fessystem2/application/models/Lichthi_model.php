@@ -24,6 +24,7 @@ Class Lichthi_model extends MY_Model
 			->join('lichthi as lt', 'hk.hocki_id = lt.hocki_id');
 			$this->db->where('lt.nganhhoc_id',$idn)->where('lt.khoahoc_id',$idk);
 			$this->db->order_by('hk.hocki_id','desc');
+			$this->db->group_by('hk.hocki_id');
 	    	$query = $this->db->get();
 	    	return $query->result();
   	}

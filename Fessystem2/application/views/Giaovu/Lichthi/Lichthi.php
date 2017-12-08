@@ -31,14 +31,18 @@
                                 <div class="input-group hitec-w-100percent">
                                     <select class="form-control" id="Hocki" name="Hocki" onchange='if(this.value != 0) { this.form.submit(); }'>
                                         <option selected="selected" value="">--- Chọn Học Kỳ ---</option>
-                                            <option value="8" <?php echo ($this->input->get('Hocki') == 8) ? 'selected' : ''?> >Học kì 8</option>
+                                            <!-- <option value="8" <?php echo ($this->input->get('Hocki') == 8) ? 'selected' : ''?> >Học kì 8</option>
                                             <option value="7" <?php echo ($this->input->get('Hocki') == 7) ? 'selected' : ''?> >Học kì 7</option>
                                             <option value="6" <?php echo ($this->input->get('Hocki') == 6) ? 'selected' : ''?> >Học kì 6</option>
                                             <option value="5" <?php echo ($this->input->get('Hocki') == 5) ? 'selected' : ''?> >Học kì 5</option>
                                             <option value="4" <?php echo ($this->input->get('Hocki') == 4) ? 'selected' : ''?> >Học kì 4</option>
                                             <option value="3" <?php echo ($this->input->get('Hocki') == 3) ? 'selected' : ''?> >Học kì 3</option>
                                             <option value="2" <?php echo ($this->input->get('Hocki') == 2) ? 'selected' : ''?> >Học kì 2</option>
-                                            <option value="1" <?php echo ($this->input->get('Hocki') == 1) ? 'selected' : ''?> >Học kì 1</option>
+                                            <option value="1" <?php echo ($this->input->get('Hocki') == 1) ? 'selected' : ''?> >Học kì 1</option> -->
+
+                                            <?php foreach ($listhockibykhoa as $row):?>
+                                                <option value="<?php echo $row->hocki_id ?>" <?php echo ($this->input->get('Hocki') == $row->hocki_id) ? 'selected' : ''?> ><?php echo $row->tenHocki ?></option>
+                                            <?php endforeach;?>
                                     </select>
                                 </div>
                             </div>
@@ -46,8 +50,12 @@
                                 <div class="input-group hitec-w-100percent">
                                     <select class="form-control" id="Lanthi" name="Lanthi" onchange='if(this.value != 0) { this.form.submit(); }'>
                                         <option selected="selected" value="">--- Chọn Lần Thi ---</option>
-                                            <option value="1" <?php echo ($this->input->get('Lanthi') == 1) ? 'selected' : ''?> >Lần 1</option>
-                                            <option value="2" <?php echo ($this->input->get('Lanthi') == 2) ? 'selected' : ''?> >Lần 2</option>
+                                            <!-- <option value="1" <?php echo ($this->input->get('Lanthi') == 1) ? 'selected' : ''?> >Lần 1</option>
+                                            <option value="2" <?php echo ($this->input->get('Lanthi') == 2) ? 'selected' : ''?> >Lần 2</option> -->
+
+                                            <?php foreach ($listlanthibyhocki as $row):?>
+                                                <option value="<?php echo $row->lanthi ?>" <?php echo ($this->input->get('Lanthi') == $row->lanthi) ? 'selected' : ''?> ><?php echo $row->lanthi ?></option>
+                                            <?php endforeach;?>
                                     </select>
                                 </div>
                             </div>
