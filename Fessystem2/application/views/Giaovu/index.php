@@ -1893,7 +1893,7 @@
 								data:{'khdt_id' : idkhdt},
 								dataType: 'json',
 								success: function(data){
-												console.log(data);
+											
 												if (data.khdt_info.monphu_id == 1) {
 													$('#monphu_edit').attr('checked','checked');
 												}
