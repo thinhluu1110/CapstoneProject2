@@ -453,13 +453,24 @@
 							$('#submit_add_DKDA').on('click', function() {
 									var nganhhoc_id = $('#nganhhoc_dieukien_doan').val();
 									var khoahoc_id = $('#khoahoc_dieukien_doan').val();
-									var maxmonno = $('#maxmonno_dieukien_doan').val();
+									var maxmonno = $('#maxmonno_dieukien_doan').val().trim();
 
 									if(nganhhoc_id == '' || khoahoc_id == '') {
 										$('#msg-fail-dkda').prop('hidden',false);
 										$('#msg-fail-dkda h5').html('Dữ Liệu Không Được Để Trống');
 										$('#msg-success-dkda').prop('hidden',true);
-									}else{
+									}
+									else if(/^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(maxmonno) == false) {
+										$('#msg-fail-dkda').prop('hidden',false);
+										$('#msg-fail-dkda h5').html('Không Được Nhập Ký Tự Đặc Biệt');
+										$('#msg-success-dkda').prop('hidden',true);
+									}
+									else if(isNaN(maxmonno)) {
+										$('#msg-fail-dkda').prop('hidden',false);
+										$('#msg-fail-dkda h5').html('Số Môn Nợ Không Được Nhập Ký Tự');
+										$('#msg-success-dkda').prop('hidden',true);
+									}
+									else{
 											$.ajax({
 												url:"<?php echo base_url()?>Giaovu/Dieukiendoan/Add",
 												type: "POST",
@@ -603,19 +614,72 @@
 									var makhoa = $('#khoahocAdd').val();
 									var mahocki = $('#hocki').val();
 									var mamon = $('#tenmon').val();
-									var dvht_tc = $('#dvht_tc').val();
-									var tongso = $('#tongso').val();
-									var lythuyet = $('#lythuyet').val();
-									var thuchanh = $('#thuchanh').val();
-									var baitap = $('#baitap').val();
-									var baitaplon = $('#baitaplon').val();
-									var doan = $('#doan').val();
-									var khoaluan = $('#khoaluan').val();
+									var dvht_tc = $('#dvht_tc').val().trim();
+									var tongso = $('#tongso').val().trim();
+									var lythuyet = $('#lythuyet').val().trim();
+									var thuchanh = $('#thuchanh').val().trim();
+									var baitap = $('#baitap').val().trim();
+									var baitaplon = $('#baitaplon').val().trim();
+									var doan = $('#doan').val().trim();
+									var khoaluan = $('#khoaluan').val().trim();
 
 									if(manganh == '' || makhoa == '' || mahocki == '' || mamon == '' || dvht_tc == '' || tongso == '' || lythuyet == '' || thuchanh == '' || baitap == '' || baitaplon == '' || doan == '' || khoaluan == '' ) {
 											$('#msg-fail').prop('hidden',false);
 											$('#msg-fail h5').html('Vui Lòng Chọn Và Nhập Thông Tin Đầy Đủ');
 											$('#msg-success').prop('hidden',true);
+									}
+									else if(/^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(dvht_tc) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(tongso) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(lythuyet) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(thuchanh) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(baitap) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(baitaplon) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(doan) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(khoaluan) == false) {
+										$('#msg-fail').prop('hidden',false);
+										$('#msg-fail h5').html('Không Được Nhập Ký Tự Đặc Biệt');
+										$('#msg-success').prop('hidden',true);
+									}
+									else if(isNaN(dvht_tc))
+									{
+										$('#msg-fail').prop('hidden',false);
+										$('#msg-fail h5').html('Đơn Vị Học Trình/TC Phải Nhập Số');
+										$('#msg-success').prop('hidden',true);
+									}
+									else if(isNaN(tongso))
+									{
+										$('#msg-fail').prop('hidden',false);
+										$('#msg-fail h5').html('Tổng Số Phải Nhập Số');
+										$('#msg-success').prop('hidden',true);
+									}
+									else if(isNaN(lythuyet))
+									{
+										$('#msg-fail').prop('hidden',false);
+										$('#msg-fail h5').html('Lý Thuyết Phải Nhập Số');
+										$('#msg-success').prop('hidden',true);
+									}
+									else if(isNaN(thuchanh))
+									{
+										$('#msg-fail').prop('hidden',false);
+										$('#msg-fail h5').html('Thực Hành Phải Nhập Số');
+										$('#msg-success').prop('hidden',true);
+									}
+									else if(isNaN(baitap))
+									{
+										$('#msg-fail').prop('hidden',false);
+										$('#msg-fail h5').html('Bài Tập Phải Nhập Số');
+										$('#msg-success').prop('hidden',true);
+									}
+									else if(isNaN(baitaplon))
+									{
+										$('#msg-fail').prop('hidden',false);
+										$('#msg-fail h5').html('Bài Tập Lớn Phải Nhập Số');
+										$('#msg-success').prop('hidden',true);
+									}
+									else if(isNaN(doan))
+									{
+										$('#msg-fail').prop('hidden',false);
+										$('#msg-fail h5').html('Đồ Án Phải Nhập Số');
+										$('#msg-success').prop('hidden',true);
+									}
+									else if(isNaN(khoaluan))
+									{
+										$('#msg-fail').prop('hidden',false);
+										$('#msg-fail h5').html('Khóa Luận Phải Nhập Số');
+										$('#msg-success').prop('hidden',true);
 									}
 									else {
 										$.ajax({
@@ -636,6 +700,11 @@
 												if (data.thatbai != '') {
 													$('#msg-fail').prop('hidden',false);
 													$('#msg-fail h5').html(data.thatbai);
+													$('#msg-success').prop('hidden',true);
+												}
+												if (data.checkdiem != '') {
+													$('#msg-fail').prop('hidden',false);
+													$('#msg-fail h5').html(data.checkdiem);
 													$('#msg-success').prop('hidden',true);
 												}
 												if (data.load == true) {
@@ -1108,7 +1177,7 @@
 							$('#submit_editkhoa').on('click', function() {
 									var idnganh = $('#idnganh_khoa_edit').val();
 									var idkhoa = $('#idkhoa_edit').val();
-									var tenkhoa = $('#tenkhoa_edit').val();
+									var tenkhoa = $('#tenkhoa_edit').val().trim();
 									var nambd = $('#nambd_edit').val();
 									var nambdtrim = $.trim(nambd);
 									var namkt = parseInt(nambdtrim) + 4;
@@ -1117,6 +1186,11 @@
 											$('#msg-fail-edit-khoa').prop('hidden',false);
 											$('#msg-fail-edit-khoa h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success-edit-khoa').prop('hidden',true);
+									}
+									else if(/^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(nambd) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(tenkhoa) == false) {
+										$('#msg-fail-edit-khoa').prop('hidden',false);
+										$('#msg-fail-edit-khoa h5').html('Không Được Nhập Ký Tự Đặc Biệt');
+										$('#msg-success-edit-khoa').prop('hidden',true);
 									}
 									else if (isNaN(namkt)) {
 										$('#msg-fail-edit-khoa').prop('hidden',false);
@@ -1293,7 +1367,7 @@
 					$(document).ready(function() {
 							$('#submit_addkhoa').on('click', function() {
 									var nganhhoc = $('#nganhhoc_add_khoahoc').val();
-									var khoahoc = $('#khoahoc_add_khoahoc').val();
+									var khoahoc = $('#khoahoc_add_khoahoc').val().trim();
 									var nambd = $('#nambd_add_khoahoc').val();
 									var nambdtrim = $.trim(nambd);
 									var namkt = parseInt($('#nambd_add_khoahoc').val()) + 4;
@@ -1303,6 +1377,11 @@
 											$('#msg-fail h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success').prop('hidden',true);
 
+									}
+									else if(/^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(nambd) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(khoahoc) == false) {
+										$('#msg-fail').prop('hidden',false);
+										$('#msg-fail h5').html('Không Được Nhập Ký Tự Đặc Biệt');
+										$('#msg-success').prop('hidden',true);
 									}
 									else if(isNaN(namkt))
 									{
@@ -1322,6 +1401,7 @@
 											$('#msg-fail h5').html('Năm Học Không Được Nhỏ Hơn 4 Số');
 											$('#msg-success').prop('hidden',true);
 									}
+
 									else{
 										//alert('word');
 											$.ajax({
@@ -1506,13 +1586,19 @@
 							$('#submit_editmon').on('click', function() {
 									var idmon = $('#idmon_edit').val();
 									var mamon = $('#mamon_edit').val();
-									var tenmon = $('#tenmon_edit').val();
+									var tenmon = $('#tenmon_edit').val().trim();
 
 									if(mamon == '' || tenmon == '' ) {
 											$('#msg-fail-edit-mon').prop('hidden',false);
 											$('#msg-fail-edit-mon h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success-edit-mon').prop('hidden',true);
-									}else{
+									}
+									else if(/^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(tenmon) == false) {
+										$('#msg-fail-edit-mon').prop('hidden',false);
+										$('#msg-fail-edit-mon h5').html('Không Được Nhập Ký Tự Đặc Biệt');
+										$('#msg-success-edit-mon').prop('hidden',true);
+									}
+									else{
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Monhoc/Edit') ?>",
 												type: "POST",
@@ -1573,13 +1659,19 @@
 					});
 					$(document).ready(function() {
 							$('#submit_addmonhoc').on('click', function() {
-									var mamon = $('#mamon_add_monhoc').val();
-									var tenmon = $('#tenmon_add_monhoc').val();
+									var mamon = $('#mamon_add_monhoc').val().trim();
+									var tenmon = $('#tenmon_add_monhoc').val().trim();
 									if(mamon == '' || tenmon == '') {
 											$('#msg-fail').prop('hidden',false);
 											$('#msg-fail h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success').prop('hidden',true);
-									}else{
+									}
+									else if(/^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(mamon) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(tenmon) == false) {
+										$('#msg-fail').prop('hidden',false);
+										$('#msg-fail h5').html('Không Được Nhập Ký Tự Đặc Biệt');
+										$('#msg-success').prop('hidden',true);
+									}
+									else{
 										//alert('word');
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Monhoc/Add') ?>",
@@ -1658,13 +1750,19 @@
 							$('#submit_editnganh').on('click', function() {
 									var idnganh = $('#idnganh_edit').val();
 									var manganh = $('#manganh_edit').val();
-									var tennganh = $('#tennganh_edit').val();
+									var tennganh = $('#tennganh_edit').val().trim();
 
 									if(manganh == '' || tennganh == '' ) {
 											$('#msg-fail-edit-nganh').prop('hidden',false);
 											$('#msg-fail-edit-nganh h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success-edit-nganh').prop('hidden',true);
-									}else{
+									}
+									else if(/^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(tennganh) == false) {
+										$('#msg-fail-edit-nganh').prop('hidden',false);
+										$('#msg-fail-edit-nganh h5').html('Không Được Nhập Ký Tự Đặc Biệt');
+										$('#msg-success-edit-nganh').prop('hidden',true);
+									}
+									else{
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Nganhhoc/Edit') ?>",
 												type: "POST",
@@ -1828,23 +1926,77 @@
 									var idkhoa = $('#idkhoahoc_edit_monkhdt').val();
 									var idhocki = $('#hocki_edit_monkhdt').val();
 									var idmon = $('#idmon_edit_monkhdt').val();
-									var dvht = $('#dvht_tc_edit_monkhdt').val();
-									var tongso = $('#tongso_edit_monkhdt').val();
-									var lithuyet = $('#lythuyet_edit_monkhdt').val();
-									var thuchanh = $('#thuchanh_edit_monkhdt').val();
-									var baitap = $('#baitap_edit_monkhdt').val();
-									var baitaplon = $('#baitaplon_edit_monkhdt').val();
-									var doan = $('#doan_edit_monkhdt').val();
-									var khoaluan = $('#khoaluan_edit_monkhdt').val();
+									var dvht = $('#dvht_tc_edit_monkhdt').val().trim();
+									var tongso = $('#tongso_edit_monkhdt').val().trim();
+									var lithuyet = $('#lythuyet_edit_monkhdt').val().trim();
+									var thuchanh = $('#thuchanh_edit_monkhdt').val().trim();
+									var baitap = $('#baitap_edit_monkhdt').val().trim();
+									var baitaplon = $('#baitaplon_edit_monkhdt').val().trim();
+									var doan = $('#doan_edit_monkhdt').val().trim();
+									var khoaluan = $('#khoaluan_edit_monkhdt').val().trim();
 									var monphu = 0;
 									if ($('#monphu_edit').is(":checked")) {
 										monphu = 1;
 									}
-									if(dvht == '' || tongso == '' || lithuyet == '' || thuchanh == '' || baitap == '' || baitaplon == '' || doan == '' || khoaluan == '' || idhocki == '') {
+									else if(dvht == '' || tongso == '' || lithuyet == '' || thuchanh == '' || baitap == '' || baitaplon == '' || doan == '' || khoaluan == '' || idhocki == '') {
 											$('#msg-fail-editmon-khdt').prop('hidden',false);
 											$('#msg-fail-editmon-khdt h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success-editmon-khdt').prop('hidden',true);
-									}else{
+									}
+									else if(/^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(dvht) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(tongso) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(lithuyet) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(thuchanh) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(baitap) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(baitaplon) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(doan) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(khoaluan) == false) {
+										$('#msg-fail-editmon-khdt').prop('hidden',false);
+										$('#msg-fail-editmon-khdt h5').html('Không Được Nhập Ký Tự Đặc Biệt');
+										$('#msg-success-editmon-khdt').prop('hidden',true);
+									}
+									else if(isNaN(dvht))
+									{
+										$('#msg-fail-editmon-khdt').prop('hidden',false);
+										$('#msg-fail-editmon-khdt h5').html('Đơn Vị Học Trình/TC Phải Nhập Số');
+										$('#msg-success-editmon-khdt').prop('hidden',true);
+									}
+									else if(isNaN(tongso))
+									{
+										$('#msg-fail-editmon-khdt').prop('hidden',false);
+										$('#msg-fail-editmon-khdt h5').html('Tổng Số Phải Nhập Số');
+										$('#msg-success-editmon-khdt').prop('hidden',true);
+									}
+									else if(isNaN(lithuyet))
+									{
+										$('#msg-fail-editmon-khdt').prop('hidden',false);
+										$('#msg-fail-editmon-khdt h5').html('Lý Thuyết Phải Nhập Số');
+										$('#msg-success-editmon-khdt').prop('hidden',true);
+									}
+									else if(isNaN(thuchanh))
+									{
+										$('#msg-fail-editmon-khdt').prop('hidden',false);
+										$('#msg-fail-editmon-khdt h5').html('Thực Hành Phải Nhập Số');
+										$('#msg-success-editmon-khdt').prop('hidden',true);
+									}
+									else if(isNaN(baitap))
+									{
+										$('#msg-fail-editmon-khdt').prop('hidden',false);
+										$('#msg-fail-editmon-khdt h5').html('Bài Tập Phải Nhập Số');
+										$('#msg-success-editmon-khdt').prop('hidden',true);
+									}
+									else if(isNaN(baitaplon))
+									{
+										$('#msg-fail-editmon-khdt').prop('hidden',false);
+										$('#msg-fail-editmon-khdt h5').html('Bài Tập Lớn Phải Nhập Số');
+										$('#msg-success-editmon-khdt').prop('hidden',true);
+									}
+									else if(isNaN(doan))
+									{
+										$('#msg-fail-editmon-khdt').prop('hidden',false);
+										$('#msg-fail-editmon-khdt h5').html('Đồ Án Phải Nhập Số');
+										$('#msg-success-editmon-khdt').prop('hidden',true);
+									}
+									else if(isNaN(khoaluan))
+									{
+										$('#msg-fail-editmon-khdt').prop('hidden',false);
+										$('#msg-fail-editmon-khdt h5').html('Khóa Luận Phải Nhập Số');
+										$('#msg-success-editmon-khdt').prop('hidden',true);
+									}
+									else{
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Kehoachdaotao/editmon_khdt') ?>",
 												type: "POST",

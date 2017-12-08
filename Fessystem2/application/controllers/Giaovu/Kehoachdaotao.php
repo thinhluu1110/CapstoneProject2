@@ -207,43 +207,61 @@ Class Kehoachdaotao extends MY_Controller
             $error['thanhcong'] = '';
             $error['thatbai'] = '';
             $error['tontaimon'] = '';
+            $error['checkdiem'] = '';
             $monphu = 0;
+            $monhoc_id = $this->input->post('tenmon');
+            $khoahoc_id = $this->input->post('khoahoc');
+            $nganhhoc_id = $this->input->post('nganhhoc');
+            $hocki_id = $this->input->post('hocki');
+            $checkdiem = $this->Kehoachdaotao_model->Editmon_checkkhdt($nganhhoc_id,$khoahoc_id,$hocki_id);
+            if (count($checkdiem) > 0) {
+            $error['checkdiem'] = 'Học Kì Vừa Chọn Đã Kết Thúc';
+            }
+            else
+            {
             if ($this->input->post('monphu') == 1) {
               $monphu = 1;
             }
             $monhoc_id = $this->input->post('tenmon');
             $khoahoc_id = $this->input->post('khoahoc');
             $nganhhoc_id = $this->input->post('nganhhoc');
-            $error['check'] = $this->Kehoachdaotao_model->check_mon_khdt($monhoc_id,$khoahoc_id,$nganhhoc_id);
-            if (empty($error['check'])) {
-              $dataKHDT = array(
-              'monhoc_id' => $monhoc_id,
-              'dvht_tc' => $this->input->post('dvht_tc'),
-              'tongso' => $this->input->post('tongso'),
-              'lythuyet' => $this->input->post('lythuyet'),
-              'thuchanh' => $this->input->post('thuchanh'),
-              'baitap' => $this->input->post('baitap'),
-              'baitaplon' => $this->input->post('baitaplon'),
-              'doAn' => $this->input->post('doan'),
-              'khoaluan' => $this->input->post('khoaluan'),
-              'nganhhoc_id' => $this->input->post('nganhhoc'),
-              'hocki_id' => $this->input->post('hocki'),
-              'khoahoc_id' => $this->input->post('khoahoc'),
-              'monphu_id' => $monphu,
-            );
-            if($this->Kehoachdaotao_model->create($dataKHDT))
-            {
-                //tạo ra nội dung thông báo
-                $error['thanhcong'] = 'Thêm Thành Công';
-            }else{
-                $error['thatbai'] = 'Thêm Thất Bại';
-            }
+            $hocki_id = $this->input->post('hocki');
+            
+            
+              $error['check'] = $this->Kehoachdaotao_model->check_mon_khdt($monhoc_id,$khoahoc_id,$nganhhoc_id);
+              if (empty($error['check'])) {
+                $dataKHDT = array(
+                'monhoc_id' => $monhoc_id,
+                'dvht_tc' => $this->input->post('dvht_tc'),
+                'tongso' => $this->input->post('tongso'),
+                'lythuyet' => $this->input->post('lythuyet'),
+                'thuchanh' => $this->input->post('thuchanh'),
+                'baitap' => $this->input->post('baitap'),
+                'baitaplon' => $this->input->post('baitaplon'),
+                'doAn' => $this->input->post('doan'),
+                'khoaluan' => $this->input->post('khoaluan'),
+                'nganhhoc_id' => $this->input->post('nganhhoc'),
+                'hocki_id' => $this->input->post('hocki'),
+                'khoahoc_id' => $this->input->post('khoahoc'),
+                'monphu_id' => $monphu,
+                );
+                if($this->Kehoachdaotao_model->create($dataKHDT))
+                {
+                    //tạo ra nội dung thông báo
+                    $error['thanhcong'] = 'Thêm Thành Công';
+                }
+                else
+                {
+                    $error['thatbai'] = 'Thêm Thất Bại';
+                }
 
-            }
-            else {
-              $tenmon = $error['check']['TenMH'];
-              $hk = $error['check']['hocki_id'];
-              $error['tontaimon'] = "Đã Tồn Tại Môn $tenmon Ở Học Kì $hk";
+              }
+              else 
+              {
+                $tenmon = $error['check']['TenMH'];
+                $hk = $error['check']['hocki_id'];
+                $error['tontaimon'] = "Đã Tồn Tại Môn $tenmon Ở Học Kì $hk";
+              }
             }
               echo json_encode($error);
         }
@@ -370,10 +388,10 @@ Class Kehoachdaotao extends MY_Controller
           $nganhhoc = $value['nganhhoc_id'];
           $khoahoc = $value['khoahoc_id'];
           $hocki = $value['hocki_id'];
-          $monhoc = $value['monhoc_id'];
-          $checkdiem = $this->Kehoachdaotao_model->Delmon_checkkhdt($id,$nganhhoc,$khoahoc,$hocki,$monhoc);
+          //$monhoc = $value['monhoc_id'];
+          $checkdiem = $this->Kehoachdaotao_model->Editmon_checkkhdt($nganhhoc,$khoahoc,$hocki);
         if (count($checkdiem) > 0) {
-          $error['msg'] = 'Đã Có Dữ Liệu Kết Quả Học Tập Cho Kế Hoạch Đào Tạo Này';
+          $error['msg'] = 'Học Kì Vừa Chọn Đã Kết Thúc';
         }
         else
         {

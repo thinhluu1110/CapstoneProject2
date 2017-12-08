@@ -817,6 +817,7 @@
                             <a class="btn btn-sm btn-success col-xs-4" target="_blank" href="<?php echo base_url('Giaovu/Monhoc/index') ?>" > Thêm Môn Học Mới</a>
                             <!-- <input  class="btn btn-sm btn-success" value="Thêm" id="submit_add_KHDT" name="submit"> -->
                             <button type="button" class="btn btn-sm btn-success" id="submit_add_KHDT" name="submit">Thêm</button>
+                            <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                         </div>
                     </form>
                 </div>
@@ -943,6 +944,7 @@
                     <div class="modal-footer" style="padding:0px">
 
                         <input type="button" class="btn btn-sm btn-success" value="Sửa" id="submit_edit_monkhdt" name="submit">
+                        <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                     </div>
                 </form>
                 </div>
@@ -1020,6 +1022,7 @@
               </div>
               <div class="modal-footer" style="padding:0px">
                 <input type="button" class="btn btn-sm btn-danger" id="submit_delmon_khdt" name="Xóa" value="Xóa">
+                <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
             </div>
         </form>
                 </div>
