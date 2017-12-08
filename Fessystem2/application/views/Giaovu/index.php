@@ -1893,10 +1893,10 @@
 								data:{'khdt_id' : idkhdt},
 								dataType: 'json',
 								success: function(data){
-											
 												if (data.khdt_info.monphu_id == 1) {
 													$('#monphu_edit').attr('checked','checked');
 												}
+												$('#hocki_edit_monkhdt').val(data.khdt_info.hocki_id);
 												$('#idkhdt_edit_monkhdt').val(data.khdt_info.khdt_id);
 												$('#nganhhoc_edit_monkhdt').val(data.khdt_info.tennganh);
 												$('#khoahoc_edit_monkhdt').val(data.khdt_info.tenkhoa);
@@ -1938,15 +1938,10 @@
 									if ($('#monphu_edit').is(":checked")) {
 										monphu = 1;
 									}
-									else if(dvht == '' || tongso == '' || lithuyet == '' || thuchanh == '' || baitap == '' || baitaplon == '' || doan == '' || khoaluan == '' || idhocki == '') {
+									if(dvht == '' || tongso == '' || lithuyet == '' || thuchanh == '' || baitap == '' || baitaplon == '' || doan == '' || khoaluan == '' || idhocki == '') {
 											$('#msg-fail-editmon-khdt').prop('hidden',false);
 											$('#msg-fail-editmon-khdt h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success-editmon-khdt').prop('hidden',true);
-									}
-									else if(/^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(dvht) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(tongso) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(lithuyet) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(thuchanh) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(baitap) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(baitaplon) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(doan) == false || /^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(khoaluan) == false) {
-										$('#msg-fail-editmon-khdt').prop('hidden',false);
-										$('#msg-fail-editmon-khdt h5').html('Không Được Nhập Ký Tự Đặc Biệt');
-										$('#msg-success-editmon-khdt').prop('hidden',true);
 									}
 									else if(isNaN(dvht))
 									{
@@ -2003,33 +1998,22 @@
 												data:{'nganhhoc':idnganh,'khoahoc':idkhoa,'monhoc':idmon,'khdt_id':idkhdt,'hocki_id' : idhocki, 'dvht':dvht, 'tongso':tongso, 'lythuyet':lithuyet, 'thuchanh':thuchanh, 'baitap':baitap,'baitaplon':baitaplon, 'doAn':doan, 'khoaluan':khoaluan, 'monphu' : monphu},
 												dataType: 'json',
 												success: function(data){
-
 													if (data.check == true) {
-														//alert('word');
 														$('#dialogEdit_KHDT').modal('hide');
 														$('#dialogValidation_Addmon_KHDT').modal('show');
 													}
-
 													if (data.check == false) {
-
 														$('#msg-fail-editmon-khdt').prop('hidden',false);
 														$('#msg-fail-editmon-khdt h5').html("Sửa Thất Bại");
 														$('#msg-success-editmon-khdt').prop('hidden',true);
 													}
-
 													if(data.msg != '')
 													{
 														$('#msg-fail-editmon-khdt').prop('hidden',false);
 														$('#msg-fail-editmon-khdt h5').html(data.msg);
 														$('#msg-success-editmon-khdt').prop('hidden',true);
 													}
-													// $('#form-Add').trigger("reset");
-													// $('#msg-success').prop('hidden',false);
-
 												}
-												// error: function(){
-												// 	$('#msg-fail h5').html('Thêm Thất Bại');
-												// }
 											});
 									}
 							});

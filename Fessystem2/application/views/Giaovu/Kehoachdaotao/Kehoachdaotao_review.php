@@ -12,6 +12,9 @@
     <div hidden="hidden"id="alert_fail" class="center">
       <h4 style="color:Red;">Những dữ liệu bên dưới chưa được khai báo, vui lòng xác định lại dữ liệu</h4>
     </div>
+    <div hidden="hidden" class="center">
+      <h4 style="color:Red;">Có Dữ Liệu Bị Trống Vui Lòng Xem Lại Thông Tin Dữ Liệu</h4>
+    </div>
     <div class="container-fluid" style="margin-top:10px; margin-bottom:10px">
         <div class="row">
             <div class="col-xs-12">
@@ -77,63 +80,43 @@
                     </td>
                 </tr>
                 <?php
-
                     @$list = $listreview;
-                    // pre($list);
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 1){
                 ?>
-                <tr>
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
                     <td class="hitec-td-1 text-center">
                         <?php echo $i + 1?>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                         <?php echo $list[$i]['monhoc_id']?>
-                        </a>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                         <?php echo $list[$i]['TenMH']?>
-                        </a>
                     </td>
                     <td class="hitec-td-1 text-center">
                         <?php echo $list[$i]['dvht_tc']?>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                         <?php echo $list[$i]['tongso']?>
-                        </a>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                         <?php echo $list[$i]['lythuyet']?>
-                        </a>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                         <?php echo $list[$i]['thuchanh']?>
-                        </a>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                         <?php echo $list[$i]['baitap']?>
-                        </a>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                         <?php echo $list[$i]['baitaplon']?>
-                        </a>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                           <?php echo $list[$i]['doAn']?>
-                        </a>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                           <?php echo $list[$i]['khoaluan']?>
-                        </a>
                     </td>
                 </tr>
               <?php } } ?>
@@ -146,59 +129,40 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 2){
                 ?>
-                <tr>
-                    <td class="hitec-td-1 text-center">
-                        <?php echo $i + 1?>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['monhoc_id']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['TenMH']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <?php echo $list[$i]['dvht_tc']?>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['tongso']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['lythuyet']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['thuchanh']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['baitap']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['baitaplon']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                          <?php echo $list[$i]['doAn']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                          <?php echo $list[$i]['khdt_id']  ?>
-                        </a>
-                    </td>
-
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $i + 1?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['monhoc_id']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['TenMH']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['dvht_tc']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['tongso']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['lythuyet']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['thuchanh']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['baitap']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['baitaplon']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                        <?php echo $list[$i]['doAn']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                        <?php echo $list[$i]['khoaluan']?>
+                  </td>
                 </tr>
                 <?php } }?>
                 <tr>
@@ -210,62 +174,43 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 3){
                 ?>
-                <tr>
-                    <td class="hitec-td-1 text-center">
-                        <?php echo $i + 1?>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['monhoc_id']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['TenMH']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <?php echo $list[$i]['dvht_tc']?>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['tongso']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['lythuyet']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['thuchanh']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['baitap']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['baitaplon']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                          <?php echo $list[$i]['doAn']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                          <?php echo $list[$i]['khoaluan']?>
-                        </a>
-                    </td>
-
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $i + 1?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['monhoc_id']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['TenMH']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['dvht_tc']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['tongso']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['lythuyet']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['thuchanh']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['baitap']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['baitaplon']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                        <?php echo $list[$i]['doAn']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                        <?php echo $list[$i]['khoaluan']?>
+                  </td>
                 </tr>
                 <?php } }?>
-                <tr>
+                <tr >
                     <td class="hitec-td-2" colspan="12">
                         <strong>Học Kì 4</strong>
                     </td>
@@ -274,59 +219,40 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 4){
                 ?>
-                <tr>
-                    <td class="hitec-td-1 text-center">
-                        <?php echo $i + 1?>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['monhoc_id']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['TenMH']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <?php echo $list[$i]['dvht_tc']?>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['tongso']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['lythuyet']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['thuchanh']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['baitap']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['baitaplon']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                          <?php echo $list[$i]['doAn']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                          <?php echo $list[$i]['khoaluan']?>
-                        </a>
-                    </td>
-
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $i + 1?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['monhoc_id']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['TenMH']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['dvht_tc']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['tongso']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['lythuyet']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['thuchanh']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['baitap']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['baitaplon']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                        <?php echo $list[$i]['doAn']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                        <?php echo $list[$i]['khoaluan']?>
+                  </td>
                 </tr>
                 <?php } }?>
                 <tr>
@@ -338,59 +264,40 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 5){
                 ?>
-                <tr>
-                    <td class="hitec-td-1 text-center">
-                        <?php echo $i + 1?>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['monhoc_id']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['TenMH']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <?php echo $list[$i]['dvht_tc']?>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['tongso']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['lythuyet']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['thuchanh']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['baitap']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['baitaplon']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                          <?php echo $list[$i]['doAn']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                          <?php echo $list[$i]['khoaluan']?>
-                        </a>
-                    </td>
-
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $i + 1?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['monhoc_id']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['TenMH']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['dvht_tc']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['tongso']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['lythuyet']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['thuchanh']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['baitap']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['baitaplon']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                        <?php echo $list[$i]['doAn']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                        <?php echo $list[$i]['khoaluan']?>
+                  </td>
                 </tr>
                 <?php } }?>
                 <tr>
@@ -402,59 +309,40 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 6){
                 ?>
-                <tr>
-                    <td class="hitec-td-1 text-center">
-                        <?php echo $i + 1?>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['monhoc_id']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['TenMH']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <?php echo $list[$i]['dvht_tc']?>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['tongso']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['lythuyet']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['thuchanh']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['baitap']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['baitaplon']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                          <?php echo $list[$i]['doAn']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                          <?php echo $list[$i]['khoaluan']?>
-                        </a>
-                    </td>
-
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $i + 1?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['monhoc_id']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['TenMH']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['dvht_tc']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['tongso']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['lythuyet']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['thuchanh']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['baitap']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['baitaplon']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                        <?php echo $list[$i]['doAn']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                        <?php echo $list[$i]['khoaluan']?>
+                  </td>
                 </tr>
                 <?php } }?>
                 <tr>
@@ -466,59 +354,40 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 7){
                 ?>
-                <tr>
-                    <td class="hitec-td-1 text-center">
-                        <?php echo $i + 1?>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['monhoc_id']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['TenMH']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <?php echo $list[$i]['dvht_tc']?>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['tongso']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['lythuyet']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['thuchanh']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['baitap']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['baitaplon']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                          <?php echo $list[$i]['doAn']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                          <?php echo $list[$i]['khoaluan']?>
-                        </a>
-                    </td>
-
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $i + 1?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['monhoc_id']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['TenMH']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['dvht_tc']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['tongso']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['lythuyet']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['thuchanh']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['baitap']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['baitaplon']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                        <?php echo $list[$i]['doAn']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                        <?php echo $list[$i]['khoaluan']?>
+                  </td>
                 </tr>
                 <?php } }?>
                 <tr>
@@ -530,59 +399,40 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 8){
                 ?>
-                <tr>
-                    <td class="hitec-td-1 text-center">
-                        <?php echo $i + 1?>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['monhoc_id']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['TenMH']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <?php echo $list[$i]['dvht_tc']?>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['tongso']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['lythuyet']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['thuchanh']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['baitap']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                        <?php echo $list[$i]['baitaplon']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                          <?php echo $list[$i]['doAn']?>
-                        </a>
-                    </td>
-                    <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
-                          <?php echo $list[$i]['khoaluan']?>
-                        </a>
-                    </td>
-
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $i + 1?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['monhoc_id']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['TenMH']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['dvht_tc']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['tongso']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['lythuyet']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['thuchanh']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['baitap']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                      <?php echo $list[$i]['baitaplon']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                        <?php echo $list[$i]['doAn']?>
+                  </td>
+                  <td class="hitec-td-1 text-center">
+                        <?php echo $list[$i]['khoaluan']?>
+                  </td>
                 </tr>
                 <?php } }?>
             </tbody>

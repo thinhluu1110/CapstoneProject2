@@ -161,8 +161,11 @@ Class Kehoachdaotao extends MY_Controller
               // if($check_mamon == false)
               // {
           for ($row = 6; $row <= $highestRow; $row ++) {
-            // $break = $sheetData[$row]['B'];
-  					// if ($break == 'null') {
+            $break = $sheetData[$row]['A'];
+  					if ($break == 'null') {
+              break;
+            }
+            else {
               $dataKHDT = array(
                 'monhoc_id' => trim($sheetData[$row]['B']),
                 'TenMH' => trim($sheetData[$row]['C']),
@@ -179,11 +182,12 @@ Class Kehoachdaotao extends MY_Controller
                 'khoahoc_id' => $khoa,
                 'monphu_id' => 0,
               );
+            }
               if($this->Kehoachdaotao_tam_model->create($dataKHDT))
               {
                 $error['load'] = true;
               }
-              // }
+
             }
           // }
           // else{
@@ -226,8 +230,8 @@ Class Kehoachdaotao extends MY_Controller
             $khoahoc_id = $this->input->post('khoahoc');
             $nganhhoc_id = $this->input->post('nganhhoc');
             $hocki_id = $this->input->post('hocki');
-            
-            
+
+
               $error['check'] = $this->Kehoachdaotao_model->check_mon_khdt($monhoc_id,$khoahoc_id,$nganhhoc_id);
               if (empty($error['check'])) {
                 $dataKHDT = array(
@@ -256,7 +260,7 @@ Class Kehoachdaotao extends MY_Controller
                 }
 
               }
-              else 
+              else
               {
                 $tenmon = $error['check']['TenMH'];
                 $hk = $error['check']['hocki_id'];
@@ -332,7 +336,7 @@ Class Kehoachdaotao extends MY_Controller
           );
           $id = $this->input->post('khdt_id');
           $value = $this->Kehoachdaotao_model->khdt_info($id);
-           $nganhhoc = $value['nganhhoc_id'];
+          $nganhhoc = $value['nganhhoc_id'];
           $khoahoc = $value['khoahoc_id'];
           $hocki = $value['hocki_id'];
           $monhoc = $value['monhoc_id'];

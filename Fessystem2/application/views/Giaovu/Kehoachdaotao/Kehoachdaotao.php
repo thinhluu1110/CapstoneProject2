@@ -728,15 +728,17 @@
                                         <select class="form-control" id="nganhhocAdd" name="nganhhoc">
                                           <option value="">--- Chọn Ngành Học ---</option>
                                           <?php foreach ($listnganhhoc as $row):?>
-                                          <option value="<?php echo $row->nganhhoc_id ?>"><?php echo $row->tennganh ?></option>
+                                          <option value="<?php echo $row->nganhhoc_id ?>" <?php echo ($this->input->get('nganhhoc') == $row->nganhhoc_id) ? 'selected' : '' ?> ><?php echo $row->tennganh ?></option>
                                           <?php endforeach;?>
                                         </select>
                                     </div>
                                     <div class="form-group col-xs-4"style="margin-left:10px">
                                         <label class="coltrol-lable">Khóa:</label>
-                                        <select class="form-control" id="khoahocAdd" name="khoahoc" disabled = "">
+                                        <select class="form-control" id="khoahocAdd" name="khoahoc" >
                                             <option value="">--- Chọn Khóa Học ---</option>
-
+                                            <?php foreach ($listkhoahoc as $row):?>
+                                            <option value="<?php echo $row['khoahoc_id'] ?>" <?php echo ($this->input->get('khoahoc') == $row['khoahoc_id']) ? 'selected' : '' ?> ><?php echo $row['tenkhoa'] ?></option>
+                                            <?php endforeach;?>
                                         </select>
                                     </div>
                                     <div class="form-group col-xs-4"style="margin-left:10px">
