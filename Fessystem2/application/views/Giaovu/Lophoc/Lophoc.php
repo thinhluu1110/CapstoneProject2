@@ -4,7 +4,24 @@
                 <div class="page-header">
                     <div class="hitec-content">
                         <h2>Danh sách lớp học</h2>
-
+                        <div class="container-fluid">
+                        <form method="get" action="<?php echo base_url('Giaovu/Lophoc/index')?>" id="formSearch" role="form" onsubmit="return true;">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div class="input-group hitec-w-100percent">
+                                    <select class="form-control" id="monhoc" name="monhoc" onchange='if(this.value != 0) { this.form.submit(); }'>
+                                        <option value="">--- Chọn Môn Học ---</option>
+                                        <?php foreach ($listmonhoc as $row):?>
+                                        <option value="<?php echo $row['monhoc_id'] ?>" <?php echo ($this->input->get('monhoc') == $row['monhoc_id']) ? 'selected' : '' ?> ><?php echo $row['TenMH'] ?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                    </div>
+                                </div>
+                                
+<!--  -->
+            </div>
+        </form>
+    </div>
                         <div id="searchResult" style="margin-top:5px;">
                             <div class="container-fluid">
                                 </div>
@@ -24,18 +41,17 @@
                                     </thead>
                                     <tbody>
                                     <?php
-                                    $list = $listlophoc;
-                                    for ($i=0; $i < count($list) ; $i++) {
+                                    for ($i=0; $i < @count($listlophoc) ; $i++) {
                                     ?>
                                      <tr>
                                       <td class="hitec-td-1 text-center"> <?php echo $i+1 ?> </td>
-                                      <td class="hitec-td-1 text-center" ><?php echo $list[$i]['tenlop'] ?></td>
+                                      <td class="hitec-td-1 text-center" ><?php echo $listlophoc[$i]['tenlop'] ?></td>
                                       <?php if ($this->session->userdata('phanquyen') == 1) {?>
                                         <td class="hitec-td-1 text-center">
-                                        <a  class="btn-sm btn-info edit_lop" id="<?php echo $list[$i]['lophoc_id'] ?>"  data-toggle="modal" data-target="#dialogEdit" style="margin-right: 4px;">
+                                        <a  class="btn-sm btn-info edit_lop" id="<?php echo $listlophoc[$i]['lophoc_id'] ?>"  data-toggle="modal" data-target="#dialogEdit" style="margin-right: 4px;">
                                              <i class="fa fa-eye"></i>
                                          </a>
-                                         <a  class="btn-sm btn-danger delete_lop" id="<?php echo $list[$i]['lophoc_id'] ?>" data-toggle="modal" data-target="#dialogDelete" style="margin-right: 4px;">
+                                         <a  class="btn-sm btn-danger delete_lop" id="<?php echo $listlophoc[$i]['lophoc_id'] ?>" data-toggle="modal" data-target="#dialogDelete" style="margin-right: 4px;">
                                             <i class="fa fa-trash"></i>
                                          </a>
                                         </td>
@@ -66,7 +82,15 @@
                         <div class="modal-body">
                             <div class="row" style="margin:10px">
                                 <div class="col-xs-12 col-md-12 col-lg-12">
-
+                                    <div class="form-group">
+                                        <label class="coltrol-lable">Môn Học:</label>
+                                        <select class="form-control" id="monhoc_addlophoc" name="monhoc_addlophoc">
+                                          <option value="">--- Chọn Môn Học ---</option>
+                                          <?php foreach ($listmonhoc as $row):?>
+                                          <option value="<?php echo $row['monhoc_id'] ?>"><?php echo $row['TenMH'] ?></option>
+                                          <?php endforeach;?>
+                                        </select>
+                                    </div>
                                     <div class="form-group">
                                         <label class="coltrol-lable">Nhập Tên Lớp:</label>
                                         <input class="form-control" id="tenlop" name="tenlop" />
@@ -77,6 +101,7 @@
                         </div>
                         <div class="modal-footer" style="padding:0px">
                             <input type="button" class="btn btn-sm btn-success" value="Thêm" id="submit_addlop" name="Thêm">
+                            <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                         </div>
                     </form>
                 </div>
@@ -107,6 +132,14 @@
                                   <div hidden class="form-group">
                                     <input  class="form-control" id="idlop_edit" value="" name="idlop_edit" />
                                 </div>
+                                <div hidden class="form-group">
+                                    <label class="coltrol-lable">ID Mon:</label>
+                                    <input class="form-control" id="idmon_editlophoc" name="idmon_editlophoc" disabled>
+                                </div>
+                                <div  class="form-group">
+                                    <label class="coltrol-lable">Môn Học:</label>
+                                    <input class="form-control" id="tenmon_editlophoc" name="tenmon_editlophoc" disabled>
+                                </div>
                                     <div class="form-group">
                                         <label class="coltrol-lable">Nhập Tên Lớp:</label>
                                         <input class="form-control" id="tenlop_edit" name="tenlop_edit" />
@@ -117,7 +150,7 @@
                         </div>
                         <div class="modal-footer" style="padding:0px">
                             <input type="button" class="btn btn-sm btn-success" value="Sửa" id="submit_editlop" name="Sửa">
-
+                            <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
                         </div>
                     </form>
                 </div>
@@ -150,6 +183,29 @@
               </div>
               <div class="modal-footer" style="padding:0px">
                 <input type="button" class="btn btn-sm btn-danger" id="submit_dellop" name="Xóa" value="Xóa">
+                <button onclick="reload()" class="btn btn-sm btn-danger" data-dismiss="modal">Hủy</button>
+            </div>
+        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div id="dialogValidation_addlop" data-backdrop = "static" data-keyboard = "false" class="modal fade" tabindex="-1" style="padding-top: 0px; padding-bottom: 0px; padding-left: 17px;" aria-hidden="false">
+            <div class="modal-dialog" style="width:400px !important;height:600px !important">
+                <div class="modal-content">
+                <!-- <form id="form-validation-add-nganhhoc" name="frmCreateEmployee" method="post"  class="form-horizontal" role="form" ng-submit="UpdateEmployee()"> -->
+                <form id="form-validation-add-nganhhoc" name="frmCreateEmployee" method="post"  class="thongbao" role="form" ng-submit="UpdateEmployee()">
+                    <div class="modal-header bg-primary" style="padding:0px;text-align:center">
+                        <h5><strong class="modal-title">Thông Báo</strong></h5>
+                        </div>
+                <div style="color:green;" class="modal-body text-center">
+                <font size="5">Thành Công</font>
+              </div>
+              <div class="modal-footer" style="padding:0px;">
+                <input type="button" style="width: 100%;" class="btn btn-sm btn-success" id="submit_addlop" name="Xóa" onclick="reload()" value="OK">
             </div>
         </form>
                 </div>

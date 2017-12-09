@@ -42,8 +42,11 @@
     function Get_lopbyid($idl)
     {
 
-      $this->db->where('lophoc_id',$idl);
-      $query = $this->db->get('lophoc');
+      $this->db->select('*')
+      ->from('lophoc as l')
+      ->join('monhoc as m', 'l.monhoc_id = m.monhoc_id')
+      ->where('l.lophoc_id',$idl);
+      $query = $this->db->get();
       return $query->row_array();
     }
 		function get_lop_mon($idm)
@@ -52,11 +55,13 @@
       $query = $this->db->get('lophoc');
       return $query->result_array();
     }
-    function Check_Lop($tenlop)
+    function Check_Lop($tenlop,$idmon)
     {
       $this->db->select('*')
       ->from('lophoc as l')
-      ->where('l.tenlop', $tenlop);
+      ->join('monhoc as m', 'l.monhoc_id = m.monhoc_id')
+      ->where('l.tenlop', $tenlop)
+      ->where('l.monhoc_id', $idmon);
       $query = $this->db->get();
       if ($query->num_rows() > 0) 
       {
@@ -73,5 +78,18 @@
     //   $query = $this->db->get();
     //   return $query->result_array();
     // }
+    function Checklop_byid($tenlop,$idmon)
+    {
+      $this->db->select('*')
+      ->from('lophoc as l')
+      //->join('monhoc as m', 'l.monhoc_id = m.monhoc_id')
+      ->where('l.tenlop', $tenlop)
+      ->where('l.monhoc_id', $idmon);
+      $query = $this->db->get();
+      if ($query->num_rows() > 0) 
+      {
+       return true;
+      }
+    }
 	}
 ?>

@@ -13,8 +13,13 @@ Class Lophoc extends MY_Controller
 		function index()
 		{
 			$data = array();
-      $data['listlophoc'] = $this->Lophoc_model->Get_lop();
+      $input = array();
+      
       $data['listmonhoc'] = $this->Monhoc_model->get_monhoc();
+      $monhoc = $this->input->get('monhoc');
+      if($monhoc){
+        $data['listlophoc'] = $this->Lophoc_model->Get_lop_mon($monhoc);
+      }
 			$data['temp'] = 'Giaovu/Lophoc/Lophoc';
 			$this->load->view('Giaovu/index',$data);
 		}
@@ -23,16 +28,18 @@ Class Lophoc extends MY_Controller
     {
       
         $tenlop = $this->input->post('tenlop');
+        $idmon = $this->input->post('idmon');
         $data = array(
           // 'khoahoc_id' => $this->input->post('khoahoc'),
-          'tenlop' => $this->input->post('tenlop')
+          'tenlop' => $this->input->post('tenlop'),
+          'monhoc_id' => $this->input->post('idmon')
         );
         $error = array
         (
           'msg' => '',
           'check' => true
         );
-        if ($this->Lophoc_model->Check_Lop($tenlop) == true) 
+        if ($this->Lophoc_model->Check_Lop($tenlop,$idmon) == true) 
         {
           $error['msg'] = 'Tên lớp đã tồn tại trong hệ thống';
         }
@@ -54,16 +61,18 @@ Class Lophoc extends MY_Controller
     {
        $id = $this->input->post('idlop');
         $tenlop = $this->input->post('tenlop');
+        $idmon = $this->input->post('idmon');
         $data = array
         (
           'tenlop' => $this->input->post('tenlop'),
+          'monhoc_id' => $this->input->post('idmon')
         );
         $error = array
         (
           'msg' => '',
-          'check' => true
+          'check' => false
         );
-        if ($this->Lophoc_model->Check_Lop($tenlop) == true) 
+        if ($this->Lophoc_model->Checklop_byid($tenlop,$idmon) == true) 
         {
           $error['msg'] = 'Tên lớp đã tồn tại trong hệ thống';
         }
@@ -78,8 +87,8 @@ Class Lophoc extends MY_Controller
             $error['check'] = false;
           }
         }
-      
       echo json_encode($error);
+      
 
     }
 		function Del()
@@ -104,7 +113,7 @@ Class Lophoc extends MY_Controller
     {
         $id = $this->input->post('lophoc_id');
         $data['lophoc_info'] = $this->Lophoc_model->Get_lopbyid($id);
-        echo json_encode($data);
+        echo json_encode($data['lophoc_info']);
     }
 	}
 

@@ -1435,17 +1435,25 @@
 					});
 					$(document).ready(function() {
 							$('#submit_addlop').on('click', function() {
-									var tenlop = $('#tenlop').val();
+									var idmon = $('#monhoc_addlophoc').val();
+									var tenlop = $('#tenlop').val().trim();
 
-									if(tenlop == '' ) {
+									if(idmon == '' || tenlop == '' ) {
 											$('#msg-fail').prop('hidden',false);
 											$('#msg-fail h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success').prop('hidden',true);
-									}else{
+									}
+									else if (/^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(tenlop) == false) 
+									{
+										$('#msg-fail').prop('hidden',false);
+											$('#msg-fail h5').html('Không Được Nhập Ký Tự Đặc Biệt');
+											$('#msg-success').prop('hidden',true);
+									}
+									else{
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Lophoc/Add') ?>",
 												type: "POST",
-												data:{'tenlop':tenlop},
+												data:{'idmon':idmon,'tenlop':tenlop},
 												dataType: 'json',
 												success: function(data){
 													if (data.msg != '') {
@@ -1460,9 +1468,8 @@
 														$('#msg-success').prop('hidden',true);
 													}
 													if (data.check == true) {
-														$('#form-Add').trigger("reset");
-														$('#msg-success').prop('hidden',false);
-														$('#msg-fail').prop('hidden',true);
+														$('#dialogAdd').modal('hide');
+														$('#dialogValidation_addlop').modal('show');
 													}
 													// $('#form-Add').trigger("reset");
 													// $('#msg-success').prop('hidden',false);
@@ -1513,8 +1520,10 @@
 								data:{'lophoc_id' : idlop},
 								dataType: 'json',
 								success: function(data){
-												$('#idlop_edit').val(data.lophoc_info.lophoc_id);
-												$('#tenlop_edit').val(data.lophoc_info.tenlop);
+												$('#idlop_edit').val(data.lophoc_id);
+												$('#tenlop_edit').val(data.tenlop);
+												$('#idmon_editlophoc').val(data.monhoc_id);
+												$('#tenmon_editlophoc').val(data.TenMH);
 												}
 
 											 });
@@ -1523,17 +1532,24 @@
 					$(document).ready(function() {
 							$('#submit_editlop').on('click', function() {
 									var idlop = $('#idlop_edit').val();
-									var tenlop = $('#tenlop_edit').val();
+									var idmon = $('#idmon_editlophoc').val();
+									var tenlop = $('#tenlop_edit').val().trim();
 
 									if(tenlop == '') {
 											$('#msg-fail-edit-lop').prop('hidden',false);
 											$('#msg-fail-edit-lop h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success-edit-lop').prop('hidden',true);
-									}else{
+									}
+									else if(/^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(tenlop) == false) {
+										$('#msg-fail-edit-lop').prop('hidden',false);
+										$('#msg-fail-edit-lop h5').html('Không Được Nhập Ký Tự Đặc Biệt');
+										$('#msg-success-edit-lop').prop('hidden',true);
+									}
+									else{
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Lophoc/Edit') ?>",
 												type: "POST",
-												data:{'idlop' : idlop, 'tenlop':tenlop},
+												data:{'idlop' : idlop, 'tenlop':tenlop, 'idmon':idmon},
 												dataType: 'json',
 												success: function(data){
 													if (data.msg != '') {
@@ -1548,10 +1564,8 @@
 														$('#msg-success-edit-lop').prop('hidden',true);
 													}
 													if (data.check == true) {
-														$('#form-Edit-Lophoc').trigger("reset");
-														$('#msg-success-edit-lop').prop('hidden',false);
-														$('#msg-success-edit-lop h5').html("Sửa Thành Công");
-														$('#msg-fail-edit-lop').prop('hidden',true);
+														$('#dialogEdit').modal('hide');
+														$('#dialogValidation_addlop').modal('show');
 													}
 													// $('#form-Add').trigger("reset");
 													// $('#msg-success').prop('hidden',false);

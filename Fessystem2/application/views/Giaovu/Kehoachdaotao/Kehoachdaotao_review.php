@@ -143,7 +143,7 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 2){
                 ?>
-                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';}elseif($list[$i]['monmoi'] == 1){echo 'color:green';}?>">
                   <td class="hitec-td-1 text-center">
                       <?php echo $i + 1?>
                   </td>
@@ -188,7 +188,7 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 3){
                 ?>
-                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';}elseif($list[$i]['monmoi'] == 1){echo 'color:green';}?>">
                   <td class="hitec-td-1 text-center">
                       <?php echo $i + 1?>
                   </td>
@@ -233,7 +233,7 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 4){
                 ?>
-                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';}elseif($list[$i]['monmoi'] == 1){echo 'color:green';}?>">
                   <td class="hitec-td-1 text-center">
                       <?php echo $i + 1?>
                   </td>
@@ -278,7 +278,7 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 5){
                 ?>
-                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';}elseif($list[$i]['monmoi'] == 1){echo 'color:green';}?>">
                   <td class="hitec-td-1 text-center">
                       <?php echo $i + 1?>
                   </td>
@@ -323,7 +323,7 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 6){
                 ?>
-                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';}elseif($list[$i]['monmoi'] == 1){echo 'color:green';}?>">
                   <td class="hitec-td-1 text-center">
                       <?php echo $i + 1?>
                   </td>
@@ -368,7 +368,7 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 7){
                 ?>
-                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';}elseif($list[$i]['monmoi'] == 1){echo 'color:green';}?>">
                   <td class="hitec-td-1 text-center">
                       <?php echo $i + 1?>
                   </td>
@@ -413,7 +413,7 @@
                     for ($i = 0; $i < count($list); $i++){
                         if($list[$i]['hocki_id'] == 8){
                 ?>
-                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';} ?>">
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';}elseif($list[$i]['monmoi'] == 1){echo 'color:green';}?>">
                   <td class="hitec-td-1 text-center">
                       <?php echo $i + 1?>
                   </td>
