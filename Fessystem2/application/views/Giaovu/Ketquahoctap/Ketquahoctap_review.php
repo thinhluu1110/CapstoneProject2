@@ -25,7 +25,7 @@
     <?php if (isset($listreview)) {
       $check = true;
       for ($i = 0; $i < count($listreview); $i++){
-        if ($listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['sinhvien_id'] == 'null') { ?>
+        if ($listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['sinhvien_id'] == 'null' || $listreview[$i]['lophoc_id'] == 'null') { ?>
           <div  class="center">
             <h5 style="color:Red;">Màu Đỏ: Dữ Liệu Bị Trống</h5>
             <h5 style="color:Green;">Màu Xanh: Dữ Liệu Mới</h5>
@@ -69,7 +69,7 @@
                     // pre($list);
                     for ($i = 0; $i < count($list); $i++){
                 ?>
-                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['nganhhoc_id'] == 'null' || $list[$i]['sinhvien_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';}elseif($list[$i]['lopmoi'] == 1){echo 'color:green';}?>">
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['nganhhoc_id'] == 'null' || $list[$i]['sinhvien_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';}elseif($list[$i]['lopmoi'] == 1 || $list[$i]['nganhmoi'] == 1 || $list[$i]['monmoi'] == 1){echo 'color:green';}?>">
                     <td class="hitec-td-1 text-center">
                         <?php echo $i + 1?>
                     </td>
@@ -134,12 +134,15 @@
                   async:false,
                 	success: function(data){
                 		if (data.check == true) {
-                      setTimeout(function(){window.location = "<?php echo base_url('Giaovu/Ketquahoctap/index') ?>"},2500);
-                      $('#alert_success').prop('hidden',false);
+                            setTimeout(function(){window.location = "<?php echo base_url('Giaovu/Ketquahoctap/index') ?>"},2500);
+                            $('#alert_success').prop('hidden',false);
                 		}
-                		if (data.check == false) {
-                			window.location = "<?php echo base_url('Giaovu/Ketquahoctap/review_kqht?modal=1') ?>";
-                		}
+                		else if (data.check == false) {
+                            window.location = "<?php echo base_url('Giaovu/Ketquahoctap/review_kqht?loi=1') ?>";
+                        }
+                        else if (data.dulieurong == false) {
+                            window.location = "<?php echo base_url('Giaovu/Ketquahoctap/review_kqht?dulieurong=1') ?>";
+                        }
                 	}
                 });
         });
