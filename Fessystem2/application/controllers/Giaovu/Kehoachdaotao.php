@@ -317,7 +317,7 @@ Class Kehoachdaotao extends MY_Controller
             if ($value['monhoc_id'] == 'null' || $value['TenMH'] == 'null' ) {
               $check = false;
               break;
-            }  
+            }
           }
           if ($check == true) {
             $this->Kehoachdaotao_model->run_sp();
