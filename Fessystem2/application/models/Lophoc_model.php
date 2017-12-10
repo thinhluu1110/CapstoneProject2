@@ -63,7 +63,7 @@
       ->where('l.tenlop', $tenlop)
       ->where('l.monhoc_id', $idmon);
       $query = $this->db->get();
-      if ($query->num_rows() > 0) 
+      if ($query->num_rows() > 0)
       {
        return true;
       }
@@ -86,7 +86,7 @@
       ->where('l.tenlop', $tenlop)
       ->where('l.monhoc_id', $idmon);
       $query = $this->db->get();
-      if ($query->num_rows() > 0) 
+      if ($query->num_rows() > 0)
       {
        return true;
       }
@@ -97,9 +97,9 @@
       ->from('lophoc as l')
       ->join('monhoc as m', 'l.monhoc_id = m.monhoc_id')
       ->where('l.tenlop', $tenlop)
-      ->where('m.monhoc_id', $tenmon);
+      ->where('m.MaMH', $tenmon);
       $query = $this->db->get();
-      if ($query->result_array() > 0) 
+      if ($query->row_array() > 0)
       {
        return true;
       }

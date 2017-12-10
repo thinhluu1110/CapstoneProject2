@@ -145,18 +145,17 @@
       		$listnganhhoc = $this->Nganhhoc_model->get_list();
       		$data['listreview']=$this->Ketquahoctap_tam_model->reviewkqht();
       		foreach ($data['listreview'] as $key => $value) {
+						// pre($value['lophoc_id']. '  '.$value['monhoc_id']);
       			$checklop = $this->Lophoc_model->Checklopkqht_byid($value['lophoc_id'], $value['monhoc_id']);
-      			var_dump($checklop);
-      			exit;
       			if ($checklop != true ) {
-          		$data['listreview'][$key]['lopmoi'] = 123;
+          		$data['listreview'][$key]['lopmoi'] = true;
         		}
         		else {
-         			$data['listreview'][$key]['lopmoi'] = 456;
+         			$data['listreview'][$key]['lopmoi'] = false;
         		}
 
       		}
-
+					
       		$data['listnganhhoc'] = $listnganhhoc;
 					$this->load->view('Giaovu/Ketquahoctap/Ketquahoctap_review',$data);
 		}
