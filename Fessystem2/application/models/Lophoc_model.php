@@ -91,5 +91,18 @@
        return true;
       }
     }
+    function Checklopkqht_byid($tenlop,$tenmon)
+    {
+      $this->db->select('*')
+      ->from('lophoc as l')
+      ->join('monhoc as m', 'l.monhoc_id = m.monhoc_id')
+      ->where('l.tenlop', $tenlop)
+      ->where('m.monhoc_id', $tenmon);
+      $query = $this->db->get();
+      if ($query->result_array() > 0) 
+      {
+       return true;
+      }
+    }
 	}
 ?>

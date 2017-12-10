@@ -6,12 +6,31 @@
     <title></title>
   </head>
   <body>
-    <div hidden="hidden"id="alert_success" class="center">
+    <div hidden="hidden" id="alert_success" class="center">
       <h4 style="color:Green;">Thêm Thành Công</h4>
     </div>
-    <div hidden="hidden"id="alert_fail" class="center">
+    <div hidden="hidden" id="alert_fail" class="center">
       <h4 style="color:Red;">Những dữ liệu bên dưới chưa được khai báo, vui lòng xác định lại dữ liệu</h4>
     </div>
+    <?php if ($this->input->get('loi') !== null) { ?>
+    <div id="alert_fail" class="center">
+      <h4 style="color:Red;">Có dữ liệu bên dưới chưa được khai báo, vui lòng xác định lại dữ liệu</h4>
+    </div>
+    <?php } ?>
+    <?php if ($this->input->get('dulieurong') !== null) { ?>
+    <div id="alert_fail" class="center">
+      <h4 style="color:Red;">Có Dữ Liệu Bị Rỗng. Vui Lòng Xem Lại Dữ Liệu</h4>
+    </div>
+    <?php } ?>
+    <?php if (isset($listreview)) {
+      $check = true;
+      for ($i = 0; $i < count($listreview); $i++){
+        if ($listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['sinhvien_id'] == 'null') { ?>
+          <div  class="center">
+            <h5 style="color:Red;">Màu Đỏ: Dữ Liệu Bị Trống</h5>
+            <h5 style="color:Green;">Màu Xanh: Dữ Liệu Mới</h5>
+          </div>
+  <?php break;}} } ?>
     <div class="container-fluid" style="margin-top:10px; margin-bottom:10px">
 
         <div class="row">
@@ -50,48 +69,40 @@
                     // pre($list);
                     for ($i = 0; $i < count($list); $i++){
                 ?>
-                <tr>
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['nganhhoc_id'] == 'null' || $list[$i]['sinhvien_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';}elseif($list[$i]['lopmoi'] == 1){echo 'color:green';}?>">
                     <td class="hitec-td-1 text-center">
                         <?php echo $i + 1?>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                         <?php echo $list[$i]['sinhvien_id']?>
                         </a>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                         <?php echo $list[$i]['ho'].' '.$list[$i]['ten']?>
                         </a>
                     </td>
 
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                         <?php echo $list[$i]['ngaysinh']?>
                         </a>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                         <?php echo $list[$i]['lophoc_id']?>
                         </a>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                         <?php echo $list[$i]['nganhhoc_id']?>
                         </a>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                         <?php echo $list[$i]['monhoc_id']?>
                         </a>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                         <?php echo $list[$i]['TenMH']?>
                         </a>
                     </td>
                     <td class="hitec-td-1 text-center">
-                        <a href="javascript:;">
                           <?php echo $list[$i]['diemTB']?>
                         </a>
                     </td>

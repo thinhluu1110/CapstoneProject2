@@ -6,7 +6,7 @@
     <title></title>
   </head>
   <body>
-    <div hidden="hidden"id="alert_success" class="center">
+    <div hidden="hidden" id="alert_success" class="center">
       <h4 style="color:Green;">Thêm Thành Công</h4>
     </div>
     <?php if ($this->input->get('loi') !== null) { ?>
@@ -22,7 +22,7 @@
     <?php if (isset($listreview)) {
       $check = true;
       for ($i = 0; $i < count($listreview); $i++){
-        if ($listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['TenMH'] == 'null') { ?>
+        if ($listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['sinhvien_id'] == 'null') { ?>
           <div  class="center">
             <h5 style="color:Red;">Màu Đỏ: Dữ Liệu Bị Trống</h5>
             <h5 style="color:Green;">Màu Xanh: Dữ Liệu Mới</h5>

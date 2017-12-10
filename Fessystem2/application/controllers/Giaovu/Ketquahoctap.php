@@ -94,7 +94,7 @@
 				$objExcel = $objReader->load($file);
 				$worksheet = $objExcel->getSheet(0);
 				$objReader->setLoadSheetsOnly($worksheet);
-				$sheetData = $objExcel->getActiveSheet()->toArray(null,true,true,true);
+				$sheetData = $objExcel->getActiveSheet()->toArray('null',true,true,true);
 				$highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
 				$load = false;
 				for ($row=2; $row <= $highestRow ; $row++)
@@ -144,6 +144,19 @@
 		{
       		$listnganhhoc = $this->Nganhhoc_model->get_list();
       		$data['listreview']=$this->Ketquahoctap_tam_model->reviewkqht();
+      		foreach ($data['listreview'] as $key => $value) {
+      			$checklop = $this->Lophoc_model->Checklopkqht_byid($value['lophoc_id'], $value['monhoc_id']);
+      			var_dump($checklop);
+      			exit;
+      			if ($checklop != true ) {
+          		$data['listreview'][$key]['lopmoi'] = 123;
+        		}
+        		else {
+         			$data['listreview'][$key]['lopmoi'] = 456;
+        		}
+
+      		}
+
       		$data['listnganhhoc'] = $listnganhhoc;
 					$this->load->view('Giaovu/Ketquahoctap/Ketquahoctap_review',$data);
 		}

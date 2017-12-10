@@ -170,5 +170,15 @@ Class Sinhvien_model extends MY_Model
       return false;
      }
    }
+   function check_SV($id)
+   {
+     $this->db->select('*')
+     ->from('sinhvien as sv')
+     ->where('sv.MSSV',$id);
+     $query = $this->db->get();
+     if ($query->num_rows() > 0) {
+      return true;
+     }
+   }
 }
 ?>
