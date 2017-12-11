@@ -89,7 +89,9 @@
                                     <div class="modal-header btn-danger" style="padding:0px;text-align:center" id="msg-validation" hidden>
                                         <h5><strong class="modal-title"></strong></h5>
                                     </div>
-
+                                    <div  id="loader_import_tkb"  style="margin-top:20px;text-align:center;display:none;">
+                                        <img src="<?php echo base_url('public/Img/loader.gif') ?>" alt="">
+                                    </div>
                                     <div class="modal-body">
                                         <div class="row" style="margin:10px">
                                             <div class="col-xs-12 col-md-12 col-lg-12">

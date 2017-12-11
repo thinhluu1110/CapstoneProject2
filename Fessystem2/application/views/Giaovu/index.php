@@ -99,6 +99,7 @@
 								form_data.append('nganhhoc', nganhhoc);
 								form_data.append('khoahoc', khoahoc);
 								form_data.append('hocki', hocki);
+								$('#loader_import_tkb').show();
 								$.ajax({
 									url:"<?php echo base_url()?>Giaovu/Tkb/add",
 									type: "POST",
@@ -114,6 +115,7 @@
 											var date2 = '</h1>';
 											var datesum = date1.concat(dateupdate,date2);
 											$('#review_image a').html(datesum);
+											$('#loader_import_tkb').hide();
 										}
 										if (data.thongbao.ReviewImage != '') {
 											var html1 = '<img src="';
@@ -121,6 +123,7 @@
 											var html2 = '">';
 											var htmlsum = html1.concat(htmlanh,html2);
 											$('#review_image p').html(htmlsum);
+											$('#loader_import_tkb').hide();
 										}
 										if (data.thongbao.UploadSucces != '' && data.thongbao.DateUpdate != '' && data.thongbao.ReviewImage != '') {
 											$('#msg-validation').prop("style").display = "none";
@@ -131,6 +134,7 @@
 											$('#msg-success').prop("style").display = "none";
 											$('#msg-validation').prop("style").display = "block";
 											$('#msg-validation h5').html(data.thongbao.UploadError);
+											$('#loader_import_tkb').hide();
 										}
 										if (data.thongbao.UpdateSucess != '' && data.thongbao.DateUpdate != '' && data.thongbao.ReviewImage != '') {
 											$('#msg-validation').prop("style").display = "none";
@@ -141,6 +145,7 @@
 											$('#msg-success').prop("style").display = "none";
 											$('#msg-validation').prop("style").display = "block";
 											$('#msg-validation h5').html(data.thongbao.UploadError);
+											$('#loader_import_tkb').hide();
 										}
 									}
 								});
@@ -169,6 +174,7 @@
 								form_data.append('khoahoc', khoahoc);
 								form_data.append('hocki', hocki);
 								form_data.append('lanthi', lanthi);
+								$('#loader_import_lt').show();
 								$.ajax({
 									url:"<?php echo base_url()?>Giaovu/Lichthi/add",
 									type: "POST",
@@ -184,6 +190,7 @@
 											var date2 = '</h1>';
 											var datesum = date1.concat(dateupdate,date2);
 											$('#review_image a').html(datesum);
+											$('#loader_import_lt').hide();
 										}
 										if (data.message.ReviewImage != '') {
 											var html1 = '<img src="';
@@ -191,6 +198,7 @@
 											var html2 = '">';
 											var htmlsum = html1.concat(htmlanh,html2);
 											$('#review_image p').html(htmlsum);
+											$('#loader_import_lt').hide();
 										}
 										if (data.message.UploadSucces != '' && data.message.DateUpdate != '' && data.message.ReviewImage != '') {
 											$('#msg-validation').prop("style").display = "none";
@@ -201,6 +209,7 @@
 											$('#msg-success').prop("style").display = "none";
 											$('#msg-validation').prop("style").display = "block";
 											$('#msg-validation h5').html(data.message.UploadError);
+											$('#loader_import_lt').hide();
 										}
 										if (data.message.UpdateSucess != '' && data.message.DateUpdate != '' && data.message.ReviewImage != '') {
 											$('#msg-validation').prop("style").display = "none";
@@ -211,6 +220,7 @@
 											$('#msg-success').prop("style").display = "none";
 											$('#msg-validation').prop("style").display = "block";
 											$('#msg-validation h5').html(data.message.UploadError);
+											$('#loader_import_lt').hide();
 										}
 									}
 								});
@@ -265,6 +275,7 @@
 							//thêm files vào trong form data
 							form_data.append('file', file_data);
 							//$('#msg-fail-HocPhi').prop("style").display = "none";
+							$('#loader_import_hp').show();
 							$.ajax({
 								url:"<?php echo base_url('Giaovu/Hocphi/importHP') ?>",
 								type: "POST",
@@ -278,7 +289,7 @@
 										$('#msg-success-HocPhi').prop('hidden',true);
 										$('#msg-fail-HocPhi h5').html(data.message.kiemtrafile);
 										$('#msg-fail-HocPhi').prop('hidden',false);
-
+										$('#loader_import_hp').hide();
 										//$('#msg-fail-HocPhi').prop("style").display = "none";
 									}
 									// if (data.message.kiemtra_mssv == true) {
@@ -299,6 +310,7 @@
 										$('#msg-success-HocPhi').prop('hidden',true);
 										$('#msg-fail-HocPhi h5').html(data.message.ImportFail);
 										//$('#msg-success-HocPhi').prop("style").display = "none";
+										$('#loader_import_hp').hide();
 									}
 								}
 							});
@@ -733,6 +745,7 @@
 											form_data.append('file', file_data);
 											form_data.append('manganh', manganh);
 											form_data.append('makhoa', makhoa);
+											$('#loader_import_khdt').show();
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Kehoachdaotao/importCTDT') ?>",
 												type: "POST",
@@ -747,11 +760,13 @@
 														$('#msg-fail').prop('hidden',false);
 														$('#msg-fail h5').html(data.khongchonfile);
 														$('#msg-success').prop('hidden',true);
+														$('#loader_import_khdt').hide();
 													}
 													if (data.tontaikhdt != '') {
 														$('#msg-fail').prop('hidden',false);
 														$('#msg-fail h5').html(data.tontaikhdt);
 														$('#msg-success').prop('hidden',true);
+														$('#loader_import_khdt').hide();
 													}
 													if (data.load == true) {
 														window.location = "<?php echo base_url('Giaovu/Kehoachdaotao/review_khdt') ?>";
@@ -760,16 +775,19 @@
 														$('#msg-fail').prop('hidden',false);
 														$('#msg-fail h5').html(data.tontaictdt);
 														$('#msg-success').prop('hidden',true);
+														$('#loader_import_khdt').hide();
 													}
 													if (data.kiemtrafile == true) {
 														$('#msg-fail').prop('hidden',false);
 														$('#msg-fail h5').html("Vui lòng chọn đúng định dạng file Excel");
 														$('#msg-success').prop('hidden',true);
+														$('#loader_import_khdt').hide();
 													}
 													if (data.kiemtradulieu == true) {
 														$('#msg-fail').prop('hidden',false);
 														$('#msg-fail h5').html("Dữ liệu trong Excel rỗng");
 														$('#msg-success').prop('hidden',true);
+														$('#loader_import_khdt').hide();
 													}
 												}
 												// error: function(){
@@ -787,6 +805,7 @@
 							form_data.append('file', file_data);
 							$('#msg-fail').prop("style").display = "none";
 							$('#msg-success').prop("style").display = "none";
+							$('#loader_import_kqht').show();
 							$.ajax({
 								url:"<?php echo base_url('Giaovu/Ketquahoctap/importKQHT') ?>",
 								type: "POST",
@@ -796,22 +815,23 @@
 								processData: false,
 								contentType: false,
 								success: function(data){
-									console.log(data);
-
 									$('#msg-success').prop('hidden',true);
 									$('#msg-fail').prop('hidden',true);
 									if (data.khongchonfile != '') {
 										// $('#msg-fail').prop('hidden',false);
 										$('#msg-fail').prop("style").display = "block";
 										$('#msg-fail h5').html(data.khongchonfile);
+										$('#loader_import_kqht').hide();
 									}
 									if (data.kiemtrafile != '') {
 										// $('#msg-fail').prop('hidden',false);
 										$('#msg-fail').prop("style").display = "block";
 										$('#msg-fail h5').html(data.kiemtrafile);
+										$('#loader_import_kqht').hide();
 									}
 									if (data.load == true) {
 										window.location = "<?php echo base_url('Giaovu/Ketquahoctap/review_kqht') ?>";
+										$('#loader_import_kqht').hide();
 									}
 								}
 								// error: function(){
@@ -953,6 +973,7 @@
 											form_data.append('file', file_data);
 											form_data.append('manganh', manganh);
 											form_data.append('makhoa', makhoa);
+											$('#loader_import_ctdt').show();
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Chuongtrinhdaotao/importCTDT') ?>",
 												type: "POST",
@@ -968,14 +989,14 @@
 													}
 													if (data.khongchonfile != '') {
 														$('#msg-success-import-ctdt').prop('hidden',true);
-
+														$('#loader_import_ctdt').hide();
 														$('#msg-fail-import-ctdt h5').html(data.khongchonfile);
 														$('#msg-fail-import-ctdt').prop('hidden',false);
 
 													}
 													if (data.msg != '') {
 														$('#msg-success-import-ctdt').prop('hidden',true);
-
+														$('#loader_import_ctdt').hide();
 														$('#msg-fail-import-ctdt h5').html(data.msg);
 														$('#msg-fail-import-ctdt').prop('hidden',false);
 													}
@@ -1011,6 +1032,7 @@
 											form_data.append('manganh', manganh);
 											form_data.append('makhoa', makhoa);
 											form_data.append('mahocki', mahocki);
+											$('#loader_import_drl').show();
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Diemrenluyen/import') ?>",
 												type: "POST",
@@ -1024,9 +1046,9 @@
 														$('#msg-fail').prop('hidden',false);
 														$('#msg-fail h5').html(data.khongchonfile);
 														$('#msg-success').prop('hidden',true);
+														$('#loader_import_drl').hide();
 													}
 													if (data.load == true) {
-
 														$('#dialogImport').modal('hide');
 														$('#dialogValidation_Import_DRL').modal('show');
 													}
@@ -1443,7 +1465,7 @@
 											$('#msg-fail h5').html('Dữ Liệu Không Được Để Trống');
 											$('#msg-success').prop('hidden',true);
 									}
-									else if (/^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(tenlop) == false) 
+									else if (/^[a-zA-Z0-9-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/.test(tenlop) == false)
 									{
 										$('#msg-fail').prop('hidden',false);
 											$('#msg-fail h5').html('Không Được Nhập Ký Tự Đặc Biệt');
@@ -1819,6 +1841,7 @@
 											form_data.append('file', file_data);
 											form_data.append('manganh', manganh);
 											form_data.append('makhoa', makhoa);
+											$('#loader_import_sv').show();
 											$.ajax({
 												url:"<?php echo base_url('Giaovu/Thongtinsinhvien/importSV') ?>",
 												type: "POST",
@@ -1832,6 +1855,7 @@
 														$('#msg-fail').prop('hidden',false);
 														$('#msg-fail h5').html(data.khongchonfile);
 														$('#msg-success').prop('hidden',true);
+														$('#loader_import_sv').hide();
 													}
 													if (data.load == true) {
 														$('#dialogImport').modal('hide');
@@ -1841,6 +1865,7 @@
 														$('#msg-fail').prop('hidden',false);
 														$('#msg-fail h5').html("Vui Lòng Chọn Đúng ĐỊnh Dạng File Excel");
 														$('#msg-success').prop('hidden',true);
+														$('#loader_import_sv').hide();
 													}
 													// if (data.kiemtra_mssv == true) {
 													// 	$('#msg-fail').prop('hidden',false);

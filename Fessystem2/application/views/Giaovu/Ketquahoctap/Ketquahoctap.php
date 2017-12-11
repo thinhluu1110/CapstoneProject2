@@ -50,10 +50,10 @@
             <div class="container-fluid text-right">
                     <a href="<?php echo base_url('Giaovu/Ketquahoctap/index?exp=exp&monhoc=').$this->input->get('monhoc').'&lophoc='.$this->input->get('lophoc')?> "><u>[Xuất Danh Sách Ra Excel]</u></a>
             </div>
-            
+
           <?php } ?>
         <div class="container-fluid">
-            
+
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
@@ -149,10 +149,13 @@
                         <div hidden="hidden" id="msg-fail" class="modal-header add_fail" style="padding:0px;text-align:center">
                             <h5><strong class="modal-title"></strong></h5>
                         </div>
+                        <div  id="loader_import_kqht"  style="margin-top:20px;text-align:center;display:none;">
+                            <img src="<?php echo base_url('public/Img/loader.gif') ?>" alt="">
+                        </div>
                         <div class="modal-body">
                             <div class="row" style="margin:10px">
                                 <div class="col-xs-12 col-md-12 col-lg-12">
-                                    
+
                                     <div class="form-group">
                                         <label class="coltrol-lable">File Input:</label>
                                         <input type="file" id="file_KQHT" name="file">

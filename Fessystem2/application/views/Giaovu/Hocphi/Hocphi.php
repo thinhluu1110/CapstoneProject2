@@ -125,6 +125,9 @@
                         <div class="modal-header btn-danger" style="padding:0px;text-align:center" id="msg-fail-HocPhi" hidden>
                             <h5></h5>
                         </div>
+                        <div  id="loader_import_hp"  style="margin-top:20px;text-align:center;display:none;">
+                            <img src="<?php echo base_url('public/Img/loader.gif') ?>" alt="">
+                        </div>
                         <div class="modal-body">
 
 

@@ -35,7 +35,7 @@
 
         <div class="row">
             <div class="col-xs-1">
-              <a id="Chapnhan_review_KQHT">Chấp nhận</a>
+              <a onclick="loader()" id="Chapnhan_review_KQHT">Chấp nhận</a>
             </div>
             <div class="col-xs-1">
               <a href="<?php echo base_url('Giaovu/Ketquahoctap/cancel_sp')?>">Hủy bỏ</a>
@@ -114,16 +114,6 @@
     <div class="clear"></div>
     <script src="<?php echo base_url('public/js/jquery-3.2.1.min.js')?>"></script>
     <script type="text/javascript">
-    <?php
-        if($this->input->get('modal') == 1){ ?>
-          $(document).ready(function() {
-                     $(function(){
-                         $('#alert_fail').prop('hidden',false);
-                     });
-                     });
-    <?php
-        }
-    ?>
 
     $(document).ready(function() {
         $('#Chapnhan_review_KQHT').on('click', function() {
@@ -133,15 +123,18 @@
                 	dataType: 'json',
                   async:false,
                 	success: function(data){
+                    console.log(data.check);
                 		if (data.check == true) {
                             setTimeout(function(){window.location = "<?php echo base_url('Giaovu/Ketquahoctap/index') ?>"},2500);
                             $('#alert_success').prop('hidden',false);
                 		}
                 		else if (data.check == false) {
                             window.location = "<?php echo base_url('Giaovu/Ketquahoctap/review_kqht?loi=1') ?>";
+                            $('#loader_review_kqht').hide();
                         }
                         else if (data.dulieurong == false) {
                             window.location = "<?php echo base_url('Giaovu/Ketquahoctap/review_kqht?dulieurong=1') ?>";
+                            $('#loader_review_kqht').hide();
                         }
                 	}
                 });

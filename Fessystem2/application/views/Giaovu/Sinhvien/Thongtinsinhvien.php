@@ -77,7 +77,7 @@
                             <th style="width:auto" class="text-center">
                                 Email
                             </th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
@@ -104,7 +104,7 @@
                             <td>
                                 <?php echo $listSV[$i]['Email']?>
                             </td>
-                            
+
                         </tr>
                       <?php } ?>
                     </tbody>
@@ -129,6 +129,9 @@
                         </div>
                         <div hidden="hidden" id="msg-fail" class="modal-header add_fail" style="padding:0px;text-align:center">
                             <h5><strong class="modal-title"></strong></h5>
+                        </div>
+                        <div  id="loader_import_sv"  style="margin-top:20px;text-align:center;display:none;">
+                            <img src="<?php echo base_url('public/Img/loader.gif') ?>" alt="">
                         </div>
                         <div class="modal-body">
                             <div class="row" style="margin:10px">

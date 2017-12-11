@@ -44,7 +44,7 @@ Class Diemrenluyen extends MY_Controller
         'khongchonfile' => '',
         'load' => false,
         //'kiemtra_xeploai' => false,
-        
+
         'kiemtrafile' => false,
       );
 
@@ -53,16 +53,17 @@ Class Diemrenluyen extends MY_Controller
         $khoahoc = $this->input->post('makhoa');
         $hocki = $this->input->post('mahocki');
         if (!empty($_FILES['file']['tmp_name'])) {
-          
+
           $file = $_FILES['file']['tmp_name'];
           if ($_FILES['file']['type'] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || $_FILES['file']['type'] == "application/vnd.ms-excel"  ) {
-          
-          
+
+
           $objReader = PHPExcel_IOFactory::createReaderForFile($file);
           $objExcel = $objReader->load($file);
           $worksheet = $objExcel->getSheet(0);
           $objReader->setLoadSheetsOnly($worksheet);
           $sheetData = $objExcel->getActiveSheet()->toArray(null,true,true,true);
+          
           $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
           $check_xeploai = false;
           $check_mssv = false;
@@ -75,16 +76,18 @@ Class Diemrenluyen extends MY_Controller
           //   $check_xeploai = true;
           //   $check_mssv = true;
           //   break;
-          //   } 
+          //   }
 
           // }
           // if ($check_xeploai == false || $check_mssv == false) {
 
-              
+
               for ($row = 4; $row <= $highestRow; $row ++)
               {
+
               $break = $sheetData[$row]['B'];
               if (!empty($break)) {
+
                 $mssv = $sheetData[$row]['B'];
                 $checksv = $this->Sinhvien_model->checkSV($mssv);
                 if ($checksv == false) {
@@ -125,7 +128,7 @@ Class Diemrenluyen extends MY_Controller
               break;
             }
           }
-        
+
       // }
       //     else{
       //       $error['kiemtra_xeploai'] = true;
