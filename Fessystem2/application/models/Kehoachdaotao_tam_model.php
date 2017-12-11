@@ -11,7 +11,6 @@ Class Kehoachdaotao_tam_model extends MY_Model
       $this->db->select('*')
        ->from('kehoachdaotao_tam as k')
        ->join('nganhhoc as n', 'k.nganhhoc_id = n.nganhhoc_id')
-       ->join('hocki as h', 'k.hocki_id = h.hocki_id')
        ->join('khoahoc as kh', 'k.khoahoc_id = kh.khoahoc_id');
        $query = $this->db->get();
        if ($query->num_rows() > 0) {

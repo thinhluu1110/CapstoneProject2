@@ -314,7 +314,7 @@ Class Kehoachdaotao extends MY_Controller
           $list['listreview']=$this->Kehoachdaotao_tam_model->reviewkhdt();
           $check = true;
           foreach ($list['listreview'] as $key => $value) {
-            if ($value['monhoc_id'] == 'null' || $value['TenMH'] == 'null' ) {
+            if ($value['monhoc_id'] == 'null' || $value['TenMH'] == 'null' || $value['hocki_id'] == 'null') {
               $check = false;
               break;
             }

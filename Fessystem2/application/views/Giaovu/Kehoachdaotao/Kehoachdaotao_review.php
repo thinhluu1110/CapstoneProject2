@@ -16,13 +16,13 @@
     <?php } ?>
     <?php if ($this->input->get('dulieurong') !== null) { ?>
     <div id="alert_fail" class="center">
-      <h4 style="color:Red;">Có Dữ Liệu Bị Rỗng. Vui Lòng Xem Lại Dữ Liệu</h4>
+      <h4 style="color:Red;">Có Dữ Liệu Bị Rỗng. Vui Lòng Xem Lại Dữ Liệu (Có Thể Chưa Tồn Tại Học Kì)</h4>
     </div>
     <?php } ?>
     <?php if (isset($listreview)) {
       $check = true;
       for ($i = 0; $i < count($listreview); $i++){
-        if ($listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['monhoc_id'] == 'null') { ?>
+        if ($listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['hocki_id'] == 'null') { ?>
           <div  class="center">
             <h5 style="color:Red;">Màu Đỏ: Dữ Liệu Bị Trống</h5>
             <h5 style="color:Green;">Màu Xanh: Dữ Liệu Mới</h5>
