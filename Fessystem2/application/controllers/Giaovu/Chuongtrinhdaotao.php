@@ -109,7 +109,7 @@ Class Chuongtrinhdaotao extends MY_Controller
           }
         }
         else{
-          $error['khongchonfile'] = 'Vui Lòng Chọn File';
+          $error['khongchonfile'] = $upload_data;
         }
         echo json_encode($error);
           }
