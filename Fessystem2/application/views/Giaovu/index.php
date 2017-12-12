@@ -1522,9 +1522,8 @@
 													}
 													if (data.check == true) {
 
-														$('#msg-success-delete-lop').prop('hidden',false);
-														$('#msg-success-delete-lop h5').html("Xóa Thành Công");
-														$('#msg-fail-delete-lop').prop('hidden',true);
+														$('#dialogDelete').modal('hide');
+														$('#dialogValidation_addlop').modal('show');
 													}
 												}
 
