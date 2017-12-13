@@ -26,10 +26,11 @@
       $check = true;
       for ($i = 0; $i < count($listreview); $i++){
         if ($listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['sinhvien_id'] == 'null' || $listreview[$i]['lophoc_id'] == 'null') { ?>
-          <div  class="center">
-            <h5 style="color:Red;">Màu Đỏ: Dữ Liệu Bị Trống</h5>
-            <h5 style="color:Green;">Màu Xanh: Dữ Liệu Mới</h5>
+          <div  class="left">
+            <h5 style="color:Red;">Màu Đỏ: Dữ Liệu Mã Môn Học, Mã Ngành Học Hoặc MSSV Trong Excel Bị Trống Hoặc Chưa Được Định Nghĩa Trong Hệ Thống Vui Lòng Kiểm Tra Lại Dữ Liệu. Không Thể Thêm Bất Cứ Dòng Nào Vào Cơ Sở Dữ Liệu Khi Nhấn "Chấp Nhận"</h5>
+            <h5 style="color:Green;">Màu Xanh: Dữ Liệu Lớp Học Mới Chưa Được Định Nghĩa Trong Hệ Thống VUi Lòng Kiểm Tra Lại Dữ Liệu. Khi "Chấp Nhận" Vẫn Sẽ Thêm Vào Cơ Sỡ Dữ Liệu</h5>
           </div>
+          <h5 style="color:Black;">Màu Đen: Dữ Liệu Đúng</h5>
   <?php break;}} } ?>
     <div class="container-fluid" style="margin-top:10px; margin-bottom:10px">
 

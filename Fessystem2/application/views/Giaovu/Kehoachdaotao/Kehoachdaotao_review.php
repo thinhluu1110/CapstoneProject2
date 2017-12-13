@@ -16,18 +16,19 @@
     <?php } ?>
     <?php if ($this->input->get('dulieurong') !== null) { ?>
     <div id="alert_fail" class="center">
-      <h4 style="color:Red;">Có Dữ Liệu Bị Rỗng. Vui Lòng Xem Lại Dữ Liệu (Có Thể Chưa Tồn Tại Học Kì)</h4>
+      <h4 style="color:Red;">Có Dữ Liệu Trong Excel Bị Rỗng. Vui Lòng Xem Lại Dữ Liệu</h4>
     </div>
     <?php } ?>
     <?php if (isset($listreview)) {
       $check = true;
       for ($i = 0; $i < count($listreview); $i++){
-        if ($listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['hocki_id'] == 'null') { ?>
-          <div  class="center">
-            <h5 style="color:Red;">Màu Đỏ: Dữ Liệu Bị Trống</h5>
-            <h5 style="color:Green;">Màu Xanh: Dữ Liệu Mới</h5>
+        if ($listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['hocki_id'] == 'null' || $listreview[$i]['monmoi'] == 1) { ?>
+          <div  class="left">
+            <h5 style="color:Red;">Màu Đỏ: Dữ Liệu Môn Học, Ngành Học Hoặc Học Kì Trong Excel Bị Trống Vui Lòng Kiểm Tra Lại Dữ Liệu. Không Thể Thêm Bất Cứ Dòng Nào Vào Cơ Sở Dữ Liệu Khi Nhấn "Chấp Nhận"</h5>
+            <h5 style="color:Green;">Màu Xanh: Dữ Liệu Môn Học Mới Chưa Được ĐỊnh Nghĩa Trong Cơ Sở Dữ Liệu. Khi "Chấp Nhận" Vẫn Sẽ Thêm Vào Cơ Sỡ Dữ Liệu </h5>
+            <h5 style="color:Black;">Màu Đen: Dữ Liệu Đúng</h5>
           </div>
-  <?php break;}} } ?>
+  <?php break;} } } ?>
 
     <div class="container-fluid" style="margin-top:10px; margin-bottom:10px">
         <div class="row">
