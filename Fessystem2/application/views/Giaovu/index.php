@@ -126,9 +126,8 @@
 											$('#loader_import_tkb').hide();
 										}
 										if (data.thongbao.UploadSucces != '' && data.thongbao.DateUpdate != '' && data.thongbao.ReviewImage != '') {
-											$('#msg-validation').prop("style").display = "none";
-											$('#msg-success').prop("style").display = "block";
-											$('#msg-success h5').html(data.thongbao.UploadSucces);
+											$('#dialogEdit').modal('hide');
+											$('#dialogValidation_Add_TKB').modal('show');
 										}
 										else{
 											$('#msg-success').prop("style").display = "none";
@@ -137,9 +136,8 @@
 											$('#loader_import_tkb').hide();
 										}
 										if (data.thongbao.UpdateSucess != '' && data.thongbao.DateUpdate != '' && data.thongbao.ReviewImage != '') {
-											$('#msg-validation').prop("style").display = "none";
-											$('#msg-success').prop("style").display = "block";
-											$('#msg-success h5').html(data.thongbao.UpdateSucess);
+											$('#dialogEdit').modal('hide');
+											$('#dialogValidation_Add_TKB').modal('show');
 										}
 										else{
 											$('#msg-success').prop("style").display = "none";
@@ -201,9 +199,8 @@
 											$('#loader_import_lt').hide();
 										}
 										if (data.message.UploadSucces != '' && data.message.DateUpdate != '' && data.message.ReviewImage != '') {
-											$('#msg-validation').prop("style").display = "none";
-											$('#msg-success').prop("style").display = "block";
-											$('#msg-success h5').html(data.message.UploadSucces);
+											$('#dialogEdit').modal('hide');
+											$('#dialogValidation_Add_Lichthi').modal('show');
 										}
 										else{
 											$('#msg-success').prop("style").display = "none";
@@ -212,9 +209,8 @@
 											$('#loader_import_lt').hide();
 										}
 										if (data.message.UpdateSucess != '' && data.message.DateUpdate != '' && data.message.ReviewImage != '') {
-											$('#msg-validation').prop("style").display = "none";
-											$('#msg-success').prop("style").display = "block";
-											$('#msg-success h5').html(data.message.UpdateSucess);
+											$('#dialogEdit').modal('hide');
+											$('#dialogValidation_Add_Lichthi').modal('show');
 										}
 										else{
 											$('#msg-success').prop("style").display = "none";

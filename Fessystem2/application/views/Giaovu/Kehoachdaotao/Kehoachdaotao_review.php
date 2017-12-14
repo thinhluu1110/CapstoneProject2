@@ -20,15 +20,35 @@
     </div>
     <?php } ?>
     <?php if (isset($listreview)) {
-      $check = true;
+      $check1 = false;
+      $check2 = false;
+      $check3 = false;
       for ($i = 0; $i < count($listreview); $i++){
-        if ($listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['hocki_id'] == 'null' || $listreview[$i]['monmoi'] == 1) { ?>
-          <div  class="left">
+        if ($listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['hocki_id'] == 'null') {
+          $check1 = true;
+        }
+        if ($listreview[$i]['monmoi'] == 1) {
+           $check2 = true;
+        }
+        if ($listreview[$i]['nganhhoc_id'] != 'null' && $listreview[$i]['monhoc_id'] != 'null' && $listreview[$i]['hocki_id'] != 'null' && $listreview[$i]['monmoi'] == 0) {
+           $check3 = true;
+         } 
+    } } ?>
+    <?php if ($check1 == true) { ?>
+      <div  class="left">
             <h5 style="color:Red;">Màu Đỏ: Dữ Liệu Môn Học, Ngành Học Hoặc Học Kì Trong Excel Bị Trống Vui Lòng Kiểm Tra Lại Dữ Liệu. Không Thể Thêm Bất Cứ Dòng Nào Vào Cơ Sở Dữ Liệu Khi Nhấn "Chấp Nhận"</h5>
+          </div>
+    <?php } ?>
+    <?php if ($check2 == true) { ?>
+      <div  class="left">
             <h5 style="color:Green;">Màu Xanh: Dữ Liệu Môn Học Mới Chưa Được ĐỊnh Nghĩa Trong Cơ Sở Dữ Liệu. Khi "Chấp Nhận" Vẫn Sẽ Thêm Vào Cơ Sỡ Dữ Liệu </h5>
+          </div>
+    <?php } ?>
+    <?php if ($check3 == true) { ?>
+      <div  class="left">
             <h5 style="color:Black;">Màu Đen: Dữ Liệu Đúng</h5>
           </div>
-  <?php break;} } } ?>
+    <?php } ?>
 
     <div class="container-fluid" style="margin-top:10px; margin-bottom:10px">
         <div class="row">
