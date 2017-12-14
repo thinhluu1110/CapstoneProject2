@@ -63,8 +63,8 @@
                             <select class="form-control" id="student_status" name="student_status">
                                 <option value="">-- Trạng Thái --</option>
                                 <option value="3">Bảo Lưu Kết Qủa</option>
-                                <option value="1">Tạm Ngưng</option>
-                                <option value="2">Đình Chỉ Học</option>
+                                <option value="1">Tạm Dừng</option>
+                                <option value="2">Buộc Thôi Học</option>
                             </select>
                         </div>
                     </div>
