@@ -100,7 +100,7 @@
 				for ($row=2; $row <= $highestRow ; $row++)
 				{
 					$break = $sheetData[$row]['A'];
-					if (!empty($break)) {
+					if ( $break != null) {
 						$data = array(
 							'sinhvien_id' => trim($sheetData[$row]['B']),
 							'ho' => trim($sheetData[$row]['C']),
