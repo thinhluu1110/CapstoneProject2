@@ -12,7 +12,7 @@
         <a class="dropdown-toggle" href="#">
             <i class="menu-icon fa fa-calendar"></i>
             <span class="menu-text">
-                Công Tác Giảng Dạy
+                Học Tập
             </span>
             <b class="arrow fa fa-angle-down"></b>
         </a>
@@ -29,6 +29,27 @@
                 <a href="<?php echo base_url().'Giaovu/Lichthi/index' ?>">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Lịch Thi Học Kì
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li class="hover">
+                <a href="<?php echo base_url().'Giaovu/Ketquahoctap/index' ?>">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Quản Lý Kết Qủa Học Tập
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li class="hover">
+                <a href="<?php echo base_url().'Giaovu/Doan/index'?>">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Đồ Án SV
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li class="hover">
+                <a href="<?php echo base_url().'Giaovu/Dieukiendoan/index'?>">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Điều Kiện Làm Đồ Án
                 </a>
                 <b class="arrow"></b>
             </li>
@@ -70,13 +91,7 @@
         </a>
         <b class="arrow"></b>
         <ul class="submenu can-scroll">
-            <li class="hover">
-                <a class="dropdown-toggle" href="#">
-                    <i class="menu-text"></i>
-                    Danh Mục
-                </a>
-                <b class="arrow"></b>
-                <ul class="submenu can-scroll">
+
 
 
                 <li class="hover">
@@ -107,12 +122,30 @@
                     </a>
                     <b class="arrow"></b>
                 </li>
-            </ul>
-        </li>
+
+        </ul>
+    </li>
+    <li class="hover">
+        <a class="dropdown-toggle" href="#">
+            <i class="menu-icon fa fa-user"></i>
+            <span class="menu-text">
+                Chương Trình Đào Tạo
+            </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <b class="arrow"></b>
+        <ul class="submenu can-scroll">
             <li class="hover">
                 <a href="<?php echo base_url().'Giaovu/Chuongtrinhdaotao/index'?>">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Chương Trình Đào Tạo
+                </a>
+                <b class="arrow"></b>
+            </li>
+             <li class="hover">
+                <a href="<?php echo base_url().'Giaovu/Kehoachdaotao/index'?>">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Kế Hoạch Đào Tạo
                 </a>
                 <b class="arrow"></b>
             </li>
@@ -122,16 +155,57 @@
         <a class="dropdown-toggle" href="#">
             <i class="menu-icon fa fa-user"></i>
             <span class="menu-text">
-                Công Tác Sinh Viên
+                Biến Động Sinh Viên
+            </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <b class="arrow"></b>
+        <ul class="submenu can-scroll">
+            
+            <li class="hover">
+                <a href="<?php echo base_url().'Giaovu/Dinhchi/index' ?>">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Buộc Thôi Học
+                </a>
+                <b class="arrow"></b>
+            </li>
+			      <li class="hover">
+                <a href="<?php echo base_url().'Giaovu/Tamngung/index' ?>">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Tạm Dừng Học
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li class="hover">
+                <a href="<?php echo base_url().'Giaovu/Baoluu/index' ?>">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Bảo Lưu Kết Qủa Học Tập
+                </a>
+                <b class="arrow"></b>
+            </li>
+        </ul>
+    </li>
+    <li class="hover">
+        <a class="dropdown-toggle" href="#">
+            <i class="menu-icon fa fa-user"></i>
+            <span class="menu-text">
+                Quản Lí Sinh Viên
             </span>
             <b class="arrow fa fa-angle-down"></b>
         </a>
         <b class="arrow"></b>
         <ul class="submenu can-scroll">
             <li class="hover">
-                <a href="<?php echo base_url().'Giaovu/Ketquahoctap/index' ?>">
+                <a href="<?php echo base_url().'Giaovu/Thongtinsinhvien/index' ?>">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Quản Lý Kết Qủa Học Tập
+                    Thông Tin Sinh Viên
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li class="hover">
+                <a href="<?php echo base_url().'Giaovu/Sinhvien/index' ?>">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Thiết Lập Trạng Thái SV
                 </a>
                 <b class="arrow"></b>
             </li>
@@ -142,70 +216,6 @@
                 </a>
                 <b class="arrow"></b>
             </li>
-            <li class="hover">
-                <a href="<?php echo base_url().'Giaovu/Doan/index'?>">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    Đồ Án SV
-                </a>
-                <b class="arrow"></b>
-            </li>
-            <li class="hover">
-                <a href="<?php echo base_url().'Giaovu/Dieukiendoan/index'?>">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    Điều Kiện Làm Đồ Án
-                </a>
-                <b class="arrow"></b>
-            </li>
-
         </ul>
-    </li>
-    <li class="hover">
-        <a class="dropdown-toggle" href="#">
-            <i class="menu-icon fa fa-user"></i>
-            <span class="menu-text">
-                Xử Lý Học Tập
-            </span>
-            <b class="arrow fa fa-angle-down"></b>
-        </a>
-        <b class="arrow"></b>
-        <ul class="submenu can-scroll">
-            <li class="hover">
-                <a href="<?php echo base_url().'Giaovu/Sinhvien/index' ?>">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    Thiết Lập Trạng Thái SV
-                </a>
-                <b class="arrow"></b>
-            </li>
-            <li class="hover">
-                <a href="<?php echo base_url().'Giaovu/Dinhchi/index' ?>">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    Đình Chỉ
-                </a>
-                <b class="arrow"></b>
-            </li>
-			      <li class="hover">
-                <a href="<?php echo base_url().'Giaovu/Tamngung/index' ?>">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    Tạm Ngưng
-                </a>
-                <b class="arrow"></b>
-            </li>
-            <li class="hover">
-                <a href="<?php echo base_url().'Giaovu/Baoluu/index' ?>">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    Bảo Lưu Kết Qủa
-                </a>
-                <b class="arrow"></b>
-            </li>
-        </ul>
-    </li>
-    <li class="hover">
-        <a class="dropdown-toggle" href="<?php echo base_url().'Giaovu/Thongtinsinhvien/index' ?>">
-            <i class="menu-icon fa fa-user"></i>
-            <span class="menu-text">
-                Thông Tin Sinh Viên
-            </span>
-            <b class="arrow fa fa-angle-down"></b>
-        </a>
     </li>
 </ul>

@@ -9,14 +9,14 @@
 <div class="col-xs-12 col-offset-200">
     <div class="hitec-content">
         <img id="ajax-loader" src="/Teacher/images/icons/ajax-loader.gif" alt="" style="display: none;">
-        <h2>DANH SÁCH SINH VIÊN TẠM NGƯNG</h2>
+        <h2>DANH SÁCH SINH VIÊN TẠM DỪNG HỌC</h2>
 		<div class="container-fluid">
         <form method="get" action="<?php echo base_url('Giaovu/Tamngung/index?')?>" id="formSearch" role="form" onsubmit="return true;">
             <div class="row">
               <div class="col-xs-3">
                   <div class="input-group hitec-w-100percent">
                     <select class="form-control" id="TimeTN" name="TimeTN" onchange='if(this.value != 0) { this.form.submit(); }'>
-                      <option value="">--- Chọn Thời Gian Tạm Ngưng Còn Lại  ---</option>
+                      <option value="">--- Chọn Thời Gian Tạm Dừng Học Còn Lại  ---</option>
                       <option value="all" <?php if ($this->input->get('TimeTN') == 'all') {echo "selected";} ?>>--- Tất Cả  ---</option>
                       <option value="12" <?php if ($this->input->get('TimeTN') == '12') {echo "selected";} ?>>--- Hơn 12 Tháng  ---</option>
                       <option value="12to9" <?php if ($this->input->get('TimeTN') == '12to9') {echo "selected";} ?> >--- 12 Tháng Đến 9 Tháng  ---</option>

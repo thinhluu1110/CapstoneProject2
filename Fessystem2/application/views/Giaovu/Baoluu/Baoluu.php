@@ -9,7 +9,7 @@
 <div class="col-xs-12 col-offset-200">
     <div class="hitec-content">
         <img id="ajax-loader" src="/Teacher/images/icons/ajax-loader.gif" alt="" style="display: none;">
-        <h2>DANH SÁCH SINH VIÊN BẢO LƯU</h2>
+        <h2>DANH SÁCH SINH VIÊN BẢO LƯU KẾT QUẢ HỌC TẬP</h2>
 		<div class="container-fluid">
         <form method="get" action="<?php echo base_url('Giaovu/Baoluu/index')?>" id="formSearch" role="form" onsubmit="return true;">
             <div class="row">

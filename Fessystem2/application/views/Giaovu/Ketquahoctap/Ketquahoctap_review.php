@@ -70,7 +70,7 @@
                     // pre($list);
                     for ($i = 0; $i < count($list); $i++){
                 ?>
-                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['nganhhoc_id'] == 'null' || $list[$i]['sinhvien_id'] == 'null' || $list[$i]['TenMH'] == 'null'){echo 'color:red';}elseif($list[$i]['lopmoi'] == 1 || $list[$i]['nganhmoi'] == 1 || $list[$i]['monmoi'] == 1){echo 'color:green';}?>">
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['nganhhoc_id'] == 'null' || $list[$i]['sinhvien_id'] == 'null' || $list[$i]['TenMH'] == 'null' || $list[$i]['nganhmoi'] == 1 || $list[$i]['monmoi'] == 1){echo 'color:red';}elseif($list[$i]['lopmoi'] == 1){echo 'color:green';}?>">
                     <td class="hitec-td-1 text-center">
                         <?php echo $i + 1?>
                     </td>
