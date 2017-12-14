@@ -23,15 +23,33 @@
     </div>
     <?php } ?>
     <?php if (isset($listreview)) {
-      $check = true;
+      $check1 = false;
+      $check2 = false;
+      $check3 = false;
       for ($i = 0; $i < count($listreview); $i++){
-        if ($listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['sinhvien_id'] == 'null' || $listreview[$i]['lophoc_id'] == 'null' || $listreview[$i]['nganhmoi'] == 1 || $listreview[$i]['monmoi'] == 1 || $listreview[$i]['lopmoi'] == 1) { ?>
-          <div  class="left">
+        if ($listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['sinhvien_id'] == 'null' || $listreview[$i]['lophoc_id'] == 'null' || $listreview[$i]['nganhmoi'] == 1 || $listreview[$i]['monmoi'] == 1) {
+            $check1 = true;
+          }
+          if($listreview[$i]['lopmoi'] == 1) {
+            $check2 = true;
+         }
+         if($listreview[$i]['monhoc_id'] != 'null' && $listreview[$i]['nganhhoc_id'] != 'null' && $listreview[$i]['sinhvien_id'] != 'null' && $listreview[$i]['lophoc_id'] != 'null' && $listreview[$i]['nganhmoi'] == 0 && $listreview[$i]['monmoi'] == 0 && $listreview[$i]['lopmoi'] == 0) {
+            $check3 = true;
+          } 
+             } } ?>
+             <?php if ($check1 == true) {?>
+                <div  class="left">
             <h5 style="color:Red;">Màu Đỏ: Dữ Liệu Mã Môn Học, Mã Ngành Học Hoặc MSSV Trong Excel Bị Trống Hoặc Chưa Được Định Nghĩa Trong Hệ Thống Vui Lòng Kiểm Tra Lại Dữ Liệu. Không Thể Thêm Bất Cứ Dòng Nào Vào Cơ Sở Dữ Liệu Khi Nhấn "Chấp Nhận"</h5>
-            <h5 style="color:Green;">Màu Xanh: Dữ Liệu Lớp Học Mới Chưa Được Định Nghĩa Trong Hệ Thống VUi Lòng Kiểm Tra Lại Dữ Liệu. Khi "Chấp Nhận" Vẫn Sẽ Thêm Vào Cơ Sỡ Dữ Liệu</h5>
-          </div>
-          <h5 style="color:Black;">Màu Đen: Dữ Liệu Đúng</h5>
-  <?php break;}} } ?>
+            </div>
+            <?php } if ($check2 == true) { ?>
+            <div  class="left">
+                <h5 style="color:Green;">Màu Xanh: Dữ Liệu Lớp Học Mới Chưa Được Định Nghĩa Trong Hệ Thống VUi Lòng Kiểm Tra Lại Dữ Liệu. Khi "Chấp Nhận" Vẫn Sẽ Thêm Vào Cơ Sỡ Dữ Liệu</h5>
+            </div>
+            <?php } if ($check3 == true) { ?>
+                <div  class="left">
+                <h5 style="color:Black;">Màu Đen: Dữ Liệu Đúng</h5>
+            </div>
+            <?php } ?>
     <div class="container-fluid" style="margin-top:10px; margin-bottom:10px">
 
         <div class="row">
@@ -124,16 +142,17 @@
                 	dataType: 'json',
                   async:false,
                 	success: function(data){
-                    console.log(data.check);
+
                 		if (data.check == true) {
+
                             setTimeout(function(){window.location = "<?php echo base_url('Giaovu/Ketquahoctap/index') ?>"},2500);
                             $('#alert_success').prop('hidden',false);
                 		}
-                		else if (data.check == false) {
+                		if (data.check == false) {
                             window.location = "<?php echo base_url('Giaovu/Ketquahoctap/review_kqht?loi=1') ?>";
                             $('#loader_review_kqht').hide();
                         }
-                        else if (data.dulieurong == false) {
+                        if (data.dulieurong == true) {
                             window.location = "<?php echo base_url('Giaovu/Ketquahoctap/review_kqht?dulieurong=1') ?>";
                             $('#loader_review_kqht').hide();
                         }

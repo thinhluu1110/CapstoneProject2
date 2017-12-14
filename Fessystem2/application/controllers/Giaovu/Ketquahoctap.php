@@ -185,19 +185,41 @@
 
 		function run_sp()
 		{
-          $list['listreview']=$this->Ketquahoctap_tam_model->reviewkqht();
-          $check = true;
-          foreach ($list['listreview'] as $key => $value) {
-            if ($value['monhoc_id'] == 'null' || $value['TenMH'] == 'null' || $value['nganhhoc_id'] == 'null' || $value['lophoc_id'] == 'null') {
-              $check = false;
+          $data['listreview']=$this->Ketquahoctap_tam_model->reviewkqht();
+          foreach ($data['listreview'] as $key => $value) {
+        		$checknganh = $this->Nganhhoc_model->checkNH($value['nganhhoc_id']);
+        		if($checknganh != true)
+        		{
+        			$data['listreview'][$key]['nganhmoi'] = true;
+        		}
+        		else {
+         			$data['listreview'][$key]['nganhmoi'] = false;
+        		}
+        		$checkmon = $this->Monhoc_model->Check_Mon($value['monhoc_id']);
+        		if($checkmon != true)
+        		{
+        			$data['listreview'][$key]['monmoi'] = true;
+        		}
+        		else {
+         			$data['listreview'][$key]['monmoi'] = false;
+        		}
+        	}
+          $check1 = true;
+          $error = array(
+          	'check' => false,
+          	'dulieurong' => false,
+          );
+          foreach ($data['listreview'] as $key => $value) {
+            if ($value['monhoc_id'] == 'null' || $value['nganhhoc_id'] == 'null' || $value['lophoc_id'] == 'null' || $value['sinhvien_id'] == 'null' || $value['nganhmoi'] == 1 || $value['monmoi'] == 1) {
+              $check1 = false;
               break;
             }
           }
-          if ($check == true) {
+          
+          if ($check1 == true) {
             $this->Ketquahoctap_model->run_sp();
-            $error['check'] = false;
-            $data['listreview']=$this->Ketquahoctap_tam_model->reviewkqht();
-            if ($data['listreview'] == false)
+            $list['listreview']=$this->Ketquahoctap_tam_model->reviewkqht();
+            if ($list['listreview'] == false)
             {
               $error['check'] = true;
             }
@@ -207,9 +229,9 @@
             }
           }
           else {
-            $error['dulieurong'] = false;
+            $error['dulieurong'] = true;
           }
-          echo json_encode($error);
+         echo json_encode($error);
         }
         function cancel_sp()
         {
