@@ -32,7 +32,9 @@ Class Hocphi extends MY_Controller
   {
     $data['message'] = array(
         'ImportSucces' => '',
-        'ImportFail' => ''
+        'ImportFail' => '',
+        'kiemtramssv' => '',
+        'kiemtrafile' => '',
     );
     if(!empty($_FILES['file']['tmp_name']))
     {
@@ -44,49 +46,68 @@ Class Hocphi extends MY_Controller
       $objExcel = $objReader->load($file);
       $worksheet = $objExcel->getSheet(0);
       $objReader->setLoadSheetsOnly($worksheet);
-      $sheetData = $objExcel->getActiveSheet()->toArray('null',true,true,true);
+      $sheetData = $objExcel->getActiveSheet()->toArray(null,true,true,true);
       $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
       $noidung = trim($sheetData[5]['A']);
+      $checkmssv = false;
       $checkSV = true;
+      for ($row=11; $row <= $highestRow ; $row++) {
+          $break_dongtrong = $sheetData[$row]['A'];
+          $break_mssv = $sheetData[$row]['B'];
+          if ($break_dongtrong == null) {
+            break;
+          }
+          elseif (empty($break_mssv)) {
+            $checkmssv = true;
+          }
+        }
 
-      for ($row=11; $row < $highestRow ; $row++)
-      {
-        $break = trim($sheetData[$row]['B']);
-        $kiemtraSV = $this->Sinhvien_model->checkSV_Hocphi($break);
-        if ($kiemtraSV == false )
-        {
-          $checkSV = false;
-          break;
-        }
-        }
-      if($checkSV == false)
-      {
-        $data['message']['ImportFail'] = 'Thông tin SV không tồn tại trong hệ thống';
-      }
-      else
-      {
-        $delAll = $this->Hocphi_model->delAll();
+      if ($checkmssv == false){
         for ($row=11; $row < $highestRow ; $row++)
         {
-          $break = $sheetData[$row]['B'];
-          if (!empty($break))
+          
+          $break = trim($sheetData[$row]['B']);
+
+          $kiemtraSV = $this->Sinhvien_model->checkSV_Hocphi($break);
+          if ($kiemtraSV == false )
           {
-          $data = array(
-          'MSSV' => trim($sheetData[$row]['B']),
-          'hocphi_chinh' => trim($sheetData[$row]['G']),
-          'hocphi_hoclai' => trim($sheetData[$row]['H']),
-          'hocphi_tong' => trim($sheetData[$row]['F']),
-          'noidung' =>$noidung,
-          );
-          if($this->Hocphi_model->create($data))
-          {
-            $data['message']['ImportSucces'] = 'Thêm mới dữ liệu thành công';
-          }
-          }else{
+            $checkSV = false;
             break;
           }
         }
+        if($checkSV == false)
+        {
+          $data['message']['ImportFail'] = 'Thông tin SV không tồn tại trong hệ thống';
+        }
+        else
+        {
+          $delAll = $this->Hocphi_model->delAll();
+          for ($row=11; $row < $highestRow ; $row++)
+          {
+            $break = $sheetData[$row]['B'];
+            if (!empty($break))
+            {
+            $data = array(
+            'MSSV' => trim($sheetData[$row]['B']),
+            'hocphi_chinh' => trim($sheetData[$row]['G']),
+            'hocphi_hoclai' => trim($sheetData[$row]['H']),
+            'hocphi_tong' => trim($sheetData[$row]['F']),
+            'noidung' =>$noidung,
+            );
+            if($this->Hocphi_model->create($data))
+            {
+              $data['message']['ImportSucces'] = 'Thêm mới dữ liệu thành công';
+            }
+            }
+            else{
+              break;
+            }
+          }
+        }
       }
+      else{
+            $data['message']['kiemtramssv'] = 'Dữ Liệu Excel Rỗng';
+          }
     }
     else{
        $data['message']['kiemtrafile'] = 'Vui lòng chọn đúng định dạng file Excel';

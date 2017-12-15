@@ -27,13 +27,13 @@
       $check2 = false;
       $check3 = false;
       for ($i = 0; $i < count($listreview); $i++){
-        if ($listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['sinhvien_id'] == 'null' || $listreview[$i]['lophoc_id'] == 'null' || $listreview[$i]['nganhmoi'] == 1 || $listreview[$i]['monmoi'] == 1) {
+        if ($listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['sinhvien_id'] == 'null' || $listreview[$i]['lophoc_id'] == 'null' || $listreview[$i]['nganhmoi'] == 1 || $listreview[$i]['monmoi'] == 1 || $listreview[$i]['svmoi'] == 1) {
             $check1 = true;
           }
-          if($listreview[$i]['lopmoi'] == 1) {
+          if($listreview[$i]['lopmoi'] == 1 && $listreview[$i]['monhoc_id'] != 'null' && $listreview[$i]['nganhhoc_id'] != 'null' && $listreview[$i]['sinhvien_id'] != 'null' && $listreview[$i]['lophoc_id'] != 'null' && $listreview[$i]['nganhmoi'] == 0 && $listreview[$i]['monmoi'] == 0 && $listreview[$i]['svmoi'] == 0) {
             $check2 = true;
          }
-         if($listreview[$i]['monhoc_id'] != 'null' && $listreview[$i]['nganhhoc_id'] != 'null' && $listreview[$i]['sinhvien_id'] != 'null' && $listreview[$i]['lophoc_id'] != 'null' && $listreview[$i]['nganhmoi'] == 0 && $listreview[$i]['monmoi'] == 0 && $listreview[$i]['lopmoi'] == 0) {
+         if($listreview[$i]['monhoc_id'] != 'null' && $listreview[$i]['nganhhoc_id'] != 'null' && $listreview[$i]['sinhvien_id'] != 'null' && $listreview[$i]['lophoc_id'] != 'null' && $listreview[$i]['nganhmoi'] == 0 && $listreview[$i]['monmoi'] == 0 && $listreview[$i]['lopmoi'] == 0 && $listreview[$i]['svmoi'] == 0) {
             $check3 = true;
           } 
              } } ?>
@@ -88,7 +88,7 @@
                     // pre($list);
                     for ($i = 0; $i < count($list); $i++){
                 ?>
-                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['nganhhoc_id'] == 'null' || $list[$i]['sinhvien_id'] == 'null' || $list[$i]['TenMH'] == 'null' || $list[$i]['nganhmoi'] == 1 || $list[$i]['monmoi'] == 1){echo 'color:red';}elseif($list[$i]['lopmoi'] == 1){echo 'color:green';}?>">
+                <tr style="<?php if($list[$i]['monhoc_id'] == 'null' || $list[$i]['nganhhoc_id'] == 'null' || $list[$i]['sinhvien_id'] == 'null' || $list[$i]['TenMH'] == 'null' || $list[$i]['nganhmoi'] == 1 || $list[$i]['monmoi'] == 1 || $list[$i]['svmoi'] == 1){echo 'color:red';}elseif($list[$i]['lopmoi'] == 1){echo 'color:green';}?>">
                     <td class="hitec-td-1 text-center">
                         <?php echo $i + 1?>
                     </td>

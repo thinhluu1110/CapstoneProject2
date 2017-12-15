@@ -288,20 +288,20 @@
 										$('#loader_import_hp').hide();
 										//$('#msg-fail-HocPhi').prop("style").display = "none";
 									}
-									// if (data.message.kiemtra_mssv == true) {
-									// 	$('#msg-success-HocPhi').prop('hidden',true);
-									// 	$('#msg-fail-HocPhi h5').html("Dữ liệu");
-									// 	$('#msg-fail-HocPhi').prop('hidden',false);
-
-									// 	//$('#msg-fail-HocPhi').prop("style").display = "none";
-									// }
+									if (data.message.kiemtramssv != '') {
+										$('#msg-success-HocPhi').prop('hidden',true);
+										$('#msg-fail-HocPhi h5').html(data.message.kiemtramssv);
+										$('#msg-fail-HocPhi').prop('hidden',false);
+										$('#loader_import_hp').hide();
+										//$('#msg-fail-HocPhi').prop("style").display = "none";
+									}
 
 									if (data.message.ImportSucces != '') {
 										$('#dialogImport').modal('hide');
 										$('#dialogValidation_Import_HocPhi').modal('show');
 									}
 
-									else if (data.message.ImportFail != '') {
+									if (data.message.ImportFail != '') {
 										$('#msg-fail-HocPhi').prop('hidden',false);
 										$('#msg-success-HocPhi').prop('hidden',true);
 										$('#msg-fail-HocPhi h5').html(data.message.ImportFail);
@@ -1053,11 +1053,12 @@
 													// 	$('#msg-fail h5').html("Dữ Liệu Trong Excel Rỗng");
 													// 	$('#msg-success').prop('hidden',true);
 													// }
-													// if (data.kiemtra_mssv == true) {
-													// 	$('#msg-fail').prop('hidden',false);
-													// 	$('#msg-fail h5').html("Không được bỏ trống cột mssv dữ liệu trong Excel");
-													// 	$('#msg-success').prop('hidden',true);
-													// }
+													if (data.kiemtramssv == true) {
+														$('#msg-fail').prop('hidden',false);
+														$('#msg-fail h5').html("Dữ Liệu Trong Excel Rỗng");
+														$('#msg-success').prop('hidden',true);
+														$('#loader_import_drl').hide();
+													}
 													if (data.kiemtrafile == true) {
 														$('#msg-fail').prop('hidden',false);
 														$('#msg-fail h5').html("Vui Lòng Chọn Đúng ĐỊnh Dạng File Excel");
@@ -1851,6 +1852,7 @@
 														$('#msg-fail h5').html(data.khongchonfile);
 														$('#msg-success').prop('hidden',true);
 														$('#loader_import_sv').hide();
+
 													}
 													if (data.load == true) {
 														$('#dialogImport').modal('hide');
@@ -1862,11 +1864,12 @@
 														$('#msg-success').prop('hidden',true);
 														$('#loader_import_sv').hide();
 													}
-													// if (data.kiemtra_mssv == true) {
-													// 	$('#msg-fail').prop('hidden',false);
-													// 	$('#msg-fail h5').html("Dữ Liệu Trong Excel Rỗng");
-													// 	$('#msg-success').prop('hidden',true);
-													// }
+													if (data.kiemtra_mssv == true) {
+														$('#msg-fail').prop('hidden',false);
+														$('#msg-fail h5').html("Dữ Liệu Trong Excel Rỗng");
+														$('#msg-success').prop('hidden',true);
+														$('#loader_import_sv').hide();
+													}
 												}
 												// $('#msg-success-delete-khoa').prop('hidden',false);
 												// 		$('#msg-success-delete-khoa h5').html("Xóa Thành Công");

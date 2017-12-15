@@ -10,6 +10,7 @@
 			$this->load->model('Lophoc_model');
 			$this->load->model('Nganhhoc_model');
 			$this->load->model('Diemrenluyen_model');
+			$this->load->model('Sinhvien_model');
 		}
 		function index()
 		{
@@ -169,14 +170,14 @@
         		else {
          			$data['listreview'][$key]['monmoi'] = false;
         		}
-        		// $checksv = $this->Sinhvien_model->check_SV($value['sinhvien_id']);
-        		// if($checksv != true)
-        		// {
-        		// 	$data['listreview'][$key]['svmoi'] = true;
-        		// }
-        		// else {
-         	// 		$data['listreview'][$key]['svmoi'] = false;
-        		// }
+        		$checksv = $this->Sinhvien_model->check_SV($value['sinhvien_id']);
+        		if($checksv != true)
+        		{
+        			$data['listreview'][$key]['svmoi'] = true;
+        		}
+        		else {
+         			$data['listreview'][$key]['svmoi'] = false;
+        		}
       		}
 					
       		$data['listnganhhoc'] = $listnganhhoc;
@@ -203,6 +204,14 @@
         		else {
          			$data['listreview'][$key]['monmoi'] = false;
         		}
+        		$checksv = $this->Sinhvien_model->check_SV($value['sinhvien_id']);
+        		if($checksv != true)
+        		{
+        			$data['listreview'][$key]['svmoi'] = true;
+        		}
+        		else {
+         			$data['listreview'][$key]['svmoi'] = false;
+        		}
         	}
           $check1 = true;
           $error = array(
@@ -210,7 +219,7 @@
           	'dulieurong' => false,
           );
           foreach ($data['listreview'] as $key => $value) {
-            if ($value['monhoc_id'] == 'null' || $value['nganhhoc_id'] == 'null' || $value['lophoc_id'] == 'null' || $value['sinhvien_id'] == 'null' || $value['nganhmoi'] == 1 || $value['monmoi'] == 1) {
+            if ($value['monhoc_id'] == 'null' || $value['nganhhoc_id'] == 'null' || $value['lophoc_id'] == 'null' || $value['sinhvien_id'] == 'null' || $value['nganhmoi'] == 1 || $value['monmoi'] == 1 || $value['svmoi'] == 1) {
               $check1 = false;
               break;
             }

@@ -43,8 +43,7 @@ Class Diemrenluyen extends MY_Controller
       $error  = array(
         'khongchonfile' => '',
         'load' => false,
-        //'kiemtra_xeploai' => false,
-
+        'kiemtramssv' => false,
         'kiemtrafile' => false,
       );
 
@@ -68,20 +67,17 @@ Class Diemrenluyen extends MY_Controller
           $check_xeploai = false;
           $check_mssv = false;
 
-          // for ($row=4; $row <= $highestRow ; $row++) {
-          //   $break_xeploai = $sheetData[$row]['G'];
-          //   $break_mssv = $sheetData[$row]['B'];
-          //   $break_dongtrong = $sheetData[$row]['A'];
-          //   if ((empty($break_xeploai) || empty($break_mssv)) && !empty($break_dongtrong)) {
-          //   $check_xeploai = true;
-          //   $check_mssv = true;
-          //   break;
-          //   }
-
-          // }
-          // if ($check_xeploai == false || $check_mssv == false) {
-
-
+          for ($row=4; $row <= $highestRow ; $row++) {
+          $break_dongtrong = $sheetData[$row]['A'];
+          $break_mssv = $sheetData[$row]['B'];
+          if ($break_dongtrong == null) {
+            break;
+          }
+          elseif (empty($break_mssv)) {
+            $check_mssv = true;
+          }
+        }
+        if ($check_mssv == false){
               for ($row = 4; $row <= $highestRow; $row ++)
               {
 
@@ -128,11 +124,10 @@ Class Diemrenluyen extends MY_Controller
               break;
             }
           }
-
-      // }
-      //     else{
-      //       $error['kiemtra_xeploai'] = true;
-      //     }
+        }
+          else{
+            $error['kiemtramssv'] = true;
+          }
         }
         else{
           $error['kiemtrafile'] = true;
