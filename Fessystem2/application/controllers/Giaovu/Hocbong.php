@@ -19,6 +19,7 @@ Class Hocbong extends MY_Controller
       $tbht = $this->input->get('tbht');
       $tbrl = $this->input->get('tbrl');
       $thilai = $this->input->get('thilai');
+     
       $data_user_pass = [];
       if($idn)
 			{
@@ -34,7 +35,7 @@ Class Hocbong extends MY_Controller
         for ($i=0; $i < count($data['listDSHB']) ; $i++) {
           $array_result[$data['listDSHB'][$i]['MSSV']][] = $data['listDSHB'][$i];
         }
-        // pre($array_result);
+        
         if (isset($array_result)) {
           foreach ($array_result as $MSSV => $value) {
             $tu = 0;
@@ -48,7 +49,7 @@ Class Hocbong extends MY_Controller
             $tbhk += round(($tu/$mau),2);
             for ($j=0; $j <count($value) ; $j++) {
               if ($thilai == "yes") {
-                if ($value[$j]['lan2'] != null) {
+                if ($value[$j]['lan2'] != NULL) {
                   continue;
                 }
                 if ($tbhk < $tbht || $drl <$tbrl) {
@@ -81,6 +82,7 @@ Class Hocbong extends MY_Controller
             }
 
           }
+          
         }
       }
       if ($this->input->get('exp')) {

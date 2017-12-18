@@ -95,13 +95,20 @@
 				$objExcel = $objReader->load($file);
 				$worksheet = $objExcel->getSheet(0);
 				$objReader->setLoadSheetsOnly($worksheet);
-				$sheetData = $objExcel->getActiveSheet()->toArray('null',true,true,true);
+				$sheetData = $objExcel->getActiveSheet()->toArray(null,true,true,true);
 				$highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
 				$load = false;
+				$lan2 = 0;
 				for ($row=2; $row <= $highestRow ; $row++)
 				{
 					$break = $sheetData[$row]['A'];
 					if ( $break != null) {
+						if ( is_null($sheetData[$row]['M'])) {
+							$lan2 = null;
+						}
+						else{
+							$lan2 = trim($sheetData[$row]['M']);
+						}
 						$data = array(
 							'sinhvien_id' => trim($sheetData[$row]['B']),
 							'ho' => trim($sheetData[$row]['C']),
@@ -114,7 +121,7 @@
 							'chuyencan' => trim($sheetData[$row]['J']),
 							'giuaki' => trim($sheetData[$row]['K']),
 							'lan1' => trim($sheetData[$row]['L']),
-							'lan2' => trim($sheetData[$row]['M']),
+							'lan2' => $lan2,
 							'diemTB' => trim($sheetData[$row]['N']),
 							'trongso_chuyencan' => trim($sheetData[$row]['O']),
 							'trongso_giuaki' => trim($sheetData[$row]['P']),

@@ -65,10 +65,10 @@ Class Khoahoc extends MY_Controller
               'check' => true
           );
 
-          if ($this->Khoahoc_model->Check_Khoa($tenkhoa,$manganh) == true) {
-            $error['msg'] = 'Khóa học đã tồn tại trong hệ thống';
-          }
-          else{
+          // if ($this->Khoahoc_model->Check_Khoa($tenkhoa,$manganh) == true) {
+          //   $error['msg'] = 'Khóa học đã tồn tại trong hệ thống';
+          // }
+          // else{
           if($this->Khoahoc_model->update($id,$data))
               {
 
@@ -78,7 +78,7 @@ Class Khoahoc extends MY_Controller
               {
                 $error['check'] = false;
               }
-            }
+            //}
 				echo json_encode($error);
 		}
 		function Del()

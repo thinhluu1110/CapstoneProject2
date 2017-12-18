@@ -45,6 +45,7 @@ Class Diemrenluyen extends MY_Controller
         'load' => false,
         'kiemtramssv' => false,
         'kiemtrafile' => false,
+        'tontaisv' => false,
       );
 
         $this->load->library('PHPExcel');
@@ -119,9 +120,13 @@ Class Diemrenluyen extends MY_Controller
                     }
                   }
               }
+              else{
+                $error['tontaisv'] = true;
+                break;
+              }
             }
             else {
-              break;
+              
             }
           }
         }

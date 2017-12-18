@@ -1048,11 +1048,12 @@
 														$('#dialogImport').modal('hide');
 														$('#dialogValidation_Import_DRL').modal('show');
 													}
-													// if (data.kiemtra_xeploai == true) {
-													// 	$('#msg-fail').prop('hidden',false);
-													// 	$('#msg-fail h5').html("Dữ Liệu Trong Excel Rỗng");
-													// 	$('#msg-success').prop('hidden',true);
-													// }
+													if (data.tontaisv == true) {
+														$('#msg-fail').prop('hidden',false);
+														$('#msg-fail h5').html("Thông Tin SV Không Tồn Tại Trong Hệ Thống");
+														$('#msg-success').prop('hidden',true);
+														$('#loader_import_drl').hide();
+													}
 													if (data.kiemtramssv == true) {
 														$('#msg-fail').prop('hidden',false);
 														$('#msg-fail h5').html("Dữ Liệu Trong Excel Rỗng");
