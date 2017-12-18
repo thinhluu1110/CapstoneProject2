@@ -6,7 +6,7 @@
          <div class="hitec-content">
              <img id="ajax-loader" src="/Teacher/images/icons/ajax-loader.gif" alt="" style="display: none;">
              <h2>Danh Sách Sinh Viên Đủ Điều Kiện Nhận Học Bổng</h2>
-             <?php if ($this->session->userdata('phanquyen') == 1) { ?>
+             <?php if ($this->session->userdata('phanquyen') == 2) { ?>
              <div class="container-fluid text-right">
                  <a href="javascript:void(0)"  title="Thêm" data-toggle="modal" data-target="#dialogEdit">[Nhập Điều Kiện Duyệt Học Bổng]</a>
             </div>
