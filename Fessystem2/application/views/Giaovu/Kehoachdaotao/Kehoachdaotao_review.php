@@ -24,13 +24,13 @@
       $check2 = false;
       $check3 = false;
       for ($i = 0; $i < count($listreview); $i++){
-        if ($listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['hocki_id'] == 'null') {
+        if ($listreview[$i]['nganhhoc_id'] == 'null' || $listreview[$i]['monhoc_id'] == 'null' || $listreview[$i]['hocki_id'] == 'null' || $listreview[$i]['TenMH'] == 'null') {
           $check1 = true;
         }
-        if ($listreview[$i]['monmoi'] == 1) {
+        if ($listreview[$i]['monmoi'] == 1 && $listreview[$i]['nganhhoc_id'] != 'null' && $listreview[$i]['monhoc_id'] != 'null' && $listreview[$i]['hocki_id'] != 'null' && $listreview[$i]['TenMH'] != 'null') {
            $check2 = true;
         }
-        if ($listreview[$i]['nganhhoc_id'] != 'null' && $listreview[$i]['monhoc_id'] != 'null' && $listreview[$i]['hocki_id'] != 'null' && $listreview[$i]['monmoi'] == 0) {
+        if ($listreview[$i]['nganhhoc_id'] != 'null' && $listreview[$i]['monhoc_id'] != 'null' && $listreview[$i]['hocki_id'] != 'null' && $listreview[$i]['monmoi'] == 0 && $listreview[$i]['TenMH'] != 'null') {
            $check3 = true;
          } 
     } } ?>

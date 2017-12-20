@@ -376,7 +376,7 @@ Class Kehoachdaotao extends MY_Controller
           $list['listreview']=$this->Kehoachdaotao_tam_model->reviewkhdt();
           $check = true;
           foreach ($list['listreview'] as $key => $value) {
-            if ($value['monhoc_id'] == 'null' || $value['TenMH'] == 'null' || $value['hocki_id'] == 'null') {
+            if ($value['monhoc_id'] == 'null' || $value['TenMH'] == 'null' || $value['hocki_id'] == 'null' || $value['TenMH'] == 'null') {
               $check = false;
               break;
             }
@@ -427,7 +427,7 @@ Class Kehoachdaotao extends MY_Controller
 
           $checkdiem = $this->Kehoachdaotao_model->Delmon_checkkhdt($id,$nganhhoc,$khoahoc,$hocki,$monhoc);
           if (count($checkdiem) > 0) {
-          $error['msg'] = 'Đã Có Dữ Liệu Kết Quả Học Tập Cho Kế Hoạch Đào Tạo Này';
+          $error['msg'] = 'Học Kì Hiện Tại Đã Kết Thúc';
           }
           else{
             $nganhhoc1 = $this->input->post('nganhhoc');
@@ -479,7 +479,7 @@ Class Kehoachdaotao extends MY_Controller
           //$monhoc = $value['monhoc_id'];
           $checkdiem = $this->Kehoachdaotao_model->Editmon_checkkhdt($nganhhoc,$khoahoc,$hocki);
         if (count($checkdiem) > 0) {
-          $error['msg'] = 'Học Kì Vừa Chọn Đã Kết Thúc';
+          $error['msg'] = 'Học Kì Hiện Tại Đã Kết Thúc';
         }
         else
         {
