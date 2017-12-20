@@ -93,7 +93,7 @@ Class Diemrenluyen extends MY_Controller
               $break = $sheetData[$row]['B'];
               if (!empty($break)) {
                 $mssv = $sheetData[$row]['B'];
-
+                $checkdiem = $this->Diemrenluyen_model->checkDRL($mssv,$hocki);
                   if ($checkdiem == false) {
                     $data = array(
                       'MSSV' => trim($sheetData[$row]['B']),
