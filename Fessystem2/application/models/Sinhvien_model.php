@@ -117,6 +117,7 @@ Class Sinhvien_model extends MY_Model
 			->from('sinhvien as sv')
 			->join('ketquahoctap as kqht', 'sv.MSSV = kqht.sinhvien_id')
 			->join('nganhhoc as n', 'sv.nganhhoc_id = n.nganhhoc_id')
+			->join('monhoc as m', 'kqht.monhoc_id = m.monhoc_id')
 			->join('khoahoc as k', 'sv.khoahoc_id = k.khoahoc_id')
 			->where('sv.nganhhoc_id',$idn)
 			->where('sv.khoahoc_id',$idk);

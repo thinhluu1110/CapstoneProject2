@@ -63,11 +63,10 @@ Class Diemrenluyen extends MY_Controller
           $worksheet = $objExcel->getSheet(0);
           $objReader->setLoadSheetsOnly($worksheet);
           $sheetData = $objExcel->getActiveSheet()->toArray(null,true,true,true);
-          
           $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
           $check_xeploai = false;
           $check_mssv = false;
-
+          $checksaimssv = true;
           for ($row=4; $row <= $highestRow ; $row++) {
           $break_dongtrong = $sheetData[$row]['A'];
           $break_mssv = $sheetData[$row]['B'];
@@ -77,18 +76,24 @@ Class Diemrenluyen extends MY_Controller
           elseif (empty($break_mssv)) {
             $check_mssv = true;
           }
+          $checksv = $this->Sinhvien_model->checkSV($break_mssv);
+
+          if ($checksv == true) {
+            $checksaimssv = false;
+            break;
+          }
         }
         if ($check_mssv == false){
+          if ($checksaimssv == false) {
+            $error['tontaisv'] = true;
+          }
+          else {
               for ($row = 4; $row <= $highestRow; $row ++)
               {
-
               $break = $sheetData[$row]['B'];
               if (!empty($break)) {
-
                 $mssv = $sheetData[$row]['B'];
-                $checksv = $this->Sinhvien_model->checkSV($mssv);
-                if ($checksv == false) {
-                  $checkdiem = $this->Diemrenluyen_model->checkDRL($mssv,$hocki);
+
                   if ($checkdiem == false) {
                     $data = array(
                       'MSSV' => trim($sheetData[$row]['B']),
@@ -102,11 +107,6 @@ Class Diemrenluyen extends MY_Controller
                     {
                       $error['load'] = true;
                     }
-
-                  //else{
-                    //$error['load'] = false;
-                  ////}
-
                   }
                   else
                   {
@@ -119,16 +119,12 @@ Class Diemrenluyen extends MY_Controller
                       $error['load'] = true;
                     }
                   }
-              }
-              else{
-                $error['tontaisv'] = true;
-                break;
-              }
-            }
+                }
             else {
-              
+              break;
             }
           }
+        }
         }
           else{
             $error['kiemtramssv'] = true;

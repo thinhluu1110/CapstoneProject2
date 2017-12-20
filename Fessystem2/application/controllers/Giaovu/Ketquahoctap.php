@@ -186,7 +186,7 @@
          			$data['listreview'][$key]['svmoi'] = false;
         		}
       		}
-					
+
       		$data['listnganhhoc'] = $listnganhhoc;
 					$this->load->view('Giaovu/Ketquahoctap/Ketquahoctap_review',$data);
 		}
@@ -231,7 +231,7 @@
               break;
             }
           }
-          
+
           if ($check1 == true) {
             $this->Ketquahoctap_model->run_sp();
             $list['listreview']=$this->Ketquahoctap_tam_model->reviewkqht();

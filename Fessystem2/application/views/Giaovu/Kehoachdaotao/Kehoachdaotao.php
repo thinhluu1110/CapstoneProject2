@@ -30,6 +30,11 @@
                 </div>
             </form>
         </div>
+        <?php if ($this->session->userdata('phanquyen') == 1) { ?>
+          <div class="container-fluid text-right">
+            <a href="<?php if($this->input->get('khoahoc')){echo base_url('Giaovu/Kehoachdaotao/index?exp=exp&khoahoc=').$this->input->get('khoahoc').'&nganhhoc='.$this->input->get('nganhhoc');}?> "><u>[Xuất Danh Sách Ra Excel]</u></a>
+            </div>
+            <?php } ?>
     <div id="searchResult" style="margin-top:5px;">
         <!-- Layout dùng cho các view dạng một phần nội dung trong trang web -->
         <!-- <div class="container-fluid text-right">

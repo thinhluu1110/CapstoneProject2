@@ -28,6 +28,68 @@ Class Kehoachdaotao extends MY_Controller
       if($idn && $idk)
       {
       $data['listCTDT']=$this->Kehoachdaotao_model->filterKHDT($idk,$idn);
+      if ($this->input->get('exp')) {
+        $this->load->library('PHPExcel');
+        $objExcel = new PHPExcel;
+        $objExcel->setActiveSheetIndex(0);
+        $sheet = $objExcel->getActiveSheet()->setTitle('Kế Hoạch Đào Tạo');
+        $sheet->getColumnDimension("A")->setAutoSize(true);
+        $sheet->getColumnDimension("B")->setAutoSize(true);
+        $sheet->getColumnDimension("C")->setAutoSize(true);
+        $sheet->getColumnDimension("D")->setAutoSize(true);
+        $sheet->getColumnDimension("E")->setAutoSize(true);
+        $sheet->getColumnDimension("F")->setAutoSize(true);
+        $sheet->getColumnDimension("G")->setAutoSize(true);
+        $sheet->getColumnDimension("H")->setAutoSize(true);
+        $sheet->getColumnDimension("I")->setAutoSize(true);
+        $sheet->getColumnDimension("J")->setAutoSize(true);
+        $sheet->getColumnDimension("K")->setAutoSize(true);
+        $sheet->getColumnDimension("L")->setAutoSize(true);
+        $rowcount = 1;
+        $stt = 0;
+        $sheet->setCellValue('A'.$rowcount, 'STT');
+        $sheet->setCellValue('B'.$rowcount, 'MÃ MÔN HỌC');
+        $sheet->setCellValue('C'.$rowcount, 'TÊN MÔN HỌC');
+        $sheet->setCellValue('D'.$rowcount, 'DVHT/TC');
+        $sheet->setCellValue('E'.$rowcount, 'TS');
+        $sheet->setCellValue('F'.$rowcount, 'LT');
+        $sheet->setCellValue('G'.$rowcount, 'BT');
+        $sheet->setCellValue('H'.$rowcount, 'TH');
+        $sheet->setCellValue('I'.$rowcount, 'BTL');
+        $sheet->setCellValue('J'.$rowcount, 'ĐA');
+        $sheet->setCellValue('K'.$rowcount, 'KL');
+        $sheet->setCellValue('L'.$rowcount, 'HK');
+        foreach ($data['listCTDT'] as $key => $value) {
+          for ($i=0; $i <count($value) ; $i++) {
+              $rowcount++;
+              $stt++;
+              $sheet->setCellValue('A'.$rowcount, $stt);
+              $sheet->setCellValue('B'.$rowcount, $value['MaMH']);
+              $sheet->setCellValue('C'.$rowcount, $value['TenMH']);
+              $sheet->setCellValue('D'.$rowcount, $value['dvht_tc']);
+              $sheet->setCellValue('E'.$rowcount, $value['tongso']);
+              $sheet->setCellValue('F'.$rowcount, $value['lythuyet']);
+              $sheet->setCellValue('G'.$rowcount, $value['baitap']);
+              $sheet->setCellValue('H'.$rowcount, $value['thuchanh']);
+              $sheet->setCellValue('I'.$rowcount, $value['baitaplon']);
+              $sheet->setCellValue('J'.$rowcount, $value['doAn']);
+              $sheet->setCellValue('K'.$rowcount, $value['khoaluan']);
+              $sheet->setCellValue('L'.$rowcount, $value['hocki_id']);
+          break;
+        }
+        }
+        $objWriter = new PHPExcel_Writer_Excel2007($objExcel);
+        $filename = 'abc.xlsx';
+        $objWriter->save($filename);
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Content-Type: application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet');
+        header('Content-Length: '.filesize($filename));
+        header('Content-Transfer-Encoding: binary');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: no-cache');
+        readfile($filename);
+        return;
+      }
       }
       $data['listnganhhoc'] = $listnganhhoc;
       $data['temp'] = 'Giaovu/Kehoachdaotao/Kehoachdaotao';
