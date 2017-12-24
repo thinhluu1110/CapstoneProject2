@@ -5,7 +5,7 @@ Class Lichthi extends MY_Controller
     {
         parent::__construct();
         //load ra file model lich thi
-        $this->load->model('lichthi_model');
+        $this->load->model('Lichthi_model');
     }
 
     /*
@@ -13,26 +13,34 @@ Class Lichthi extends MY_Controller
      */
     function index()
     {
-       
-        $ech_hoc_ki = $this->input->get('Hocki');
         $nganh = $this->session->userdata('nganhhoc_id');
         $khoa = $this->session->userdata('khoahoc_id');
 
-        //fillter Lan thi
-        $ech_lan_thi = $this->input->get('Lanthi');
-        //lay danh sach lich thi
-        $listLichthi = $this->lichthi_model->Getlichthisv_byNKHK($nganh,$khoa,$ech_hoc_ki, $ech_lan_thi);
-        $this->data['listLichthi'] = $listLichthi;
-
-        //lay daanh sach hoc ki
-        $this->load->model('hocki_model');
-        $input = array();
-        $listhocki = $this->hocki_model->get_list($input);
+        //tra du lieu Hoc ki theo Nganh va Khoa
+        if ($nganh && $khoa) {
+            $listhocki = $this->Lichthi_model->Get_hockibyid($nganh,$khoa);
+        }
         $this->data['listhocki'] = $listhocki;
 
-        //lay nội dung của biến message
-        $message = $this->session->flashdata('message');
-        $this->data['message'] = $message;
+        //lay fillter Hoc ki
+        $ech_hoc_ki = $this->input->get('Hocki');
+
+        //tra du lieu Lan thi theo Nganh, Khoa va Hoc ki
+        if ($nganh && $khoa) {
+            $listlanthi = $this->Lichthi_model->Get_lanthibyhocki($nganh,$khoa,$ech_hoc_ki);
+        }
+        $this->data['listlanthi'] = $listlanthi;
+
+        //lay fillter Lan thi
+        $ech_lan_thi = $this->input->get('Lanthi');
+
+        //hien thi Lich Thi Hoc Ki
+        if ($ech_hoc_ki != "" && $ech_lan_thi != "") {
+            $listLichthi = $this->Lichthi_model->Getlichthisv_byNKHK($nganh,$khoa,$ech_hoc_ki,$ech_lan_thi);
+        }else{
+            $listLichthi = array();
+        }
+        $this->data['listLichthi'] = $listLichthi;
 
         // //load view
         $this->data['temp'] = 'Sinhvien/lichthi/lichthi';

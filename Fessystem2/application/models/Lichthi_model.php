@@ -40,34 +40,28 @@ Class Lichthi_model extends MY_Model
 	    	$query = $this->db->get();
 	    	return $query->result();
   	}
-  	function Getlichthisv_byNKHK($idn,$idk,$idhk,$idlt)
-  	{
-	  	$this->db->select('*')
-			->from('lichthi as lt');
-			$this->db->where('lt.nganhhoc_id',$idn)->where('lt.khoahoc_id',$idk)->where('lt.hocki_id',$idhk)->where('lt.lanthi',$idlt);
-			//$this->db->order_by('lt.lanthi','desc');
-	    	$query = $this->db->get();
-	    	return $query->row_array();
-  	}
   	function fillterLichThi($idn,$idk,$idhk,$idlt)
 	{
 		$this->db->select('*')
 	    	->from('lichthi as lt')->order_by('lt.lichthi_id','desc');
-	       	if($idn != ""){
 	       	$this->db->where('lt.nganhhoc_id', $idn);
-	       	}
-	       	if($idk != ""){
 	       	$this->db->where('lt.khoahoc_id', $idk);
-	       	}
-	       	if($idhk != ""){
 	       	$this->db->where('lt.hocki_id', $idhk);
-	       	}
-	       	if($idlt != ""){
 	       	$this->db->where('lt.lanthi', $idlt);
-	       	}
     	$query = $this->db->get();
     	return $query->result();
 	}
+	function Getlichthisv_byNKHK($idn,$idk,$idhk,$idlt)
+  	{
+	  	$this->db->select('*')
+			->from('lichthi as lt')->order_by('lt.lichthi_id','desc');
+			$this->db->where('lt.nganhhoc_id',$idn)
+			->where('lt.khoahoc_id',$idk)
+			->where('lt.hocki_id',$idhk)
+			->where('lt.lanthi',$idlt);
+    	$query = $this->db->get();
+    	return $query->row_array();
+  	}
   	function Check_id_exit($idn,$idk,$idhk,$idlt)
   	{
 		$this->db->select('*')

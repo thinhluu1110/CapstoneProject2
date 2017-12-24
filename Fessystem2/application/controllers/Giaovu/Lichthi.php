@@ -13,48 +13,47 @@ Class Lichthi extends MY_Controller
      */
     function index()
     {
-        //lấy danh sách học kì hiển thị modal
-        $this->load->model('Hocki_model');
-        $input = array();
-        $listhocki = $this->Hocki_model->get_list($input);
-        $this->data['listhocki'] = $listhocki;
-
-        //kiểm tra lọc dữ liệu hay không :
-        //lọc dữ liệu Ngành học
-        $nganhhoc_id = $this->input->get('Nganhhoc');
-
-        //lọc dữ liệu Khóa học
-        $khoahoc_id = $this->input->get('Khoahoc');
-
-        //lọc dữ liệu Học kì
-        $hocki_id = $this->input->get('Hocki');
-
-        //lọc dữ liệu Lần thi
-        $lanthi_id = $this->input->get('Lanthi');
-
-        //lay danh sach ngành học
+        //danh sach tat ca Nganh hoc
         $this->load->model('Nganhhoc_model');
         $input = array();
         $listnganhhoc = $this->Nganhhoc_model->get_list($input);
         $this->data['listnganhhoc'] = $listnganhhoc;
 
-        //lay danh sach khoa hoc theo ngành học
+        //danh sach tat ca Hoc ki
+        $this->load->model('Hocki_model');
+        $input = array();
+        $listhocki = $this->Hocki_model->get_list($input);
+        $this->data['listhocki'] = $listhocki;
+
+        //lay fillter Nganh hoc
+        $nganhhoc_id = $this->input->get('Nganhhoc');
+
+        //tra du lieu Khoa hoc theo Nganh
         if ($nganhhoc_id) {
             $listkhoahocbynganh = $this->Lichthi_model->Get_khoabyid($nganhhoc_id);
             $this->data['listkhoahocbynganh'] = $listkhoahocbynganh;
         }
 
-        //lấy danh sách học kì theo Ngành và khóa
+        //lay fillter Khoa hoc
+        $khoahoc_id = $this->input->get('Khoahoc');
+
+        //tra du lieu Hoc ki theo Nganh va Khoa
         if ($nganhhoc_id && $khoahoc_id) {
             $listhockibykhoa = $this->Lichthi_model->Get_hockibyid($nganhhoc_id,$khoahoc_id);
             $this->data['listhockibykhoa'] = $listhockibykhoa;
         }
 
-        //lay danh sach lần thi
+        //loc du lieu Hoc ki
+        $hocki_id = $this->input->get('Hocki');
+
+        //tra du lieu Lan thi theo Nganh, Khoa va Hoc ki
         if ($nganhhoc_id && $khoahoc_id && $hocki_id) {
             $listlanthibyhocki = $this->Lichthi_model->Get_lanthibyhocki($nganhhoc_id,$khoahoc_id, $hocki_id);
             $this->data['listlanthibyhocki'] = $listlanthibyhocki;
         }
+
+        //loc du lieu Lan thi
+        $lanthi_id = $this->input->get('Lanthi');
 
         //Hiển thị Lich Thi
         if ($nganhhoc_id != "" && $khoahoc_id != "" && $hocki_id != "" && $lanthi_id != "") 

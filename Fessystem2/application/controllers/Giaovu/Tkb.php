@@ -13,65 +13,48 @@ Class Tkb extends MY_Controller
      */
     function index()
     {
-        //load ra thu vien phan trang
-        $this->load->library('pagination');
-        $config = array();
-        $config['per_page']   = 10;//so luong san pham hien thi tren 1 trang
-
-        //khoi tao cac cau hinh phan trang
-        $this->pagination->initialize($config);
-        
-        $segment = $this->uri->segment(4);
-        $segment = intval($segment);
-        
-        $input = array();
-        $input['limit'] = array($config['per_page'], $segment);
-
-        //kiem tra co thuc hien loc du lieu hay khong
-        //fillter Ngành học
-        $nganhhoc_id = $this->input->get('Nganhhoc');
-
-        //fillter Khoa hoc
-        $khoahoc_id = $this->input->get('Khoahoc');
-
-        //fillter Hoc ki
-        $hocki_id = $this->input->get('Hocki');
-
-        //lay danh sach thơi khoa bieu
-        if($_GET != NULL)
-        {
-            if ($nganhhoc_id != "" && $khoahoc_id != "" && $hocki_id != "") {
-                $listTkb = $this->Thoikhoabieu_model->filltertkb($nganhhoc_id,$khoahoc_id,$hocki_id);
-            }
-            else
-                $listTkb = array();
-        }
-        else
-        {
-            $listTkb = array();
-        }
-        $this->data['listTkb'] = $listTkb;
-
-
-        //lay danh sach ngành học
+        //lay danh sach tat ca Nganh hoc
         $this->load->model('Nganhhoc_model');
         $input = array();
         $listnganhhoc = $this->Nganhhoc_model->get_list($input);
         $this->data['listnganhhoc'] = $listnganhhoc;
 
-        //lay danh sach khoa hoc
-        $listkhoahocbynganh = $this->Thoikhoabieu_model->Get_khoabyid($nganhhoc_id);
-        $this->data['listkhoahocbynganh'] = $listkhoahocbynganh;
-
-        //lay danh sach hoc ki
+        //lay danh sach tat ca Hoc ki
         $this->load->model('Hocki_model');
         $input = array();
         $listhocki = $this->Hocki_model->get_list($input);
         $this->data['listhocki'] = $listhocki;
 
-        $listhockibykhoa = $this->Thoikhoabieu_model->Get_hockibyid($nganhhoc_id,$khoahoc_id);
-        $this->data['listhockibykhoa'] = $listhockibykhoa;
+        //lay fillter Nganh hoc
+        $nganhhoc_id = $this->input->get('Nganhhoc');
 
+        //tra danh sach Khoa hoc theo Nganh
+        if($nganhhoc_id){
+            $listkhoahocbynganh = $this->Thoikhoabieu_model->Get_khoabyid($nganhhoc_id);
+            $this->data['listkhoahocbynganh'] = $listkhoahocbynganh;
+        }
+
+        //lay fillter Khoa hoc
+        $khoahoc_id = $this->input->get('Khoahoc');
+
+        //tra danh sach Hoc ki theo Nganh va Khoa
+        if($nganhhoc_id && $khoahoc_id){
+            $listhockibykhoa = $this->Thoikhoabieu_model->Get_hockibyid($nganhhoc_id,$khoahoc_id);
+            $this->data['listhockibykhoa'] = $listhockibykhoa;
+        }
+
+        //lay fillter Hoc ki
+        $hocki_id = $this->input->get('Hocki');
+
+        //Hien thi Thoi Khoa Bieu
+        if ($nganhhoc_id != "" && $khoahoc_id != "" && $hocki_id != "") {
+            $listTkb = $this->Thoikhoabieu_model->filltertkb($nganhhoc_id,$khoahoc_id,$hocki_id);
+        }
+        else{
+            $listTkb = array();
+        }
+        $this->data['listTkb'] = $listTkb;
+        
         //lay nội dung của biến message
         // $message = $this->session->flashdata('message');
         // $this->data['message'] = $message;
@@ -81,8 +64,8 @@ Class Tkb extends MY_Controller
         // $this->data['display_errors'] = $display_errors;
 
         //lay nội dung của biến display_errors
-        $review = $this->session->flashdata('review');
-        $this->data['review'] = $review;
+        // $review = $this->session->flashdata('review');
+        // $this->data['review'] = $review;
 
         // //load view
         $this->data['temp'] = 'Giaovu/Tkb/Tkb';

@@ -31,15 +31,9 @@ Class Thoikhoabieu_model extends MY_Model
 	{
 		$this->db->select('*')
 	    	->from('thoikhoabieu as tkb')->order_by('tkb.thoikhoabieu_id','desc');
-	       	if($idn != ""){
 	       	$this->db->where('tkb.nganhhoc_id', $idn);
-	       	}
-	       	if($idk != ""){
 	       	$this->db->where('tkb.khoahoc_id', $idk);
-	       	}
-	       	if($idhk != ""){
 	       	$this->db->where('tkb.hocki_id', $idhk);
-	       	}
     	$query = $this->db->get();
     	return $query->result();
 	}

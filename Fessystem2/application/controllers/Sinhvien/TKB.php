@@ -13,23 +13,27 @@ Class Tkb extends MY_Controller
      */
     function index()
     {
-        $input = array();
-        $sch_hoc_ky = $this->input->get('Hocki');
         $nganh = $this->session->userdata('nganhhoc_id');
         $khoa = $this->session->userdata('khoahoc_id');
-        //lay danh sach thơi khoa bieu
-        $listTkb = $this->thoikhoabieu_model->gettkbsv_byNKHK($nganh,$khoa,$sch_hoc_ky);
-        $this->data['listTkb'] = $listTkb;
 
-        //lay daanh sach hoc ki
-        $this->load->model('hocki_model');
- 
-        $listhocki = $this->hocki_model->get_list($input);
+        //tra du lieu Hoc ki theo Nganh va Khoa
+        if ($nganh && $khoa) {
+            $listhocki = $this->thoikhoabieu_model->Get_hockibyid($nganh,$khoa);
+        }
         $this->data['listhocki'] = $listhocki;
 
-        //lay nội dung của biến message
-        $message = $this->session->flashdata('message');
-        $this->data['message'] = $message;
+        //lay Hoc ki khi fillter
+        $sch_hoc_ky = $this->input->get('Hocki');
+
+        //Hien thi Thoi Khoa Bieu
+        if ($listhocki != "") {
+            $listTkb = $this->thoikhoabieu_model->gettkbsv_byNKHK($nganh,$khoa,$sch_hoc_ky);
+        }
+        else
+        {
+            $listTkb = array();
+        }
+        $this->data['listTkb'] = $listTkb;
 
         // //load view
         $this->data['temp'] = 'Sinhvien/tkb/tkb';

@@ -35,7 +35,6 @@
                     <?php   if ($this->input->get('Hocki')) {?>
                         <div class="container-fluid text-center">
                             <img src="<?php echo base_url('upload/Tkb/'.$listTkb['ten_anh'])?>">
-                            <br><br><br>
                         </div>
                     <?php }?>
                 </div>
